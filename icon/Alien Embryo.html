@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alien Embryo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #050510;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        .shell {
+            fill: rgba(255, 255, 255, 0.1);
+            stroke: #00ffff;
+            stroke-width: 1;
+            stroke-dasharray: 5 5;
+            animation: spin-shell 10s linear infinite;
+        }
+        .embryo {
+            fill: #ff00ff;
+            transform-origin: center;
+            animation: heartbeat 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px #ff00ff);
+        }
+        .veins {
+            fill: none;
+            stroke: #ff00ff;
+            stroke-width: 2;
+            opacity: 0.5;
+            stroke-dasharray: 50;
+            animation: vein-pump 4s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 60% { transform: scale(0.8); fill: #ff00ff; } /* Normal state */
+            70% { transform: scale(0.9); }
+            75% { transform: scale(0.8); }
+            80% { transform: scale(1.1); } /* Panic start */
+            85% { transform: scale(0.6); fill: #fff; } /* Contract */
+            90% { transform: scale(1.5); fill: #ffaa00; filter: drop-shadow(0 0 30px #ffaa00); } /* EXPLOSION/Change */
+            95% { transform: scale(1.5); }
+            100% { transform: scale(0.8); fill: #ff00ff; } /* Calm down */
+        }
+
+        @keyframes vein-pump {
+            0%, 80% { stroke: #ff00ff; stroke-width: 2; }
+            90% { stroke: #ffff00; stroke-width: 4; opacity: 1; }
+            100% { stroke: #ff00ff; stroke-width: 2; }
+        }
+
+        @keyframes spin-shell {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Outer Shell -->
+            <circle class="shell" cx="50" cy="50" r="40" />
+            
+            <!-- Connection Veins -->
+            <path class="veins" d="M50,50 L50,10" />
+            <path class="veins" d="M50,50 L80,70" />
+            <path class="veins" d="M50,50 L20,70" />
+
+            <!-- The Core/Embryo -->
+            <circle class="embryo" cx="50" cy="50" r="15" />
+            
+            <!-- Inner detail of embryo -->
+            <path class="embryo" d="M45,45 L55,45 L50,55 Z" fill="#000" style="animation-direction: reverse; transform-origin: center; opacity: 0.5;" />
+        </svg>
+    </div>
+</body>
+</html>

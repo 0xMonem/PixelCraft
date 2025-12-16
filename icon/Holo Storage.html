@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holo Storage</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #050510;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .layer {
+            fill: none;
+            stroke: #00aaff;
+            stroke-width: 2;
+            opacity: 0.7;
+            transform-origin: center;
+        }
+        .base {
+            fill: rgba(0, 170, 255, 0.1);
+            filter: drop-shadow(0 0 10px #00aaff);
+            animation: hover-base 3s ease-in-out infinite;
+        }
+        .mid-layer {
+            stroke-dasharray: 10 5;
+            animation: rotate-break 5s ease-in-out infinite;
+        }
+        .top-layer {
+            stroke: #fff;
+            stroke-width: 1;
+            animation: float-top 3s ease-in-out infinite alternate;
+        }
+        .data-stream {
+            fill: #00aaff;
+            animation: stream-up 1.5s linear infinite;
+        }
+        @keyframes hover-base {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(5px) scale(0.95); }
+        }
+        @keyframes rotate-break {
+            0% { transform: rotate(0deg); stroke-dashoffset: 0; }
+            50% { transform: rotate(180deg); stroke-dashoffset: 50; }
+            100% { transform: rotate(360deg); stroke-dashoffset: 0; }
+        }
+        @keyframes float-top {
+            0% { transform: translateY(-10px) scale(0.8); opacity: 0.5; }
+            100% { transform: translateY(-25px) scale(1); opacity: 1; }
+        }
+        @keyframes stream-up {
+            0% { transform: translateY(60px); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(20px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Data particles rising -->
+            <rect class="data-stream" x="30" y="0" width="2" height="4" />
+            <rect class="data-stream" x="70" y="0" width="2" height="4" style="animation-delay: 0.5s;" />
+            <rect class="data-stream" x="50" y="0" width="2" height="4" style="animation-delay: 0.8s;" />
+
+            <!-- Bottom Base -->
+            <path class="layer base" d="M20,60 L50,75 L80,60 L50,45 Z" />
+
+            <!-- Middle Rotating Layer -->
+            <path class="layer mid-layer" d="M20,50 L50,65 L80,50 L50,35 Z" />
+
+            <!-- Floating Top -->
+            <path class="layer top-layer" d="M30,40 L50,50 L70,40 L50,30 Z" />
+            
+            <!-- Connection Lines -->
+            <line x1="50" y1="75" x2="50" y2="30" stroke="#00aaff" stroke-width="1" opacity="0.3" stroke-dasharray="2 2">
+                <animate attributeName="opacity" values="0;0.5;0" dur="2s" repeatCount="indefinite" />
+            </line>
+        </svg>
+    </div>
+</body>
+</html>

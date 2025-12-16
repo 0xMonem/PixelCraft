@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chromatic Prism</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .prism {
+            fill: rgba(255, 255, 255, 0.1);
+            stroke: #fff;
+            stroke-width: 1;
+        }
+        .beam {
+            stroke: #fff;
+            stroke-width: 2;
+            stroke-dasharray: 50;
+            stroke-dashoffset: 50;
+            animation: shoot-beam 2s infinite;
+        }
+        .refraction {
+            fill: none;
+            stroke-width: 3;
+            mix-blend-mode: screen;
+            opacity: 0;
+        }
+        .r-beam { stroke: #ff0000; animation: glitch-r 2s infinite 0.5s; }
+        .g-beam { stroke: #00ff00; animation: glitch-g 2s infinite 0.5s; }
+        .b-beam { stroke: #0000ff; animation: glitch-b 2s infinite 0.5s; }
+
+        @keyframes shoot-beam {
+            0% { stroke-dashoffset: 50; opacity: 1; }
+            40% { stroke-dashoffset: 0; opacity: 1; } /* Hit Prism */
+            100% { stroke-dashoffset: 0; opacity: 1; }
+        }
+
+        @keyframes glitch-r {
+            0% { opacity: 0; d: path("M50,45 L80,30"); }
+            10% { opacity: 1; d: path("M50,45 L80,30"); }
+            50% { transform: translate(-2px, 2px); }
+            60% { transform: translate(0, 0); }
+            100% { opacity: 0; d: path("M50,45 L90,20"); }
+        }
+        @keyframes glitch-g {
+            0% { opacity: 0; d: path("M50,45 L80,50"); }
+            10% { opacity: 1; d: path("M50,45 L80,50"); }
+            50% { transform: translate(2px, -2px); }
+            60% { transform: translate(0, 0); }
+            100% { opacity: 0; d: path("M50,45 L90,50"); }
+        }
+        @keyframes glitch-b {
+            0% { opacity: 0; d: path("M50,45 L80,70"); }
+            10% { opacity: 1; d: path("M50,45 L80,70"); }
+            50% { transform: translate(-2px, -2px); }
+            60% { transform: translate(0, 0); }
+            100% { opacity: 0; d: path("M50,45 L90,80"); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Incoming Beam -->
+            <line class="beam" x1="10" y1="80" x2="50" y2="45" />
+
+            <!-- The Prism Triangle -->
+            <polygon class="prism" points="50,20 80,80 20,80" />
+            
+            <!-- Refracted Glitch Beams -->
+            <path class="refraction r-beam" d="M50,45 L80,30" />
+            <path class="refraction g-beam" d="M50,45 L80,50" />
+            <path class="refraction b-beam" d="M50,45 L80,70" />
+            
+            <!-- Flash at impact point -->
+            <circle cx="50" cy="45" r="3" fill="#fff" opacity="0">
+                <animate attributeName="opacity" values="0;1;0" dur="2s" begin="0.4s" repeatCount="indefinite" />
+            </circle>
+        </svg>
+    </div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinner Morph</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .spinner {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-dasharray: 60 200;
+            transform-origin: center;
+            animation: spin-load 3s cubic-bezier(0.7, 0, 0.3, 1) infinite;
+        }
+        
+        .brand-text {
+            font-family: monospace;
+            font-size: 40px;
+            font-weight: bold;
+            fill: #fff;
+            opacity: 0;
+            letter-spacing: 5px;
+            text-anchor: middle;
+            animation: text-appear 3s cubic-bezier(0.7, 0, 0.3, 1) infinite;
+        }
+
+        .bracket {
+            fill: none;
+            stroke: #00ff00;
+            stroke-width: 3;
+            opacity: 0;
+            animation: bracket-snap 3s infinite;
+        }
+
+        @keyframes spin-load {
+            0% { transform: rotate(0deg); stroke-width: 4; opacity: 1; r: 20; }
+            50% { transform: rotate(720deg); stroke-width: 2; opacity: 1; r: 20; }
+            60% { transform: rotate(720deg); stroke-width: 10; opacity: 0; r: 0; } /* Collapse to center */
+            100% { opacity: 0; }
+        }
+
+        @keyframes text-appear {
+            0%, 55% { opacity: 0; transform: scale(0.5); transform-origin: center; }
+            60% { opacity: 1; transform: scale(1.1); } /* Pop out */
+            70% { transform: scale(1); }
+            90% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.2); }
+        }
+
+        @keyframes bracket-snap {
+            0%, 60% { opacity: 0; transform: scaleX(0.5); transform-origin: center; }
+            65% { opacity: 1; transform: scaleX(1); }
+            90% { opacity: 1; transform: scaleX(1); }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 200 100">
+            <!-- Loading Spinner -->
+            <circle class="spinner" cx="100" cy="50" r="20" />
+
+            <!-- The Text that appears -->
+            <text x="100" y="60" class="brand-text">NEXUS</text>
+            
+            <!-- Decorative Brackets appearing with text -->
+            <path class="bracket" d="M30,30 L20,30 L20,70 L30,70" /> <!-- Left Bracket -->
+            <path class="bracket" d="M170,30 L180,30 L180,70 L170,70" /> <!-- Right Bracket -->
+        </svg>
+    </div>
+</body>
+</html>

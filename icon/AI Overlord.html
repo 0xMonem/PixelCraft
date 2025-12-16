@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Overlord</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        .chip-body {
+            fill: #111;
+            stroke: #333;
+            stroke-width: 1;
+        }
+        .core {
+            fill: #200000;
+            stroke: #ff0000;
+            stroke-width: 2;
+            filter: drop-shadow(0 0 15px #ff0000);
+            animation: pulse-core 2s ease-in-out infinite;
+        }
+        .core-inner {
+            fill: #fff;
+            opacity: 0.8;
+            animation: synapse 0.1s infinite alternate;
+        }
+        .pathway {
+            fill: none;
+            stroke: #ff0000;
+            stroke-width: 1.5;
+            stroke-dasharray: 200;
+            stroke-dashoffset: 200;
+            animation: data-flow 2s linear infinite;
+        }
+        .pin {
+            fill: #444;
+        }
+        @keyframes pulse-core {
+            0% { transform: scale(1); stroke: #ff0000; }
+            50% { transform: scale(1.05); stroke: #ff5555; filter: drop-shadow(0 0 25px #ff0000); }
+            100% { transform: scale(1); stroke: #ff0000; }
+        }
+        @keyframes synapse {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        @keyframes data-flow {
+            to { stroke-dashoffset: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Chip Pins -->
+            <rect class="pin" x="15" y="10" width="10" height="5" />
+            <rect class="pin" x="35" y="10" width="10" height="5" />
+            <rect class="pin" x="55" y="10" width="10" height="5" />
+            <rect class="pin" x="75" y="10" width="10" height="5" />
+            
+            <rect class="pin" x="15" y="85" width="10" height="5" />
+            <rect class="pin" x="35" y="85" width="10" height="5" />
+            <rect class="pin" x="55" y="85" width="10" height="5" />
+            <rect class="pin" x="75" y="85" width="10" height="5" />
+
+            <!-- Main Body -->
+            <rect class="chip-body" x="15" y="15" width="70" height="70" rx="5" />
+
+            <!-- Data Pathways -->
+            <path class="pathway" d="M20,15 L20,30 L40,50" style="animation-duration: 1.5s;" />
+            <path class="pathway" d="M80,15 L80,30 L60,50" style="animation-duration: 1.2s;" />
+            <path class="pathway" d="M20,85 L20,70 L40,50" style="animation-duration: 1.8s;" />
+            <path class="pathway" d="M80,85 L80,70 L60,50" style="animation-duration: 1.3s;" />
+            
+            <!-- Central Processing Core -->
+            <circle class="core" cx="50" cy="50" r="15" />
+            
+            <!-- Neural Activity -->
+            <path class="core-inner" d="M45,45 L55,55 M55,45 L45,55 M50,40 L50,60 M40,50 L60,50" stroke="#fff" stroke-width="2" />
+        </svg>
+    </div>
+</body>
+</html>

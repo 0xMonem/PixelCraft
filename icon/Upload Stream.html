@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Stream</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .head-profile {
+            fill: none;
+            stroke: #444;
+            stroke-width: 2;
+        }
+        .data-particle {
+            fill: #00aaff;
+            animation: upload-fly 2.5s ease-in infinite;
+        }
+        .upload-arrow {
+            fill: #00aaff;
+            opacity: 0.5;
+            animation: pulse-arrow 2s infinite;
+        }
+
+        @keyframes upload-fly {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            50% { fill: #fff; }
+            100% { transform: translate(0, -60px) scale(0); opacity: 0; }
+        }
+        
+        @keyframes pulse-arrow {
+            0% { transform: translateY(0); opacity: 0.2; }
+            50% { transform: translateY(-5px); opacity: 0.8; }
+            100% { transform: translateY(0); opacity: 0.2; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Abstract Head Shape -->
+            <path class="head-profile" d="M30,80 L30,50 C30,30 40,20 60,20 C80,20 80,40 80,50" />
+            
+            <!-- Particles rising from within -->
+            <g transform="translate(55 50)">
+                <circle class="data-particle" cx="0" cy="0" r="2" style="animation-delay: 0s; --tx: -10px;" />
+                <circle class="data-particle" cx="-10" cy="10" r="1.5" style="animation-delay: 0.5s;" />
+                <circle class="data-particle" cx="10" cy="5" r="2" style="animation-delay: 0.2s;" />
+                <circle class="data-particle" cx="5" cy="15" r="1.5" style="animation-delay: 0.8s;" />
+                <circle class="data-particle" cx="-5" cy="20" r="2" style="animation-delay: 1.2s;" />
+            </g>
+            
+            <!-- Upload Indicator -->
+            <path class="upload-arrow" d="M55,10 L45,20 H65 Z" />
+        </svg>
+    </div>
+</body>
+</html>

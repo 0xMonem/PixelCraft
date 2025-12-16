@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schrödinger's Box</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .box-frame {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 3;
+            stroke-dasharray: 200;
+            stroke-dashoffset: 0;
+            animation: border-glitch 0.2s infinite;
+        }
+        .alive-state {
+            fill: #00ff00; /* Green Heart */
+            filter: drop-shadow(0 0 10px #00ff00);
+            animation: state-flicker-1 0.1s infinite;
+        }
+        .dead-state {
+            fill: #ff0000; /* Red Skull */
+            filter: drop-shadow(0 0 10px #ff0000);
+            animation: state-flicker-2 0.15s infinite;
+        }
+        .question-mark {
+            fill: #fff;
+            opacity: 0.8;
+            animation: float-q 2s ease-in-out infinite;
+        }
+
+        /* The Quantum Glitch - Rapid switching */
+        @keyframes state-flicker-1 {
+            0% { opacity: 1; transform: translate(0,0); }
+            49% { opacity: 1; transform: translate(1px, -1px); }
+            50% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @keyframes state-flicker-2 {
+            0% { opacity: 0; }
+            50% { opacity: 0; }
+            51% { opacity: 1; transform: translate(-1px, 1px); }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes border-glitch {
+            0% { transform: translate(0,0); stroke: #fff; }
+            20% { transform: translate(-2px, 2px); stroke: #ff00ff; }
+            40% { transform: translate(2px, -2px); stroke: #00ffff; }
+            60% { transform: translate(0,0); stroke: #fff; }
+            100% { transform: translate(0,0); stroke: #fff; }
+        }
+
+        @keyframes float-q {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Glitching Box -->
+            <rect class="box-frame" x="20" y="20" width="60" height="60" />
+            
+            <!-- STATE 1: ALIVE (Heart) -->
+            <path class="alive-state" d="M50,80 C20,60 10,40 10,30 C10,15 30,10 45,25 L50,30 L55,25 C70,10 90,15 90,30 C90,40 80,60 50,80 Z" transform="scale(0.5) translate(50 50)" />
+            
+            <!-- STATE 2: DEAD (Skull) -->
+            <path class="dead-state" d="M30,30 Q30,10 50,10 Q70,10 70,30 V50 H30 V30 M35,50 V60 H40 V50 M45,50 V60 H50 V50 M55,50 V60 H60 V50 M40,35 A5,5 0 1,1 40,45 A5,5 0 1,1 40,35 M60,35 A5,5 0 1,1 60,45 A5,5 0 1,1 60,35" transform="translate(0 5)" />
+
+            <!-- The Unknown Factor -->
+            <text class="question-mark" x="85" y="25" font-family="Arial" font-size="30" font-weight="bold">?</text>
+        </svg>
+    </div>
+</body>
+</html>

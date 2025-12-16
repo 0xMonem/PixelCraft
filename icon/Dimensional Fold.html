@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimensional Fold</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #111;
+            perspective: 800px;
+        }
+        .container {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: float-3d 5s ease-in-out infinite;
+        }
+        
+        .face {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid #00ffff;
+            box-sizing: border-box;
+            transform-origin: center;
+            backface-visibility: visible;
+            transition: all 0.5s;
+        }
+
+        /* The Folding Animation */
+        .f1 { transform-origin: top; animation: fold-top 4s ease-in-out infinite; }
+        .f2 { transform-origin: bottom; animation: fold-bottom 4s ease-in-out infinite; }
+        .f3 { transform-origin: left; animation: fold-left 4s ease-in-out infinite; }
+        .f4 { transform-origin: right; animation: fold-right 4s ease-in-out infinite; }
+        .f5 { z-index: 1; animation: center-pulse 4s ease-in-out infinite; }
+
+        @keyframes fold-top {
+            0%, 10% { transform: translateY(-100px) rotateX(0deg); } /* Flat */
+            40%, 60% { transform: translateY(-100px) rotateX(-90deg) translateY(50px) translateZ(50px); } /* Folded Box position approximation */
+            100% { transform: translateY(-100px) rotateX(0deg); }
+        }
+        /* Simplified Visual Fold for Icon purposes */
+        /* Actually, let's do a cross-to-box animation using rotations */
+        
+        @keyframes fold-top {
+            0%, 20% { transform: translateY(-100px) rotateX(0); }
+            50%, 70% { transform: translateY(-50px) translateZ(50px) rotateX(-90deg); }
+            100% { transform: translateY(-100px) rotateX(0); }
+        }
+        @keyframes fold-bottom {
+            0%, 20% { transform: translateY(100px) rotateX(0); }
+            50%, 70% { transform: translateY(50px) translateZ(50px) rotateX(90deg); }
+            100% { transform: translateY(100px) rotateX(0); }
+        }
+        @keyframes fold-left {
+            0%, 20% { transform: translateX(-100px) rotateY(0); }
+            50%, 70% { transform: translateX(-50px) translateZ(50px) rotateY(90deg); }
+            100% { transform: translateX(-100px) rotateY(0); }
+        }
+        @keyframes fold-right {
+            0%, 20% { transform: translateX(100px) rotateY(0); }
+            50%, 70% { transform: translateX(50px) translateZ(50px) rotateY(-90deg); }
+            100% { transform: translateX(100px) rotateY(0); }
+        }
+        
+        @keyframes center-pulse {
+            0%, 20% { transform: translateZ(0); border-color: #00ffff; }
+            50%, 70% { transform: translateZ(-50px); border-color: #fff; background: rgba(0,255,255,0.3); } /* Moves back to be center of cube */
+            100% { transform: translateZ(0); border-color: #00ffff; }
+        }
+
+        @keyframes float-3d {
+            0% { transform: rotateX(60deg) rotateZ(45deg) scale(0.6); }
+            50% { transform: rotateX(30deg) rotateZ(20deg) scale(0.6); }
+            100% { transform: rotateX(60deg) rotateZ(45deg) scale(0.6); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- The Cross Shape -->
+        <div class="face f5"></div> <!-- Center -->
+        <div class="face f1"></div> <!-- Top -->
+        <div class="face f2"></div> <!-- Bottom -->
+        <div class="face f3"></div> <!-- Left -->
+        <div class="face f4"></div> <!-- Right -->
+    </div>
+</body>
+</html>

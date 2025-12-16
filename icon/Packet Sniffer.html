@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packet Sniffer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #02020a;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .stream-line {
+            fill: none;
+            stroke: #333;
+            stroke-width: 1;
+            opacity: 0.5;
+        }
+        .packet {
+            fill: #00aaff;
+            animation: flow 4s linear infinite;
+        }
+        .malicious {
+            fill: #ff0000;
+            filter: drop-shadow(0 0 5px #ff0000);
+            display: none; /* Hidden until animation shows it */
+            animation: flow-malicious 4s linear infinite;
+        }
+        .sniffer-hud {
+            fill: none;
+            stroke: #00aaff;
+            stroke-width: 2;
+            opacity: 0;
+            animation: track-target 4s linear infinite;
+        }
+        .scan-text {
+            fill: #00aaff;
+            font-family: monospace;
+            font-size: 8px;
+            opacity: 0;
+            animation: text-alert 4s linear infinite;
+        }
+
+        @keyframes flow {
+            0% { transform: translateX(-50px); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateX(150px); opacity: 0; }
+        }
+
+        @keyframes flow-malicious {
+            0% { transform: translateX(-50px); display: block; opacity: 0; }
+            20% { opacity: 1; }
+            50% { transform: translateX(50px); } /* Freeze moment handled by eye tracking illusion */
+            100% { transform: translateX(150px); opacity: 0; }
+        }
+
+        @keyframes track-target {
+            0%, 40% { opacity: 0; transform: translate(50px, 50px) scale(2); }
+            45% { opacity: 1; transform: translate(50px, 50px) scale(1); stroke: #00aaff; } /* Lock on center */
+            55% { stroke: #ff0000; filter: drop-shadow(0 0 5px #ff0000); transform: translate(50px, 50px) scale(0.8); } /* Detect Threat */
+            65% { opacity: 1; transform: translate(50px, 50px); }
+            70% { opacity: 0; }
+        }
+
+        @keyframes text-alert {
+            0%, 50% { opacity: 0; }
+            55% { opacity: 1; fill: #ff0000; }
+            65% { opacity: 1; }
+            70% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Data Lanes -->
+            <line class="stream-line" x1="0" y1="30" x2="100" y2="30" />
+            <line class="stream-line" x1="0" y1="50" x2="100" y2="50" />
+            <line class="stream-line" x1="0" y1="70" x2="100" y2="70" />
+
+            <!-- Normal Packets -->
+            <rect class="packet" x="0" y="28" width="8" height="4" style="animation-delay: 0s;" />
+            <rect class="packet" x="0" y="68" width="8" height="4" style="animation-delay: 1s;" />
+            <rect class="packet" x="0" y="28" width="8" height="4" style="animation-delay: 2s;" />
+            
+            <!-- Malicious Packet (Center Lane) -->
+            <!-- We animate x via transform in CSS -->
+            <g>
+                 <rect class="malicious" x="0" y="48" width="8" height="4" />
+            </g>
+
+            <!-- Sniffer Reticle -->
+            <g class="sniffer-hud">
+                <rect x="-10" y="-10" width="20" height="20" />
+                <line x1="0" y1="-15" x2="0" y2="-5" />
+                <line x1="0" y1="5" x2="0" y2="15" />
+                <line x1="-15" y1="0" x2="-5" y2="0" />
+                <line x1="5" y1="0" x2="15" y2="0" />
+            </g>
+            
+            <text class="scan-text" x="35" y="85">THREAT DETECTED</text>
+        </svg>
+    </div>
+</body>
+</html>

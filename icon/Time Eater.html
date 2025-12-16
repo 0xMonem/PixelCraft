@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Eater</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #111;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .glass {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2;
+            animation: dissolve-glass 4s ease-in-out infinite;
+        }
+        .sand {
+            fill: #ffcc00; /* Gold Sand */
+        }
+        .sand-bottom {
+            animation: reverse-drain 4s ease-in-out infinite;
+        }
+        .sand-particle {
+            fill: #ffcc00;
+            opacity: 0;
+            animation: defy-gravity 4s ease-in-out infinite;
+        }
+
+        @keyframes dissolve-glass {
+            0%, 50% { opacity: 1; stroke-dasharray: 100; stroke-dashoffset: 0; }
+            70% { opacity: 0; stroke-dashoffset: 100; transform: scale(1.1); filter: blur(2px); } /* Disintegrate */
+            90% { opacity: 0; stroke-dashoffset: 0; transform: scale(0.9); } /* Prepare rebuild */
+            100% { opacity: 1; transform: scale(1); } /* Reappear */
+        }
+
+        @keyframes reverse-drain {
+            0% { transform: scaleY(1); transform-origin: bottom; }
+            60% { transform: scaleY(0); } /* Sand vanishes upwards */
+            100% { transform: scaleY(1); } /* Refills instantly */
+        }
+
+        @keyframes defy-gravity {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            50% { transform: translate(var(--tx), -60px) scale(0); opacity: 0; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Particles flying UPWARDS -->
+            <g transform="translate(50 70)">
+                <circle class="sand-particle" r="2" style="--tx: -10px; animation-delay: 0.1s;" />
+                <circle class="sand-particle" r="1.5" style="--tx: 10px; animation-delay: 0.3s;" />
+                <circle class="sand-particle" r="2" style="--tx: 5px; animation-delay: 0.5s;" />
+                <circle class="sand-particle" r="1" style="--tx: -5px; animation-delay: 0.7s;" />
+                <circle class="sand-particle" r="2" style="--tx: 0px; animation-delay: 0.2s;" />
+            </g>
+
+            <!-- Hourglass Shape -->
+            <path class="glass" d="M30,20 L70,20 L50,50 L70,80 L30,80 L50,50 Z" />
+            
+            <!-- Sand at bottom disappearing -->
+            <path class="sand sand-bottom" d="M35,75 L65,75 L50,55 Z" />
+            
+            <!-- Top Sand (Emptying) -->
+            <path class="sand" d="M30,20 L70,20 L50,50 Z" style="opacity: 0.3;" />
+
+        </svg>
+    </div>
+</body>
+</html>

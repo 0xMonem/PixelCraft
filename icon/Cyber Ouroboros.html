@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Ouroboros</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #050010;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .snake-body {
+            fill: none;
+            stroke-width: 6;
+            stroke-linecap: round;
+            stroke-dasharray: 10 20; /* Segments */
+            animation: slither 4s linear infinite, color-shift 8s linear infinite;
+        }
+        .snake-head {
+            fill: #fff;
+            filter: drop-shadow(0 0 10px #fff);
+            offset-path: path("M50,20 A30,30 0 1,1 20,50 A30,30 0 1,1 50,20");
+            animation: move-head 4s linear infinite;
+        }
+        .glitch-particle {
+            fill: #fff;
+            opacity: 0;
+            animation: debris 4s linear infinite;
+        }
+
+        @keyframes slither {
+            to { stroke-dashoffset: -300; }
+        }
+
+        @keyframes move-head {
+            0% { offset-distance: 0%; transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { offset-distance: 100%; transform: scale(1); }
+        }
+
+        @keyframes color-shift {
+            0% { stroke: #00ffcc; filter: drop-shadow(0 0 5px #00ffcc); }
+            33% { stroke: #ff00ff; filter: drop-shadow(0 0 5px #ff00ff); }
+            66% { stroke: #ffff00; filter: drop-shadow(0 0 5px #ffff00); }
+            100% { stroke: #00ffcc; filter: drop-shadow(0 0 5px #00ffcc); }
+        }
+
+        @keyframes debris {
+            0% { opacity: 0; transform: translate(0,0); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: translate(-20px, 20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- The Loop Path -->
+            <path id="path-guide" d="M50,20 A30,30 0 1,1 20,50 A30,30 0 1,1 50,20" fill="none" />
+            
+            <!-- The Segmented Body -->
+            <path class="snake-body" d="M50,20 A30,30 0 1,1 20,50 A30,30 0 1,1 50,20" />
+
+            <!-- The Glowing Head (Using offset-path supported in modern browsers) -->
+            <!-- Fallback for older browsers would be a simple rotation animation -->
+            <circle class="snake-head" r="5" />
+            
+            <!-- Eating Debris -->
+            <circle class="glitch-particle" cx="50" cy="20" r="2" style="animation-delay: 0.5s;" />
+            <circle class="glitch-particle" cx="80" cy="50" r="1.5" style="animation-delay: 1.5s;" />
+            <circle class="glitch-particle" cx="50" cy="80" r="2" style="animation-delay: 2.5s;" />
+            <circle class="glitch-particle" cx="20" cy="50" r="1.5" style="animation-delay: 3.5s;" />
+        </svg>
+    </div>
+</body>
+</html>

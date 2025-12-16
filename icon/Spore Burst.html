@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spore Burst</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #101010;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .pod {
+            fill: #444;
+            transform-origin: bottom center;
+            animation: swell-burst 3s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        }
+        .cracks {
+            fill: none;
+            stroke: #ffff00; /* Neon Yellow */
+            stroke-width: 0;
+            animation: crack-open 3s infinite;
+        }
+        .particle {
+            fill: #ffff00;
+            opacity: 0;
+            animation: fly-out 3s infinite;
+        }
+
+        @keyframes swell-burst {
+            0% { transform: scale(1); fill: #444; }
+            60% { transform: scale(1.3, 0.9); fill: #555; } /* Swell */
+            70% { transform: scale(1.4, 0.8); fill: #664400; } /* Maximum tension */
+            75% { transform: scale(0.9, 1.2); fill: #ffff00; filter: drop-shadow(0 0 15px #ffff00); } /* BURST */
+            85% { transform: scale(1); fill: #444; }
+            100% { transform: scale(1); fill: #444; }
+        }
+
+        @keyframes crack-open {
+            0%, 65% { stroke-width: 0; opacity: 0; }
+            70% { stroke-width: 2; opacity: 1; }
+            75% { stroke-width: 4; opacity: 1; }
+            80% { stroke-width: 0; opacity: 0; }
+        }
+
+        @keyframes fly-out {
+            0%, 74% { transform: translate(0, 0) scale(0); opacity: 0; }
+            75% { transform: translate(0, 0) scale(1); opacity: 1; }
+            90% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Particles behind -->
+            <circle class="particle" cx="50" cy="40" r="3" style="--tx: -30px; --ty: -40px;" />
+            <circle class="particle" cx="50" cy="40" r="2" style="--tx: 30px; --ty: -40px;" />
+            <circle class="particle" cx="50" cy="40" r="4" style="--tx: 0px; --ty: -60px;" />
+            <circle class="particle" cx="50" cy="40" r="2.5" style="--tx: -40px; --ty: -10px;" />
+            <circle class="particle" cx="50" cy="40" r="3" style="--tx: 40px; --ty: -10px;" />
+
+            <!-- The Pod -->
+            <path class="pod" d="M20,90 Q10,50 50,20 Q90,50 80,90 L20,90 Z" />
+            
+            <!-- Glowing Cracks -->
+            <path class="cracks" d="M50,30 L50,80" />
+            <path class="cracks" d="M30,50 L70,50" />
+        </svg>
+    </div>
+</body>
+</html>

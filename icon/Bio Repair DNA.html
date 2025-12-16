@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Repair DNA</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .strand {
+            fill: none;
+            stroke-width: 4;
+            stroke-linecap: round;
+        }
+        .strand-healthy { stroke: #00ff88; }
+        .strand-broken {
+            stroke: #ff0055;
+            stroke-dasharray: 10 10;
+            animation: heal-process 4s infinite;
+        }
+        .connector {
+            stroke: #fff;
+            stroke-width: 1;
+            opacity: 0.3;
+        }
+        .nano-bot {
+            fill: #fff;
+            filter: drop-shadow(0 0 5px #fff);
+            animation: repair-move 4s infinite;
+        }
+
+        @keyframes heal-process {
+            0%, 40% { stroke: #ff0055; stroke-dasharray: 5 15; } /* Broken */
+            50% { stroke: #fff; stroke-dasharray: 20 0; } /* Flash */
+            60%, 100% { stroke: #00ff88; stroke-dasharray: 20 0; } /* Healed */
+        }
+
+        @keyframes repair-move {
+            0% { opacity: 0; transform: translate(50px, 10px); }
+            30% { opacity: 1; transform: translate(50px, 50px); } /* Arrive at break */
+            50% { transform: translate(50px, 50px) scale(1.5); } /* Work */
+            70% { opacity: 0; transform: translate(50px, 90px); } /* Leave */
+            100% { opacity: 0; }
+        }
+        
+        .dna-group {
+            animation: dna-spin 4s linear infinite;
+            transform-origin: center;
+        }
+        @keyframes dna-spin {
+            0% { transform: scaleX(1); }
+            50% { transform: scaleX(0.2); } /* Fake 3D rotation */
+            100% { transform: scaleX(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <g class="dna-group">
+                <!-- Connectors -->
+                <line class="connector" x1="30" y1="20" x2="70" y2="30" />
+                <line class="connector" x1="30" y1="40" x2="70" y2="50" />
+                <line class="connector" x1="30" y1="60" x2="70" y2="70" />
+                <line class="connector" x1="30" y1="80" x2="70" y2="90" />
+
+                <!-- Left Strand (Healthy) -->
+                <path class="strand strand-healthy" d="M30,10 Q20,30 30,50 Q40,70 30,90" />
+                
+                <!-- Right Strand (Damaged then Healed) -->
+                <path class="strand strand-broken" d="M70,10 Q80,30 70,50 Q60,70 70,90" />
+            </g>
+
+            <!-- Nano Bot Overlay (Doesn't rotate with DNA for clarity) -->
+            <circle class="nano-bot" cx="0" cy="0" r="5" />
+        </svg>
+    </div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Singularity</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+            position: relative;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .cube-frame {
+            fill: none;
+            stroke: #444;
+            stroke-width: 2;
+            animation: containment-struggle 4s ease-in infinite;
+        }
+        .energy-core {
+            fill: #fff;
+            filter: drop-shadow(0 0 5px #fff);
+            animation: core-overload 4s ease-in infinite;
+        }
+        .crack {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2;
+            stroke-dasharray: 50;
+            stroke-dashoffset: 50;
+            animation: crack-spread 4s ease-in infinite;
+        }
+        .light-ray {
+            stroke: #fff;
+            stroke-width: 2;
+            opacity: 0;
+            animation: ray-burst 4s ease-in infinite;
+        }
+        .screen-flash {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: white;
+            opacity: 0;
+            animation: singularity-flash 4s ease-in infinite;
+            pointer-events: none;
+        }
+
+        @keyframes containment-struggle {
+            0% { transform: scale(1) rotate(0deg); stroke: #444; }
+            60% { transform: scale(1.05) rotate(2deg); stroke: #fff; }
+            70% { transform: scale(0.95) rotate(-2deg) translate(2px, 2px); } /* Shake */
+            75% { transform: scale(1.1) rotate(5deg) translate(-2px, -2px); }
+            80% { opacity: 1; }
+            85% { opacity: 0; transform: scale(2); } /* Explode */
+            100% { opacity: 0; }
+        }
+
+        @keyframes core-overload {
+            0% { transform: scale(0.5); opacity: 0.5; }
+            70% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 20px #fff); }
+            80% { transform: scale(3); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        @keyframes crack-spread {
+            0%, 50% { stroke-dashoffset: 50; opacity: 0; }
+            55% { opacity: 1; }
+            75% { stroke-dashoffset: 0; } /* Cracks fully formed */
+            80% { opacity: 0; } /* Gone in explosion */
+            100% { opacity: 0; }
+        }
+
+        @keyframes ray-burst {
+            70% { opacity: 0; stroke-dasharray: 0 100; }
+            75% { opacity: 1; stroke-dasharray: 100 0; stroke-width: 5; }
+            85% { opacity: 0; stroke-width: 0; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes singularity-flash {
+            0%, 79% { opacity: 0; }
+            80% { opacity: 1; } /* BLINDING LIGHT */
+            90% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- The Flash Overlay -->
+        <div class="screen-flash"></div>
+
+        <svg viewBox="0 0 100 100">
+            <!-- Rays bursting out -->
+            <g transform="translate(50 50)">
+                <line class="light-ray" x1="0" y1="0" x2="0" y2="-60" />
+                <line class="light-ray" x1="0" y1="0" x2="60" y2="0" />
+                <line class="light-ray" x1="0" y1="0" x2="0" y2="60" />
+                <line class="light-ray" x1="0" y1="0" x2="-60" y2="0" />
+                <line class="light-ray" x1="0" y1="0" x2="40" y2="-40" />
+                <line class="light-ray" x1="0" y1="0" x2="-40" y2="40" />
+            </g>
+
+            <!-- Containment Cube -->
+            <rect class="cube-frame" x="30" y="30" width="40" height="40" transform-origin="center" />
+            
+            <!-- Cracks on the cube -->
+            <path class="crack" d="M30,50 L40,40 L35,30" />
+            <path class="crack" d="M70,50 L60,60 L65,70" />
+            <path class="crack" d="M50,30 L50,45" />
+
+            <!-- The Energy Singularity -->
+            <circle class="energy-core" cx="50" cy="50" r="10" transform-origin="center" />
+        </svg>
+    </div>
+</body>
+</html>

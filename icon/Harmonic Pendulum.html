@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmonic Pendulum</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a1a1a;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .pendulum {
+            transform-origin: 50px 10px; /* Pivot point at top center */
+        }
+        .string {
+            stroke: #555;
+            stroke-width: 1;
+        }
+        .bob {
+            fill: #fff;
+            filter: drop-shadow(0 0 2px #fff);
+        }
+        
+        /* Different durations create the harmonic wave effect */
+        .p1 { animation: swing 2s ease-in-out infinite alternate; }
+        .p2 { animation: swing 2.1s ease-in-out infinite alternate; }
+        .p3 { animation: swing 2.2s ease-in-out infinite alternate; }
+        .p4 { animation: swing 2.3s ease-in-out infinite alternate; }
+        .p5 { animation: swing 2.4s ease-in-out infinite alternate; }
+        .p6 { animation: swing 2.5s ease-in-out infinite alternate; }
+        .p7 { animation: swing 2.6s ease-in-out infinite alternate; }
+
+        @keyframes swing {
+            0% { transform: rotate(25deg); }
+            100% { transform: rotate(-25deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Top Bar -->
+            <line x1="20" y1="10" x2="80" y2="10" stroke="#888" stroke-width="2" />
+
+            <!-- Pendulums -->
+            <!-- We stack them visually, but they pivot from same height -->
+            
+            <g class="pendulum p7">
+                <line class="string" x1="50" y1="10" x2="50" y2="85" />
+                <circle class="bob" cx="50" cy="85" r="3" fill="#ff0055" />
+            </g>
+            <g class="pendulum p6">
+                <line class="string" x1="50" y1="10" x2="50" y2="80" />
+                <circle class="bob" cx="50" cy="80" r="3" fill="#ff5500" />
+            </g>
+            <g class="pendulum p5">
+                <line class="string" x1="50" y1="10" x2="50" y2="75" />
+                <circle class="bob" cx="50" cy="75" r="3" fill="#ffaa00" />
+            </g>
+            <g class="pendulum p4">
+                <line class="string" x1="50" y1="10" x2="50" y2="70" />
+                <circle class="bob" cx="50" cy="70" r="3" fill="#ffff00" />
+            </g>
+            <g class="pendulum p3">
+                <line class="string" x1="50" y1="10" x2="50" y2="65" />
+                <circle class="bob" cx="50" cy="65" r="3" fill="#00ff00" />
+            </g>
+            <g class="pendulum p2">
+                <line class="string" x1="50" y1="10" x2="50" y2="60" />
+                <circle class="bob" cx="50" cy="60" r="3" fill="#00ffff" />
+            </g>
+            <g class="pendulum p1">
+                <line class="string" x1="50" y1="10" x2="50" y2="55" />
+                <circle class="bob" cx="50" cy="55" r="3" fill="#0000ff" />
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

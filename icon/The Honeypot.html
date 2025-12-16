@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Honeypot</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #111;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .honey-core {
+            fill: #ffcc00; /* Gold */
+            filter: drop-shadow(0 0 10px #ffcc00);
+            animation: lure-pulse 2s ease-in-out infinite alternate;
+        }
+        .intruder-bug {
+            fill: #fff;
+            animation: approach-trap 4s ease-in-out infinite;
+        }
+        .trap-bar {
+            stroke: #ff0000;
+            stroke-width: 2;
+            stroke-linecap: round;
+            opacity: 0;
+            animation: slam-shut 4s ease-in-out infinite;
+        }
+        .alert-ring {
+            fill: none;
+            stroke: #ff0000;
+            stroke-width: 1;
+            opacity: 0;
+            animation: alarm-ring 4s ease-in-out infinite;
+        }
+
+        @keyframes lure-pulse {
+            from { transform: scale(1); opacity: 0.8; }
+            to { transform: scale(1.1); opacity: 1; }
+        }
+
+        @keyframes approach-trap {
+            0% { transform: translate(80px, -30px); opacity: 0; }
+            20% { opacity: 1; }
+            50% { transform: translate(50px, 40px); fill: #fff; } /* Reaches bait */
+            55% { transform: translate(50px, 40px); fill: #ff0000; } /* Caught! */
+            60% { transform: translate(48px, 40px); } /* Panic Shake */
+            65% { transform: translate(52px, 40px); }
+            90% { transform: translate(50px, 40px); opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes slam-shut {
+            0%, 50% { transform: scaleY(0); opacity: 0; }
+            52% { transform: scaleY(1); opacity: 1; } /* SLAM */
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        
+        @keyframes alarm-ring {
+            0%, 52% { opacity: 0; r: 20; }
+            55% { opacity: 1; }
+            100% { opacity: 0; r: 40; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- The Bait (Honey) -->
+            <polygon class="honey-core" points="50,30 65,40 65,60 50,70 35,60 35,40" transform-origin="center" />
+            
+            <!-- The Intruder Bug -->
+            <!-- We animate the group to move the bug -->
+            <g>
+                <circle class="intruder-bug" cx="0" cy="0" r="3" /> <!-- Position controlled by CSS -->
+            </g>
+
+            <!-- The Trap Cage (Hidden initially) -->
+            <g transform-origin="center">
+                <line class="trap-bar" x1="35" y1="20" x2="35" y2="80" />
+                <line class="trap-bar" x1="50" y1="20" x2="50" y2="80" style="animation-delay: 0.05s;" />
+                <line class="trap-bar" x1="65" y1="20" x2="65" y2="80" style="animation-delay: 0.1s;" />
+                <line class="trap-bar" x1="20" y1="40" x2="80" y2="40" transform="rotate(90 50 50)" />
+            </g>
+            
+            <!-- Alarm Ripple -->
+            <circle class="alert-ring" cx="50" cy="50" r="20" />
+        </svg>
+    </div>
+</body>
+</html>

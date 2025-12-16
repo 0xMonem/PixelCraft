@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Möbius Data</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a1a2e;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .path-bg {
+            fill: none;
+            stroke: #333;
+            stroke-width: 8;
+            stroke-linecap: round;
+        }
+        .data-packet {
+            fill: #ff0055;
+            filter: drop-shadow(0 0 5px #ff0055);
+            offset-path: path("M30,50 C30,20 70,20 70,50 C70,80 30,80 30,50"); /* Simple Infinity loop approximation */
+            animation: travel 4s linear infinite;
+        }
+        .path-overlay {
+            fill: none;
+            stroke: #333;
+            stroke-width: 8;
+            stroke-linecap: round;
+            opacity: 0.8;
+            /* Trick to hide part of the loop to simulate 3D overlap */
+            stroke-dasharray: 50 150; 
+            stroke-dashoffset: -40;
+        }
+
+        @keyframes travel {
+            0% { offset-distance: 0%; transform: scale(1); fill: #ff0055; }
+            25% { transform: scale(0.8); fill: #aa0033; } /* Going "behind" */
+            50% { offset-distance: 50%; transform: scale(1); fill: #00aaff; } /* Switching sides */
+            75% { transform: scale(1.2); fill: #88ccff; } /* Coming "front" */
+            100% { offset-distance: 100%; transform: scale(1); fill: #ff0055; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Background Loop -->
+            <path class="path-bg" d="M30,50 C30,20 70,20 70,50 C70,80 30,80 30,50" />
+            
+            <!-- Moving Data Packet -->
+            <!-- Using circle that follows the path -->
+            <circle class="data-packet" r="4">
+                <animateMotion dur="4s" repeatCount="indefinite" path="M30,50 C30,20 70,20 70,50 C70,80 30,80 30,50" />
+            </circle>
+
+            <!-- Overlay to create 3D illusion (The crossing point) -->
+            <path class="path-overlay" d="M30,50 C30,20 70,20 70,50 C70,80 30,80 30,50" />
+        </svg>
+    </div>
+</body>
+</html>

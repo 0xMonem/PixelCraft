@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encrypted Synapse</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a1a20;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        .synapse-line {
+            fill: none;
+            stroke: #555;
+            stroke-width: 3;
+            stroke-linecap: round;
+        }
+        .lock-body {
+            fill: #333;
+            stroke: #fff;
+            stroke-width: 2;
+            animation: lock-color 4s infinite;
+        }
+        .lock-shackle {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2;
+            transform-origin: 50% 40%;
+            animation: shackle-move 4s infinite;
+        }
+        .data-dot {
+            fill: #fff;
+            animation: flow-to-lock 4s infinite;
+        }
+
+        @keyframes shackle-move {
+            0%, 20% { transform: translateY(0); } /* Locked */
+            30% { transform: translateY(-5px); } /* Unlock attempt */
+            40% { transform: translateY(-5px) rotate(-10deg); } /* Shake */
+            50% { transform: translateY(-5px) rotate(10deg); }
+            60% { transform: translateY(0); } /* Re-lock */
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes lock-color {
+            0%, 20% { stroke: #fff; }
+            30%, 50% { stroke: #ff0000; filter: drop-shadow(0 0 5px #ff0000); } /* Denied */
+            60%, 100% { stroke: #00ff00; filter: drop-shadow(0 0 5px #00ff00); } /* Secured */
+        }
+
+        @keyframes flow-to-lock {
+            0% { transform: translateX(0); opacity: 1; }
+            40% { transform: translateX(30px); opacity: 1; } /* Hit the lock */
+            45% { transform: translateX(25px); opacity: 0; } /* Bounce/Absorb */
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Synapse Path -->
+            <path class="synapse-line" d="M20,50 H40" />
+            <path class="synapse-line" d="M60,50 H80" />
+            
+            <!-- Data trying to enter -->
+            <circle class="data-dot" cx="20" cy="50" r="3" />
+
+            <!-- The Lock -->
+            <path class="lock-shackle" d="M40,40 V35 A10,10 0 0,1 60,35 V40" />
+            <rect class="lock-body" x="35" y="40" width="30" height="25" rx="3" />
+            <circle cx="50" cy="52" r="2" fill="#fff" />
+            <line x1="50" y1="52" x2="50" y2="58" stroke="#fff" stroke-width="2" />
+        </svg>
+    </div>
+</body>
+</html>

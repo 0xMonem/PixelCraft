@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biometric Lock</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        .face-outline {
+            fill: none;
+            stroke: #00ffaa;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-dasharray: 200;
+            stroke-dashoffset: 200;
+            animation: draw-face 4s linear infinite;
+        }
+        .scan-line {
+            fill: url(#scan-grad);
+            opacity: 0.5;
+            animation: scan-down 4s linear infinite;
+        }
+        .error-x {
+            stroke: #ff0000;
+            stroke-width: 5;
+            stroke-linecap: round;
+            opacity: 0;
+            animation: access-denied 4s infinite;
+        }
+        .glitch-group {
+            animation: shake 4s infinite;
+        }
+
+        @keyframes draw-face {
+            0% { stroke-dashoffset: 200; stroke: #00ffaa; }
+            40% { stroke-dashoffset: 0; stroke: #00ffaa; } /* Drawn */
+            50% { stroke: #ff0000; filter: drop-shadow(0 0 5px #ff0000); } /* ALERT */
+            80% { stroke: #ff0000; stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: 200; stroke: #00ffaa; }
+        }
+
+        @keyframes scan-down {
+            0% { transform: translateY(-50px); opacity: 0; }
+            20% { opacity: 1; }
+            45% { transform: translateY(50px); opacity: 1; }
+            46% { opacity: 0; } /* Disappear on error */
+            100% { opacity: 0; }
+        }
+
+        @keyframes access-denied {
+            0%, 49% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); } /* BOOM X appears */
+            55% { transform: scale(1); }
+            80% { opacity: 1; }
+            85% { opacity: 0; }
+        }
+
+        @keyframes shake {
+            0%, 49% { transform: translate(0,0); }
+            50% { transform: translate(-5px, 0); }
+            52% { transform: translate(5px, 0); }
+            54% { transform: translate(-5px, 0); }
+            56% { transform: translate(0,0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <defs>
+                <linearGradient id="scan-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#00ffaa" stop-opacity="0" />
+                    <stop offset="50%" stop-color="#00ffaa" stop-opacity="0.8" />
+                    <stop offset="100%" stop-color="#00ffaa" stop-opacity="0" />
+                </linearGradient>
+            </defs>
+
+            <g class="glitch-group">
+                <!-- Digital Face Profile -->
+                <path class="face-outline" d="M30,30 Q50,10 70,30 V60 Q70,90 50,90 Q30,90 30,60 Z" transform="translate(0 5)" />
+                <path class="face-outline" d="M40,45 H60" style="stroke-dasharray: 20; stroke-width: 1; animation-delay: 0.1s;" />
+                <path class="face-outline" d="M45,65 H55" style="stroke-dasharray: 10; stroke-width: 1; animation-delay: 0.2s;" />
+
+                <!-- The Scanner -->
+                <rect class="scan-line" x="20" y="20" width="60" height="10" />
+
+                <!-- The Error X (Hidden until glitch) -->
+                <line class="error-x" x1="35" y1="35" x2="65" y2="65" />
+                <line class="error-x" x1="65" y1="35" x2="35" y2="65" />
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

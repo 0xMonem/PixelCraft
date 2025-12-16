@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tesseract</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .cube-face {
+            fill: rgba(0, 255, 255, 0.05);
+            stroke: #00ffff;
+            stroke-width: 2;
+            stroke-linejoin: round;
+        }
+        .connector {
+            stroke: #ff00ff;
+            stroke-width: 1.5;
+            opacity: 0.6;
+        }
+        
+        /* The Outer Cube shrinking to Inner */
+        .outer-to-inner {
+            animation: invert-cubes 4s linear infinite;
+        }
+        
+        /* The Inner Cube growing to Outer */
+        .inner-to-outer {
+            animation: invert-cubes 4s linear infinite reverse;
+        }
+
+        @keyframes invert-cubes {
+            0% { transform: scale(1) rotate(0deg); opacity: 1; stroke: #00ffff; }
+            25% { transform: scale(0.75) rotate(45deg); opacity: 0.8; stroke: #00aaff; }
+            50% { transform: scale(0.4) rotate(90deg); opacity: 0.5; stroke: #ff00ff; } /* Become Inner */
+            75% { transform: scale(0.75) rotate(135deg); opacity: 0.8; stroke: #00aaff; }
+            100% { transform: scale(1) rotate(180deg); opacity: 1; stroke: #00ffff; }
+        }
+
+        /* Group Rotation for the whole 4D object */
+        .tesseract-container {
+            transform-origin: center;
+            animation: spin-4d 12s linear infinite;
+        }
+
+        @keyframes spin-4d {
+            from { transform: rotate3d(1, 1, 1, 0deg); }
+            to { transform: rotate3d(1, 1, 1, 360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <g class="tesseract-container">
+                <!-- Outer Cube (Starts Large) -->
+                <rect class="cube-face outer-to-inner" x="20" y="20" width="60" height="60" transform-origin="center" />
+                
+                <!-- Inner Cube (Starts Small) -->
+                <rect class="cube-face inner-to-outer" x="35" y="35" width="30" height="30" transform-origin="center" />
+                
+                <!-- Connecting Lines (The 4th Dimension Edges) -->
+                <!-- These lines must bridge the corners of the rotating squares -->
+                <!-- Since we can't easily animate coordinates in CSS, we use a trick: -->
+                <!-- We place these inside a group that scales/rotates to fake the connection visuals -->
+                
+                <g class="connector-group" stroke="#fff" stroke-width="1" opacity="0.3">
+                     <!-- This is an artistic representation of the connectors moving -->
+                     <!-- Top Left -->
+                     <line x1="20" y1="20" x2="35" y2="35">
+                        <animate attributeName="x1" values="20;35;20" dur="4s" repeatCount="indefinite" />
+                        <animate attributeName="y1" values="20;35;20" dur="4s" repeatCount="indefinite" />
+                        <animate attributeName="x2" values="35;20;35" dur="4s" repeatCount="indefinite" />
+                        <animate attributeName="y2" values="35;20;35" dur="4s" repeatCount="indefinite" />
+                     </line>
+                     
+                     <!-- Top Right -->
+                     <line x1="80" y1="20" x2="65" y2="35">
+                        <animate attributeName="x1" values="80;65;80" dur="4s" repeatCount="indefinite" />
+                        <animate attributeName="y1" values="20;35;20" dur="4s" repeatCount="indefinite" />
+                     </line>
+
+                     <!-- Bottom Right -->
+                     <line x1="80" y1="80" x2="65" y2="65">
+                        <animate attributeName="x1" values="80;65;80" dur="4s" repeatCount="indefinite" />
+                        <animate attributeName="y1" values="80;65;80" dur="4s" repeatCount="indefinite" />
+                     </line>
+
+                     <!-- Bottom Left -->
+                     <line x1="20" y1="80" x2="35" y2="65">
+                        <animate attributeName="x1" values="20;35;20" dur="4s" repeatCount="indefinite" />
+                        <animate attributeName="y1" values="80;65;80" dur="4s" repeatCount="indefinite" />
+                     </line>
+                </g>
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watcher Drone</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #050510;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .drone-body {
+            fill: #222;
+            stroke: #444;
+            stroke-width: 2;
+            animation: hover 3s ease-in-out infinite;
+        }
+        .lens {
+            fill: #00aaff;
+            animation: scan-mode 4s infinite;
+            filter: drop-shadow(0 0 5px #00aaff);
+        }
+        .scan-beam {
+            fill: url(#beam-grad);
+            opacity: 0.5;
+            transform-origin: top center;
+            animation: beam-sweep 4s infinite;
+        }
+        .target-lock {
+            fill: none;
+            stroke: #ff0000;
+            stroke-width: 2;
+            opacity: 0;
+            transform-origin: center;
+            animation: lock-on 4s infinite;
+        }
+        
+        @keyframes hover {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes scan-mode {
+            0%, 60% { fill: #00aaff; filter: drop-shadow(0 0 5px #00aaff); }
+            62% { fill: #ff0000; filter: drop-shadow(0 0 10px #ff0000); } /* RED ALERT */
+            90% { fill: #ff0000; }
+            95% { fill: #00aaff; }
+        }
+
+        @keyframes beam-sweep {
+            0%, 60% { transform: rotate(-20deg); opacity: 0.5; }
+            30% { transform: rotate(20deg); }
+            60% { transform: rotate(0deg); opacity: 0.5; }
+            62% { transform: rotate(0deg); opacity: 0; } /* Beam vanishes on lock */
+            100% { transform: rotate(0deg); opacity: 0; }
+        }
+
+        @keyframes lock-on {
+            0%, 60% { opacity: 0; transform: scale(2); }
+            62% { opacity: 1; transform: scale(1.5); }
+            65% { transform: scale(1); } /* Snap to target */
+            70% { transform: scale(1.1); }
+            75% { transform: scale(1); }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <defs>
+                <linearGradient id="beam-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#00aaff" stop-opacity="0.8" />
+                    <stop offset="100%" stop-color="#00aaff" stop-opacity="0" />
+                </linearGradient>
+            </defs>
+
+            <!-- Target Lock UI (Ground) -->
+            <g transform="translate(50 85)">
+                <rect class="target-lock" x="-10" y="-10" width="20" height="20" />
+                <line class="target-lock" x1="0" y1="-15" x2="0" y2="15" />
+                <line class="target-lock" x1="-15" y1="0" x2="15" y2="0" />
+            </g>
+
+            <g class="drone-body">
+                <!-- Scan Beam -->
+                <path class="scan-beam" d="M50,55 L30,90 H70 L50,55" />
+                
+                <!-- Drone Structure -->
+                <circle cx="50" cy="50" r="15" fill="#111" stroke="#555" />
+                <rect x="20" y="45" width="10" height="10" rx="2" fill="#333" /> <!-- Rotor L -->
+                <rect x="70" y="45" width="10" height="10" rx="2" fill="#333" /> <!-- Rotor R -->
+                <line x1="30" y1="50" x2="35" y2="50" stroke="#555" stroke-width="2" />
+                <line x1="65" y1="50" x2="70" y2="50" stroke="#555" stroke-width="2" />
+
+                <!-- The Eye Lens -->
+                <circle class="lens" cx="50" cy="50" r="6" />
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

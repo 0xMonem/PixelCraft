@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Leaf</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a202c;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .panel {
+            fill: none;
+            stroke: #4299e1;
+            stroke-width: 2;
+            transition: stroke 0.5s;
+            animation: charge-panel 4s infinite;
+        }
+        .sun-ray {
+            stroke: #ecc94b;
+            stroke-width: 2;
+            stroke-dasharray: 20;
+            stroke-dashoffset: 20;
+            animation: absorb-ray 4s infinite;
+        }
+        .leaf {
+            fill: #48bb78;
+            transform-origin: bottom center;
+            transform: scale(0);
+            animation: grow-leaf 4s infinite;
+            filter: drop-shadow(0 0 5px #48bb78);
+        }
+        .charge-bar {
+            fill: #48bb78;
+            height: 0;
+            y: 70;
+            animation: fill-up 4s infinite;
+        }
+
+        @keyframes absorb-ray {
+            0% { stroke-dashoffset: 20; opacity: 1; }
+            30% { stroke-dashoffset: 0; opacity: 1; } /* Hit panel */
+            40% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes fill-up {
+            0%, 30% { height: 0; y: 70; }
+            60% { height: 40px; y: 30; } /* Full */
+            90% { height: 40px; y: 30; opacity: 1; }
+            100% { height: 0; y: 70; opacity: 0; }
+        }
+
+        @keyframes charge-panel {
+            0%, 50% { stroke: #4299e1; }
+            60% { stroke: #48bb78; filter: drop-shadow(0 0 2px #48bb78); } /* Green Glow */
+            90% { stroke: #48bb78; }
+            100% { stroke: #4299e1; }
+        }
+
+        @keyframes grow-leaf {
+            0%, 60% { transform: scale(0); opacity: 0; }
+            70% { transform: scale(1.2); opacity: 1; } /* Pop out */
+            80% { transform: scale(1) rotate(5deg); }
+            90% { transform: scale(1) rotate(0deg); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Sun Rays -->
+            <line class="sun-ray" x1="20" y1="10" x2="40" y2="30" />
+            <line class="sun-ray" x1="80" y1="10" x2="60" y2="30" style="animation-delay: 0.2s;" />
+            <line class="sun-ray" x1="50" y1="5" x2="50" y2="30" style="animation-delay: 0.1s;" />
+
+            <!-- The Solar Panel -->
+            <g transform="translate(25 30)">
+                <!-- Glass Frame -->
+                <rect class="panel" x="0" y="0" width="50" height="40" rx="2" />
+                <!-- Inner Grid Lines -->
+                <line class="panel" x1="25" y1="0" x2="25" y2="40" stroke-width="1" />
+                <line class="panel" x1="0" y1="20" x2="50" y2="20" stroke-width="1" />
+                
+                <!-- Filling Charge (Masked inside) -->
+                <clipPath id="panel-clip">
+                    <rect x="0" y="0" width="50" height="40" rx="2" />
+                </clipPath>
+                <rect class="charge-bar" x="0" width="50" clip-path="url(#panel-clip)" opacity="0.5" />
+            </g>
+
+            <!-- The Sprouting Leaf -->
+            <path class="leaf" d="M50,30 Q30,10 50,0 Q70,10 50,30 Z" />
+        </svg>
+    </div>
+</body>
+</html>

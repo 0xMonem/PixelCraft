@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incognito Mode</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0d1117;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .hood {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2;
+        }
+        .face-matrix {
+            font-family: monospace;
+            font-size: 8px;
+            fill: #00ff00;
+            opacity: 1;
+            animation: identity-scramble 4s steps(5) infinite;
+        }
+        .glitch-bar {
+            fill: #00ff00;
+            opacity: 0;
+            animation: scan-glitch 4s infinite;
+        }
+        .question-mark {
+            fill: #fff;
+            font-size: 40px;
+            font-family: monospace;
+            opacity: 0;
+            animation: reveal-mystery 4s infinite;
+        }
+
+        @keyframes identity-scramble {
+            0%, 40% { opacity: 1; }
+            45% { opacity: 0.5; transform: translateX(-5px); }
+            50% { opacity: 0; } /* Vanish */
+            90% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes reveal-mystery {
+            0%, 45% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+            80% { opacity: 1; transform: scale(1); }
+            95% { opacity: 0; }
+        }
+
+        @keyframes scan-glitch {
+            40% { opacity: 0; y: 20; height: 2px; }
+            45% { opacity: 1; y: 50; height: 10px; }
+            50% { opacity: 0; y: 80; height: 2px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- The Hacker Hood/Silhouette -->
+            <path class="hood" d="M20,90 L20,50 Q20,10 50,10 Q80,10 80,50 L80,90" />
+            <path class="hood" d="M20,70 Q50,90 80,70" opacity="0.5" />
+
+            <!-- The Matrix Face (Instead of eyes/mouth) -->
+            <g transform="translate(30 35)">
+                <text class="face-matrix" x="0" y="10">1011</text>
+                <text class="face-matrix" x="0" y="20">0101</text>
+                <text class="face-matrix" x="0" y="30">1100</text>
+                <text class="face-matrix" x="0" y="40">0011</text>
+            </g>
+
+            <!-- Glitch Effect -->
+            <rect class="glitch-bar" x="25" y="0" width="50" height="5" />
+
+            <!-- The Question Mark (When vanished) -->
+            <text class="question-mark" x="40" y="65">?</text>
+        </svg>
+    </div>
+</body>
+</html>

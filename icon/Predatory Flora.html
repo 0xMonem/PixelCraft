@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predatory Flora</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0a0a0a;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .petal {
+            fill: #9d00ff;
+            stroke: #d000ff;
+            stroke-width: 1;
+            opacity: 0.8;
+            transform-origin: center;
+            animation: trap-cycle 4s infinite;
+        }
+        .core {
+            fill: #fff;
+            filter: drop-shadow(0 0 5px #fff);
+            animation: lure 4s infinite;
+        }
+        .teeth {
+            fill: #fff;
+            opacity: 0;
+            animation: show-teeth 4s infinite;
+        }
+        
+        @keyframes trap-cycle {
+            0%, 70% { transform: rotate(var(--r)) scale(1); fill: #9d00ff; stroke: #d000ff; }
+            75% { transform: rotate(var(--r)) scale(1.1); } /* Anticipation */
+            80% { transform: rotate(var(--r)) scale(0.2); fill: #ff0000; stroke: #ff0000; } /* SNAP SHUT & RED */
+            85% { transform: rotate(var(--r)) scale(0.2); fill: #ff0000; }
+            95% { transform: rotate(var(--r)) scale(1); fill: #9d00ff; } /* Recovery */
+            100% { transform: rotate(var(--r)) scale(1); }
+        }
+
+        @keyframes lure {
+            0%, 70% { transform: scale(1); opacity: 1; }
+            80% { transform: scale(0); opacity: 0; } /* Eaten */
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes show-teeth {
+            0%, 75% { opacity: 0; }
+            80% { opacity: 1; } /* Teeth appear on snap */
+            90% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- 8 Petals arranged in a circle -->
+            <path class="petal" style="--r: 0deg;" d="M50,50 Q65,10 50,5 Q35,10 50,50" />
+            <path class="petal" style="--r: 45deg;" d="M50,50 Q65,10 50,5 Q35,10 50,50" />
+            <path class="petal" style="--r: 90deg;" d="M50,50 Q65,10 50,5 Q35,10 50,50" />
+            <path class="petal" style="--r: 135deg;" d="M50,50 Q65,10 50,5 Q35,10 50,50" />
+            <path class="petal" style="--r: 180deg;" d="M50,50 Q65,10 50,5 Q35,10 50,50" />
+            <path class="petal" style="--r: 225deg;" d="M50,50 Q65,10 50,5 Q35,10 50,50" />
+            <path class="petal" style="--r: 270deg;" d="M50,50 Q65,10 50,5 Q35,10 50,50" />
+            <path class="petal" style="--r: 315deg;" d="M50,50 Q65,10 50,5 Q35,10 50,50" />
+
+            <!-- Spikes/Teeth hidden inside -->
+            <polygon class="teeth" points="50,40 45,30 55,30" transform="rotate(0 50 50)" />
+            <polygon class="teeth" points="50,40 45,30 55,30" transform="rotate(90 50 50)" />
+            <polygon class="teeth" points="50,40 45,30 55,30" transform="rotate(180 50 50)" />
+            <polygon class="teeth" points="50,40 45,30 55,30" transform="rotate(270 50 50)" />
+
+            <!-- The Bait Core -->
+            <circle class="core" cx="50" cy="50" r="5" />
+        </svg>
+    </div>
+</body>
+</html>

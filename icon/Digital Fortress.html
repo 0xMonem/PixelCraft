@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Fortress</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .core-server {
+            fill: #fff;
+            filter: drop-shadow(0 0 5px #fff);
+            animation: pulse-core 2s infinite;
+        }
+        .wall {
+            fill: none;
+            stroke: #00aaff;
+            stroke-width: 4;
+            stroke-linecap: round;
+            transform-origin: 50% 50%;
+        }
+        
+        /* Walls rising and falling animation */
+        .wall-1 { animation: wall-move 3s ease-in-out infinite; }
+        .wall-2 { animation: wall-move 3s ease-in-out infinite 0.5s; }
+        .wall-3 { animation: wall-move 3s ease-in-out infinite 1.0s; }
+        .wall-4 { animation: wall-move 3s ease-in-out infinite 1.5s; }
+
+        @keyframes wall-move {
+            0%, 100% { stroke-dasharray: 10 100; stroke-dashoffset: 0; opacity: 0.3; }
+            50% { stroke-dasharray: 60 100; stroke-dashoffset: -20; opacity: 1; filter: drop-shadow(0 0 5px #00aaff); }
+        }
+
+        @keyframes pulse-core {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        .shield-dome {
+            fill: none;
+            stroke: #00aaff;
+            stroke-width: 1;
+            opacity: 0.2;
+            animation: rotate-dome 10s linear infinite;
+        }
+        @keyframes rotate-dome { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Central Core -->
+            <rect class="core-server" x="45" y="45" width="10" height="10" transform-origin="center" />
+            
+            <!-- Defensive Walls (Circular Segments) -->
+            <circle class="wall wall-1" cx="50" cy="50" r="20" transform="rotate(0 50 50)" />
+            <circle class="wall wall-2" cx="50" cy="50" r="25" transform="rotate(90 50 50)" />
+            <circle class="wall wall-3" cx="50" cy="50" r="30" transform="rotate(180 50 50)" />
+            <circle class="wall wall-4" cx="50" cy="50" r="35" transform="rotate(270 50 50)" />
+
+            <!-- Outer Dome scan -->
+            <circle class="shield-dome" cx="50" cy="50" r="45" stroke-dasharray="10 5" />
+        </svg>
+    </div>
+</body>
+</html>

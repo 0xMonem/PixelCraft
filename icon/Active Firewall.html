@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Firewall</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #050510;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .hex-grid {
+            fill: none;
+            stroke: #00aaff;
+            stroke-width: 1;
+            opacity: 0.3;
+        }
+        .shield-core {
+            fill: none;
+            stroke: #00aaff;
+            stroke-width: 3;
+            filter: drop-shadow(0 0 5px #00aaff);
+            animation: shield-pulse 4s infinite;
+        }
+        .virus {
+            fill: #ff0000;
+            filter: drop-shadow(0 0 8px #ff0000);
+            animation: attack-sequence 4s ease-in-out infinite;
+        }
+        .impact-wave {
+            fill: none;
+            stroke: #ff0000;
+            stroke-width: 2;
+            opacity: 0;
+            animation: impact-ripple 4s ease-out infinite;
+        }
+
+        @keyframes shield-pulse {
+            0%, 40% { stroke: #00aaff; filter: drop-shadow(0 0 5px #00aaff); }
+            45% { stroke: #ff0000; transform: scale(0.95); } /* Impact */
+            50% { stroke: #ff0000; filter: drop-shadow(0 0 15px #ff0000); }
+            60% { stroke: #00ff00; transform: scale(1.05); } /* Neutralized */
+            70% { stroke: #00aaff; transform: scale(1); }
+        }
+
+        @keyframes attack-sequence {
+            0% { transform: translate(-60px, 0) scale(0.5); opacity: 0; }
+            20% { opacity: 1; }
+            45% { transform: translate(-15px, 0) scale(1); opacity: 1; } /* Hit */
+            50% { transform: translate(-15px, 0) scale(0); opacity: 0; } /* Destroyed */
+            100% { opacity: 0; }
+        }
+
+        @keyframes impact-ripple {
+            45% { r: 15; opacity: 1; stroke: #ff0000; }
+            60% { r: 40; opacity: 0; stroke: #00ff00; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Background Hex Grid -->
+            <path class="hex-grid" d="M20,20 L30,10 L50,10 L60,20 L50,30 L30,30 Z M60,20 L70,10 L90,10 L100,20 L90,30 L70,30 Z M20,50 L30,40 L50,40 L60,50 L50,60 L30,60 Z M60,50 L70,40 L90,40 L100,50 L90,60 L70,60 Z M20,80 L30,70 L50,70 L60,80 L50,90 L30,90 Z" />
+
+            <!-- The Shield -->
+            <path class="shield-core" d="M30,20 C30,20 30,80 30,80 C50,90 70,90 90,50 C70,10 50,10 30,20 Z" />
+            
+            <!-- Impact Ripple -->
+            <circle class="impact-wave" cx="30" cy="50" r="10" />
+
+            <!-- The Attacking Virus -->
+            <g transform="translate(30 50)">
+                <circle class="virus" cx="0" cy="0" r="4" />
+                <path class="virus" d="M-6,0 H-2 M2,0 H6 M0,-6 V-2 M0,2 V6" stroke="#ff0000" stroke-width="1" />
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognitive Core</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #050505;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .brain-shell {
+            fill: none;
+            stroke: #333;
+            stroke-width: 2;
+            opacity: 0.5;
+            transform-origin: center;
+            animation: breathe-shell 4s ease-in-out infinite;
+        }
+        .core-chip {
+            fill: none;
+            stroke: #ffd700; /* Gold */
+            stroke-width: 2;
+            transform-origin: center;
+            animation: spin-chip 3s linear infinite;
+        }
+        .radiation {
+            stroke: #ffd700;
+            stroke-width: 1;
+            opacity: 0;
+            animation: radiate 3s infinite;
+        }
+        
+        @keyframes breathe-shell {
+            0%, 100% { transform: scale(1); stroke: #333; }
+            50% { transform: scale(1.05); stroke: #666; }
+        }
+
+        @keyframes spin-chip {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); stroke: #fff; filter: drop-shadow(0 0 5px #ffd700); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes radiate {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Radiating Energy -->
+            <circle class="radiation" cx="50" cy="50" r="15" />
+            <circle class="radiation" cx="50" cy="50" r="15" style="animation-delay: 1s;" />
+
+            <!-- The Brain Outline (Shell) -->
+            <path class="brain-shell" d="M50,15 C80,15 90,40 85,60 C80,85 60,90 50,90 C40,90 20,85 15,60 C10,40 20,15 50,15 Z" />
+            
+            <!-- Lines detailing the brain lobes -->
+            <path class="brain-shell" d="M50,15 L50,40 M20,40 C30,40 40,30 50,30 C60,30 70,40 80,40" stroke-width="1" />
+
+            <!-- The AI Chip Center -->
+            <rect class="core-chip" x="42" y="42" width="16" height="16" transform="rotate(45 50 50)" />
+            <rect class="core-chip" x="45" y="45" width="10" height="10" />
+        </svg>
+    </div>
+</body>
+</html>

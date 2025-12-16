@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Staircase</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #222;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .stair-face-top { fill: #444; stroke: #222; }
+        .stair-face-side { fill: #333; stroke: #222; }
+        .stair-face-front { fill: #555; stroke: #222; }
+        
+        .stair-group {
+            animation: climb-cycle 1s linear infinite;
+        }
+
+        .walker {
+            fill: #00ffcc;
+            filter: drop-shadow(0 0 5px #00ffcc);
+            animation: hop 1s linear infinite;
+        }
+
+        @keyframes climb-cycle {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-10px, 10px); } /* Move one step down-left to simulate rising */
+        }
+        
+        @keyframes hop {
+            0% { transform: translate(0,0); }
+            50% { transform: translate(0, -10px); }
+            100% { transform: translate(0,0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Masking to keep the illusion contained -->
+            <defs>
+                <clipPath id="stair-box">
+                    <rect x="10" y="10" width="80" height="80" />
+                </clipPath>
+            </defs>
+
+            <g clip-path="url(#stair-box)">
+                <!-- Infinite Stairs Group -->
+                <!-- We stack multiple steps and move them diagonally -->
+                <g class="stair-group">
+                    <!-- Step 1 -->
+                    <path class="stair-face-top" d="M50,20 L60,20 L70,30 L60,30 Z" />
+                    <path class="stair-face-front" d="M60,30 L70,30 L70,40 L60,40 Z" />
+                    <path class="stair-face-side" d="M70,30 L70,40 L80,30 Z" /> <!-- Simplified isometric -->
+                    
+                    <!-- Step 2 -->
+                    <path class="stair-face-top" d="M60,30 L70,30 L80,40 L70,40 Z" />
+                    <path class="stair-face-front" d="M70,40 L80,40 L80,50 L70,50 Z" />
+                    
+                    <!-- Step 3 -->
+                    <path class="stair-face-top" d="M70,40 L80,40 L90,50 L80,50 Z" />
+                    <path class="stair-face-front" d="M80,50 L90,50 L90,60 L80,60 Z" />
+
+                    <!-- Step 4 -->
+                    <path class="stair-face-top" d="M80,50 L90,50 L100,60 L90,60 Z" />
+                    <path class="stair-face-front" d="M90,60 L100,60 L100,70 L90,70 Z" />
+                </g>
+            </g>
+
+            <!-- The Walker (Always staying in center while stairs move) -->
+            <circle class="walker" cx="70" cy="35" r="4" />
+        </svg>
+    </div>
+</body>
+</html>

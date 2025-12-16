@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Encryption</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .orbit {
+            fill: none;
+            stroke-width: 2;
+            transform-origin: center;
+        }
+        .orbit-1 {
+            stroke: #ff00ff;
+            animation: spin-x 2s linear infinite;
+        }
+        .orbit-2 {
+            stroke: #00ffff;
+            animation: spin-y 3s linear infinite;
+        }
+        .orbit-3 {
+            stroke: #ffff00;
+            animation: spin-z 4s linear infinite;
+        }
+        
+        .core-lock {
+            fill: #fff;
+            filter: drop-shadow(0 0 10px #fff);
+            animation: pulse-lock 1s ease-in-out infinite alternate;
+        }
+        .energy-field {
+            fill: url(#quantum-grad);
+            opacity: 0.3;
+            animation: field-fluctuate 0.5s infinite;
+        }
+
+        @keyframes spin-x {
+            0% { transform: rotate(0deg) scaleX(1); }
+            50% { transform: rotate(180deg) scaleX(0.2); } /* Fake 3D flip */
+            100% { transform: rotate(360deg) scaleX(1); }
+        }
+        @keyframes spin-y {
+            0% { transform: rotate(60deg) scaleY(1); }
+            50% { transform: rotate(240deg) scaleY(0.2); }
+            100% { transform: rotate(420deg) scaleY(1); }
+        }
+        @keyframes spin-z {
+            0% { transform: rotate(-60deg) scale(1); }
+            50% { transform: rotate(120deg) scale(0.5); }
+            100% { transform: rotate(300deg) scale(1); }
+        }
+
+        @keyframes pulse-lock {
+            from { transform: scale(1); }
+            to { transform: scale(1.2); filter: drop-shadow(0 0 20px #fff); }
+        }
+        
+        @keyframes field-fluctuate {
+            0% { r: 15; opacity: 0.3; }
+            50% { r: 18; opacity: 0.5; }
+            100% { r: 15; opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <defs>
+                <radialGradient id="quantum-grad">
+                    <stop offset="0%" stop-color="#fff" />
+                    <stop offset="100%" stop-color="#0000ff" />
+                </radialGradient>
+            </defs>
+
+            <!-- Energy Field Background -->
+            <circle class="energy-field" cx="50" cy="50" r="15" />
+
+            <!-- 3D Orbits (The Electron Shells) -->
+            <ellipse class="orbit orbit-1" cx="50" cy="50" rx="40" ry="10" />
+            <ellipse class="orbit orbit-2" cx="50" cy="50" rx="40" ry="10" />
+            <ellipse class="orbit orbit-3" cx="50" cy="50" rx="40" ry="10" />
+
+            <!-- The Indestructible Core -->
+            <g class="core-lock" transform-origin="center">
+                <path d="M45,45 V40 A5,5 0 0,1 55,40 V45 H55 V55 H45 V45 Z" /> <!-- Padlock Shape -->
+                <circle cx="50" cy="50" r="2" fill="#000" />
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

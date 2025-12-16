@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferrofluid Spike</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #111;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        .fluid-core {
+            fill: #000;
+            stroke: #222;
+            stroke-width: 2;
+            animation: liquid-pulse 2s ease-in-out infinite;
+        }
+        .spike {
+            fill: #000;
+            stroke: #0ff; /* Electric Blue outline */
+            stroke-width: 0;
+            transform-origin: center;
+            animation: spike-trigger 4s infinite;
+        }
+        .electric-arc {
+            stroke: #0ff;
+            stroke-width: 2;
+            fill: none;
+            opacity: 0;
+            animation: zap 4s infinite;
+        }
+
+        @keyframes liquid-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes spike-trigger {
+            0%, 45% { transform: scale(0.5); opacity: 0; stroke-width: 0; fill: #000; }
+            
+            /* BOOM - Magnet on */
+            50% { transform: scale(1.4); opacity: 1; stroke-width: 2; fill: #222; } 
+            
+            /* Hold & Vibrate */
+            55% { transform: scale(1.35) rotate(5deg); }
+            60% { transform: scale(1.4) rotate(-5deg); }
+            
+            /* Collapse */
+            70% { transform: scale(0.5); opacity: 0; stroke-width: 0; }
+            100% { transform: scale(0.5); opacity: 0; }
+        }
+
+        @keyframes zap {
+            48% { opacity: 0; }
+            50% { opacity: 1; stroke-dasharray: 10 10; stroke-dashoffset: 0; }
+            60% { opacity: 1; stroke-dasharray: 5 5; stroke-dashoffset: 50; }
+            62% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                    <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+                </filter>
+            </defs>
+
+            <g filter="url(#goo)">
+                <!-- Center Blob -->
+                <circle class="fluid-core" cx="50" cy="50" r="25" />
+                
+                <!-- Spikes (Hidden initially) -->
+                <!-- Top -->
+                <path class="spike" d="M50,10 L40,50 L60,50 Z" /> 
+                <!-- Bottom -->
+                <path class="spike" d="M50,90 L40,50 L60,50 Z" />
+                <!-- Left -->
+                <path class="spike" d="M10,50 L50,40 L50,60 Z" />
+                <!-- Right -->
+                <path class="spike" d="M90,50 L50,40 L50,60 Z" />
+                
+                <!-- Diagonals -->
+                <path class="spike" d="M20,20 L50,50 L50,40 Z" style="transform: rotate(45deg); transform-origin: 50px 50px;" />
+                <path class="spike" d="M80,20 L50,50 L60,50 Z" style="transform: rotate(-45deg); transform-origin: 50px 50px;" />
+                <path class="spike" d="M20,80 L50,50 L40,50 Z" style="transform: rotate(-45deg); transform-origin: 50px 50px;" />
+                <path class="spike" d="M80,80 L50,50 L50,60 Z" style="transform: rotate(45deg); transform-origin: 50px 50px;" />
+            </g>
+            
+            <!-- Lightning Effect appearing on activation -->
+            <circle class="electric-arc" cx="50" cy="50" r="45" />
+        </svg>
+    </div>
+</body>
+</html>

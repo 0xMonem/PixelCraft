@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiverse Glitch</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            isolation: isolate; /* Crucial for mix-blend-mode */
+        }
+        .universe {
+            fill: none;
+            stroke-width: 4;
+            transform-origin: center;
+            mix-blend-mode: screen; /* Additive color mixing */
+        }
+        
+        .verse-1 {
+            stroke: #00ffff; /* Cyan */
+            animation: glitch-spin-1 4s cubic-bezier(0.1, 0.7, 1.0, 0.1) infinite;
+        }
+        .verse-2 {
+            stroke: #ff00ff; /* Magenta */
+            animation: glitch-spin-2 4s cubic-bezier(0.1, 0.7, 1.0, 0.1) infinite;
+        }
+        .verse-3 {
+            stroke: #ffff00; /* Yellow */
+            animation: glitch-spin-3 4s cubic-bezier(0.1, 0.7, 1.0, 0.1) infinite;
+        }
+
+        .core-blackhole {
+            fill: #fff;
+            mix-blend-mode: difference; /* Inverts colors behind it */
+            animation: collapse 0.2s infinite alternate;
+        }
+
+        @keyframes glitch-spin-1 {
+            0% { transform: rotate(0deg) scale(1); }
+            20% { transform: rotate(10deg) scale(1.1); } /* Desync */
+            40% { transform: rotate(-5deg) scale(0.9) translate(5px, 0); }
+            50% { transform: rotate(180deg); } /* SNAP */
+            80% { transform: rotate(350deg) scale(1.05); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes glitch-spin-2 {
+            0% { transform: rotate(0deg) scale(1); }
+            20% { transform: rotate(-10deg) scale(0.9); } /* Opposite Desync */
+            40% { transform: rotate(5deg) scale(1.1) translate(-5px, 0); }
+            50% { transform: rotate(180deg); }
+            80% { transform: rotate(370deg) scale(0.95); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes glitch-spin-3 {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(0deg) scale(1); } /* Lag behind */
+            45% { transform: rotate(5deg) translate(0, 5px); }
+            50% { transform: rotate(180deg); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes collapse {
+            from { r: 5; }
+            to { r: 7; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Universe 1 (Cyan) -->
+            <rect class="universe verse-1" x="25" y="25" width="50" height="50" />
+            
+            <!-- Universe 2 (Magenta) -->
+            <rect class="universe verse-2" x="25" y="25" width="50" height="50" />
+            
+            <!-- Universe 3 (Yellow) -->
+            <rect class="universe verse-3" x="25" y="25" width="50" height="50" />
+
+            <!-- The Singularity Point (Mix blend difference creates black in center) -->
+            <circle class="core-blackhole" cx="50" cy="50" r="6" />
+        </svg>
+    </div>
+</body>
+</html>

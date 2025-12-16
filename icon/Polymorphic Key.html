@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polymorphic Key</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0d1117;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .key-body {
+            fill: #fff;
+            filter: drop-shadow(0 0 2px #fff);
+        }
+        .key-bit {
+            fill: #00ffcc;
+            transform-origin: top;
+            animation: morph-bit 2s steps(4) infinite;
+        }
+        .lock-circle {
+            fill: none;
+            stroke: #333;
+            stroke-width: 2;
+            stroke-dasharray: 10 5;
+            animation: rotate-wait 10s linear infinite;
+        }
+        .unlock-flash {
+            fill: #00ffcc;
+            opacity: 0;
+            animation: flash-open 4s ease-in-out infinite;
+        }
+
+        /* Randomize the bits movement */
+        .bit-1 { animation-delay: 0s; }
+        .bit-2 { animation-delay: 0.3s; }
+        .bit-3 { animation-delay: 0.7s; }
+        .bit-4 { animation-delay: 0.2s; }
+
+        @keyframes morph-bit {
+            0% { transform: scaleY(1); }
+            25% { transform: scaleY(2); }
+            50% { transform: scaleY(0.5); }
+            75% { transform: scaleY(1.5); }
+            100% { transform: scaleY(1); }
+        }
+
+        @keyframes rotate-wait {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Simulation of insertion and unlock */
+        @keyframes insert-key {
+            0%, 50% { transform: translateX(0); }
+            60% { transform: translateX(20px); } /* Insert */
+            70% { transform: translateX(20px) rotate(90deg); } /* Turn */
+            90% { transform: translateX(20px) rotate(90deg); }
+            100% { transform: translateX(0) rotate(0deg); }
+        }
+
+        @keyframes flash-open {
+            65% { opacity: 0; }
+            70% { opacity: 1; transform: scale(1.2); }
+            80% { opacity: 0; transform: scale(1.5); }
+        }
+
+        .key-group {
+            transform-origin: 50px 50px;
+            animation: insert-key 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Background Lock -->
+            <circle class="lock-circle" cx="70" cy="50" r="20" />
+            <rect x="68" y="45" width="4" height="10" fill="#333" /> <!-- Keyhole -->
+            
+            <!-- Success Flash -->
+            <circle class="unlock-flash" cx="70" cy="50" r="20" />
+
+            <!-- The Polymorphic Key -->
+            <g class="key-group">
+                <!-- Handle -->
+                <circle class="key-body" cx="30" cy="50" r="10" fill="none" stroke="#fff" stroke-width="2" />
+                <!-- Shaft -->
+                <rect class="key-body" x="38" y="48" width="30" height="4" />
+                
+                <!-- Shifting Bits (Teeth) -->
+                <rect class="key-bit bit-1" x="50" y="52" width="4" height="5" />
+                <rect class="key-bit bit-2" x="55" y="52" width="4" height="5" />
+                <rect class="key-bit bit-3" x="60" y="52" width="4" height="5" />
+                <rect class="key-bit bit-4" x="65" y="52" width="4" height="5" />
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

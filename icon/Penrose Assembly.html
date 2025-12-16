@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penrose Assembly</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #111;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .segment {
+            fill: none;
+            stroke-width: 15;
+            stroke-linecap: square;
+            opacity: 0.8;
+            transform-origin: center;
+        }
+        
+        /* Individual Segment Animations */
+        .seg-1 {
+            stroke: #ff0055;
+            animation: assemble-1 4s ease-in-out infinite;
+        }
+        .seg-2 {
+            stroke: #00ddff;
+            animation: assemble-2 4s ease-in-out infinite;
+        }
+        .seg-3 {
+            stroke: #ffff00;
+            animation: assemble-3 4s ease-in-out infinite;
+        }
+
+        .flash-overlay {
+            fill: #fff;
+            opacity: 0;
+            mix-blend-mode: overlay;
+            animation: illusion-flash 4s ease-in-out infinite;
+        }
+
+        @keyframes assemble-1 {
+            0% { transform: translate(-30px, -30px) rotate(-45deg); opacity: 0.5; }
+            50% { transform: translate(0, 0) rotate(0deg); opacity: 1; } /* Locked */
+            60% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+            100% { transform: translate(-30px, -30px) rotate(-45deg); opacity: 0.5; }
+        }
+
+        @keyframes assemble-2 {
+            0% { transform: translate(30px, -20px) rotate(45deg); opacity: 0.5; }
+            50% { transform: translate(0, 0) rotate(0deg); opacity: 1; } /* Locked */
+            60% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+            100% { transform: translate(30px, -20px) rotate(45deg); opacity: 0.5; }
+        }
+
+        @keyframes assemble-3 {
+            0% { transform: translate(0px, 40px) rotate(90deg); opacity: 0.5; }
+            50% { transform: translate(0, 0) rotate(0deg); opacity: 1; } /* Locked */
+            60% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+            100% { transform: translate(0px, 40px) rotate(90deg); opacity: 0.5; }
+        }
+
+        @keyframes illusion-flash {
+            48% { opacity: 0; }
+            50% { opacity: 1; } /* FLASH on alignment */
+            55% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <defs>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+
+            <g filter="url(#glow)">
+                <!-- Segment 1 (Top Left) -->
+                <path class="segment seg-1" d="M20,80 L20,20 L80,20" />
+                
+                <!-- Segment 2 (Right) -->
+                <path class="segment seg-2" d="M80,20 L80,80 L20,80" />
+                
+                <!-- Segment 3 (Closing the loop visually) -->
+                <!-- This path is tricked to look like it connects behind/front -->
+                <path class="segment seg-3" d="M20,80 L50,50 L80,20" style="stroke-width: 5; opacity: 0.5;" /> 
+            </g>
+            
+            <!-- Illusion Flash -->
+            <path class="flash-overlay" d="M20,20 H80 V80 H20 Z" />
+        </svg>
+    </div>
+</body>
+</html>

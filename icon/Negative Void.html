@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Negative Void</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0; /* Light background for high contrast */
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        .pac-part {
+            fill: #000;
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: form-square 4s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+        }
+
+        /* Individual Rotations to face inward/outward */
+        .tl { --rot-from: 135deg; --rot-to: 45deg; }
+        .tr { --rot-from: 225deg; --rot-to: 135deg; }
+        .br { --rot-from: 315deg; --rot-to: 225deg; }
+        .bl { --rot-from: 45deg; --rot-to: 315deg; }
+
+        @keyframes form-square {
+            0%, 10% { transform: rotate(var(--rot-from)) scale(0.8); }
+            50% { transform: rotate(var(--rot-to)) scale(1); } /* Square Formed */
+            60% { transform: rotate(var(--rot-to)) scale(1); }
+            90% { transform: rotate(var(--rot-from)) scale(0.8); }
+            100% { transform: rotate(var(--rot-from)) scale(0.8); }
+        }
+
+        /* The Ghost Square that appears in your mind doesn't exist in code! */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Top Left -->
+            <path class="pac-part tl" d="M30,30 L30,10 A20,20 0 1,1 10,30 Z" transform="translate(0 0)" />
+            
+            <!-- Top Right -->
+            <path class="pac-part tr" d="M70,30 L90,30 A20,20 0 1,1 70,10 Z" transform="translate(0 0)" />
+            
+            <!-- Bottom Right -->
+            <path class="pac-part br" d="M70,70 L70,90 A20,20 0 1,1 90,70 Z" transform="translate(0 0)" />
+            
+            <!-- Bottom Left -->
+            <path class="pac-part bl" d="M30,70 L10,70 A20,20 0 1,1 30,90 Z" transform="translate(0 0)" />
+        </svg>
+    </div>
+</body>
+</html>

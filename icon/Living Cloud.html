@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Living Cloud</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #3498db; /* Sky Blue BG */
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .server-box {
+            fill: #2c3e50;
+            animation: server-to-cloud 4s ease-in-out infinite;
+        }
+        .server-light {
+            fill: #00ff00;
+            animation: blink 0.5s infinite;
+        }
+        .cloud-puff {
+            fill: #fff;
+            opacity: 0;
+            animation: puff-appear 4s ease-in-out infinite;
+        }
+        .data-rain {
+            fill: #fff;
+            font-family: monospace;
+            font-size: 8px;
+            opacity: 0;
+            animation: rain-down 4s ease-in-out infinite;
+        }
+
+        @keyframes server-to-cloud {
+            0%, 40% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(0.8); opacity: 0; } /* Server disappears */
+            90% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes puff-appear {
+            0%, 40% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1); opacity: 1; } /* Cloud appears */
+            80% { transform: scale(1); opacity: 1; }
+            90% { transform: scale(0); opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes rain-down {
+            0%, 50% { opacity: 0; transform: translateY(0); }
+            60% { opacity: 1; }
+            80% { opacity: 1; transform: translateY(20px); }
+            90% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Server State -->
+            <g class="server-box" transform-origin="center">
+                <rect x="30" y="30" width="40" height="40" rx="2" />
+                <line x1="35" y1="40" x2="65" y2="40" stroke="#444" stroke-width="2" />
+                <line x1="35" y1="50" x2="65" y2="50" stroke="#444" stroke-width="2" />
+                <line x1="35" y1="60" x2="65" y2="60" stroke="#444" stroke-width="2" />
+                <circle class="server-light" cx="60" cy="35" r="1.5" />
+                <circle class="server-light" cx="60" cy="45" r="1.5" style="animation-delay: 0.2s;" />
+                <circle class="server-light" cx="60" cy="55" r="1.5" style="animation-delay: 0.1s;" />
+            </g>
+
+            <!-- Cloud State -->
+            <g transform="translate(50 50)">
+                <circle class="cloud-puff" cx="0" cy="0" r="15" />
+                <circle class="cloud-puff" cx="-12" cy="5" r="10" />
+                <circle class="cloud-puff" cx="12" cy="5" r="10" />
+                <circle class="cloud-puff" cx="-6" cy="-8" r="10" />
+                <circle class="cloud-puff" cx="6" cy="-8" r="10" />
+            </g>
+
+            <!-- Data Rain -->
+            <text class="data-rain" x="40" y="80">1</text>
+            <text class="data-rain" x="50" y="85" style="animation-delay: 0.2s;">0</text>
+            <text class="data-rain" x="60" y="80" style="animation-delay: 0.1s;">1</text>
+        </svg>
+    </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synth Sun</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #100020;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        .sun {
+            fill: url(#sun-grad);
+            filter: drop-shadow(0 0 10px #ff00de);
+        }
+        .sun-slice {
+            fill: #100020;
+            animation: slice-move 3s linear infinite;
+        }
+        .grid-line-v {
+            stroke: #00ffff;
+            stroke-width: 1;
+            opacity: 0.5;
+            filter: drop-shadow(0 0 2px #00ffff);
+        }
+        .grid-line-h {
+            stroke: #00ffff;
+            stroke-width: 1;
+            opacity: 0.5;
+            animation: grid-scroll 1.5s linear infinite;
+        }
+        .mountain {
+            fill: #050010;
+            stroke: #ff00de;
+            stroke-width: 1;
+        }
+        @keyframes slice-move {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+        @keyframes grid-scroll {
+            0% { transform: translateY(0) scaleY(1); opacity: 0; }
+            20% { opacity: 0.5; }
+            100% { transform: translateY(20px) scaleY(1.5); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <defs>
+                <linearGradient id="sun-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#ffff00" />
+                    <stop offset="100%" stop-color="#ff00de" />
+                </linearGradient>
+            </defs>
+
+            <!-- Sun -->
+            <circle class="sun" cx="50" cy="40" r="25" />
+            
+            <!-- Moving Slices on Sun -->
+            <g clip-path="url(#sun-clip)">
+                <rect class="sun-slice" x="20" y="45" width="60" height="2" />
+                <rect class="sun-slice" x="20" y="50" width="60" height="3" style="animation-delay: -0.5s;" />
+                <rect class="sun-slice" x="20" y="56" width="60" height="4" style="animation-delay: -1s;" />
+                <rect class="sun-slice" x="20" y="63" width="60" height="5" style="animation-delay: -1.5s;" />
+            </g>
+
+            <!-- Mountains -->
+            <path class="mountain" d="M0,60 L20,40 L35,55 L50,30 L65,55 L80,45 L100,60 L100,100 L0,100 Z" />
+
+            <!-- Perspective Grid -->
+            <g transform="perspective(50px)">
+                <!-- Vertical Lines (Static) -->
+                <line class="grid-line-v" x1="50" y1="60" x2="10" y2="100" />
+                <line class="grid-line-v" x1="50" y1="60" x2="30" y2="100" />
+                <line class="grid-line-v" x1="50" y1="60" x2="50" y2="100" />
+                <line class="grid-line-v" x1="50" y1="60" x2="70" y2="100" />
+                <line class="grid-line-v" x1="50" y1="60" x2="90" y2="100" />
+                
+                <!-- Horizontal Lines (Scrolling) -->
+                <line class="grid-line-h" x1="0" y1="65" x2="100" y2="65" />
+                <line class="grid-line-h" x1="0" y1="65" x2="100" y2="65" style="animation-delay: 0.5s;" />
+                <line class="grid-line-h" x1="0" y1="65" x2="100" y2="65" style="animation-delay: 1s;" />
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

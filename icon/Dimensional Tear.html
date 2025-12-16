@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimensional Tear</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #111;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .surface {
+            fill: #222;
+            stroke: #444;
+            stroke-width: 1;
+        }
+        .tear-path {
+            fill: none;
+            stroke: #00ffff;
+            stroke-width: 2;
+            filter: drop-shadow(0 0 5px #00ffff);
+            animation: tear-open 4s ease-in-out infinite;
+        }
+        .code-stream {
+            fill: #00ff00;
+            font-family: monospace;
+            font-size: 8px;
+            opacity: 0;
+            animation: matrix-reveal 4s ease-in-out infinite;
+        }
+        .stitch {
+            stroke: #fff;
+            stroke-width: 1;
+            stroke-dasharray: 10;
+            stroke-dashoffset: 10;
+            animation: stitch-up 4s ease-in-out infinite;
+        }
+
+        @keyframes tear-open {
+            0% { d: path("M20,50 L80,50"); stroke-width: 0; opacity: 0; }
+            10% { d: path("M20,50 L50,50 L80,50"); stroke-width: 1; opacity: 1; }
+            40% { d: path("M20,50 Q50,20 80,50"); stroke-width: 3; } /* Open wide */
+            60% { d: path("M20,50 Q50,80 80,50"); stroke-width: 3; } /* Warp */
+            90% { d: path("M20,50 L80,50"); stroke-width: 1; } /* Close */
+            100% { d: path("M20,50 L80,50"); stroke-width: 0; opacity: 0; }
+        }
+
+        @keyframes matrix-reveal {
+            0%, 20% { opacity: 0; }
+            40% { opacity: 1; transform: scaleY(1); }
+            60% { opacity: 1; transform: scaleY(1.2); }
+            80% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        
+        @keyframes stitch-up {
+            0%, 60% { opacity: 0; stroke-dashoffset: 10; }
+            70% { opacity: 1; stroke-dashoffset: 0; } /* Stitch appears */
+            90% { opacity: 1; stroke-dashoffset: 0; }
+            100% { opacity: 0; stroke-dashoffset: 10; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Background Surface -->
+            <rect class="surface" x="10" y="20" width="80" height="60" rx="5" />
+            
+            <!-- Code Inside the Tear -->
+            <text class="code-stream" x="30" y="45">10101</text>
+            <text class="code-stream" x="35" y="55" style="animation-delay: 0.1s;">01010</text>
+            <text class="code-stream" x="45" y="50" style="animation-delay: 0.2s;">ERROR</text>
+
+            <!-- The Glowing Tear -->
+            <path class="tear-path" d="M20,50 L80,50" />
+            
+            <!-- Repair Stitches -->
+            <line class="stitch" x1="30" y1="40" x2="30" y2="60" style="animation-delay: 0.1s;" />
+            <line class="stitch" x1="40" y1="35" x2="40" y2="65" style="animation-delay: 0.2s;" />
+            <line class="stitch" x1="50" y1="35" x2="50" y2="65" style="animation-delay: 0.3s;" />
+            <line class="stitch" x1="60" y1="40" x2="60" y2="60" style="animation-delay: 0.4s;" />
+            <line class="stitch" x1="70" y1="45" x2="70" y2="55" style="animation-delay: 0.5s;" />
+        </svg>
+    </div>
+</body>
+</html>

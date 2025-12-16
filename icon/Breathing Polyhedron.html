@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathing Polyhedron</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .poly-group {
+            transform-origin: center;
+            animation: breathe-rotate 6s ease-in-out infinite;
+        }
+        .shape {
+            fill: none;
+            stroke-width: 1;
+            transform-origin: center;
+        }
+        .outer {
+            stroke: #ff00ff;
+            animation: pulse-outer 3s ease-in-out infinite alternate;
+        }
+        .inner {
+            stroke: #00ffff;
+            animation: pulse-inner 3s ease-in-out infinite alternate;
+        }
+        .core {
+            fill: #fff;
+            opacity: 0.5;
+            animation: pulse-core 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes breathe-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-outer {
+            0% { transform: scale(0.8); stroke: #ff00ff; stroke-width: 1; }
+            100% { transform: scale(1.2); stroke: #ffff00; stroke-width: 3; }
+        }
+
+        @keyframes pulse-inner {
+            0% { transform: rotate(0deg) scale(1.2); stroke: #00ffff; }
+            100% { transform: rotate(180deg) scale(0.5); stroke: #00ff00; }
+        }
+        
+        @keyframes pulse-core {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <g class="poly-group">
+                <!-- Outer Hexagon -->
+                <polygon class="shape outer" points="50,10 85,30 85,70 50,90 15,70 15,30" />
+                
+                <!-- Connecting Lines -->
+                <line x1="50" y1="10" x2="50" y2="90" stroke="#333" stroke-width="0.5" />
+                <line x1="15" y1="30" x2="85" y2="70" stroke="#333" stroke-width="0.5" />
+                <line x1="85" y1="30" x2="15" y2="70" stroke="#333" stroke-width="0.5" />
+
+                <!-- Inner Triangle (Rotating Inverse) -->
+                <polygon class="shape inner" points="50,80 20,35 80,35" />
+                
+                <!-- Core Dot -->
+                <circle class="core" cx="50" cy="50" r="5" />
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Consciousness</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .aura-ring {
+            fill: none;
+            stroke: url(#consciousness-grad);
+            stroke-width: 1;
+            opacity: 0.5;
+            transform-origin: center;
+        }
+        .ring-1 { animation: spin-slow 10s linear infinite; stroke-dasharray: 10 10; }
+        .ring-2 { animation: spin-rev 8s linear infinite; stroke-dasharray: 20 5; rx: 35; ry: 35; }
+        .ring-3 { animation: pulse-aura 2s ease-in-out infinite alternate; stroke-width: 0.5; }
+
+        .brain-wire {
+            fill: none;
+            stroke: #00ffff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            animation: float-brain 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px #00ffff);
+        }
+        
+        .sparkle {
+            fill: #fff;
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes spin-slow { to { transform: rotate(360deg); } }
+        @keyframes spin-rev { to { transform: rotate(-360deg); } }
+        
+        @keyframes pulse-aura {
+            0% { transform: scale(0.9); opacity: 0.3; }
+            100% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        @keyframes float-brain {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-5px) scale(1.05); stroke: #fff; }
+            100% { transform: translateY(0) scale(1); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <defs>
+                <linearGradient id="consciousness-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00ffff" />
+                    <stop offset="100%" stop-color="#ff00ff" />
+                </linearGradient>
+            </defs>
+
+            <!-- Background Aura Rings -->
+            <ellipse class="aura-ring ring-1" cx="50" cy="50" rx="40" ry="40" />
+            <ellipse class="aura-ring ring-2" cx="50" cy="50" rx="35" ry="35" />
+            <ellipse class="aura-ring ring-3" cx="50" cy="50" rx="45" ry="45" />
+
+            <!-- The Digital Brain (Stylized) -->
+            <g class="brain-wire" transform-origin="center">
+                <!-- Left Lobe -->
+                <path d="M48,30 C30,30 25,50 35,70 C40,80 48,70 48,60" />
+                <!-- Right Lobe -->
+                <path d="M52,30 C70,30 75,50 65,70 C60,80 52,70 52,60" />
+                <!-- Connection -->
+                <path d="M48,45 H52 M48,55 H52" stroke-width="1" />
+            </g>
+
+            <!-- Consciousness Sparkles -->
+            <circle class="sparkle" cx="35" cy="40" r="1" style="animation-delay: 0s;" />
+            <circle class="sparkle" cx="65" cy="40" r="1" style="animation-delay: 0.5s;" />
+            <circle class="sparkle" cx="50" cy="25" r="1.5" style="animation-delay: 1s;" />
+            <circle class="sparkle" cx="50" cy="75" r="1.5" style="animation-delay: 1.5s;" />
+        </svg>
+    </div>
+</body>
+</html>

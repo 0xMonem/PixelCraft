@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Pin</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffecd2;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .globe {
+            fill: #4facfe;
+            stroke: #fff;
+            stroke-width: 2;
+        }
+        .continents {
+            fill: #fff;
+            opacity: 0.5;
+            animation: spin-globe 4s linear infinite;
+        }
+        .pin {
+            fill: #ff5555;
+            stroke: #fff;
+            stroke-width: 2;
+            transform-origin: bottom center;
+            animation: jump-pin 1s ease-in-out infinite;
+        }
+        .shadow-ripple {
+            fill: rgba(0,0,0,0.2);
+            transform-origin: center;
+            animation: ripple-effect 1s ease-out infinite;
+        }
+
+        @keyframes spin-globe {
+            to { transform: translateX(-20px); }
+        }
+
+        @keyframes jump-pin {
+            0%, 100% { transform: translateY(0) scale(1.1, 0.9); } /* Landed/Squash */
+            50% { transform: translateY(-30px) scale(0.9, 1.1); } /* Air/Stretch */
+        }
+
+        @keyframes ripple-effect {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Globe Base -->
+            <mask id="globe-mask">
+                <circle cx="50" cy="80" r="20" fill="white" />
+            </mask>
+            
+            <g mask="url(#globe-mask)">
+                <circle class="globe" cx="50" cy="80" r="20" />
+                <!-- Continents moving -->
+                <path class="continents" d="M30,80 Q40,70 50,80 T70,80 T90,80 V100 H30 Z" />
+            </g>
+
+            <!-- Ripple on impact -->
+            <ellipse class="shadow-ripple" cx="50" cy="60" rx="10" ry="3" />
+
+            <!-- Bouncing Pin -->
+            <g transform="translate(50 60)">
+                <path class="pin" d="M0,0 C-10,-15 -10,-25 0,-25 C10,-25 10,-15 0,0" />
+                <circle cx="0" cy="-18" r="3" fill="white" class="pin" style="animation: none; stroke: none;" />
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

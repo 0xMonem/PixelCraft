@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Weaver</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a0520;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .infinity-bg {
+            fill: none;
+            stroke: #444;
+            stroke-width: 4;
+            opacity: 0.3;
+        }
+        .infinity-path {
+            fill: none;
+            stroke: url(#gold-grad);
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-dasharray: 60 180; /* Length of dash vs gap */
+            animation: weave 3s linear infinite;
+            filter: drop-shadow(0 0 8px #ffd700);
+        }
+        .particle-head {
+            fill: #fff;
+            filter: drop-shadow(0 0 5px #fff);
+        }
+
+        @keyframes weave {
+            to { stroke-dashoffset: -240; } /* Must match total length roughly */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <defs>
+                <linearGradient id="gold-grad" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#ff00cc" />
+                    <stop offset="100%" stop-color="#ffd700" />
+                </linearGradient>
+            </defs>
+
+            <!-- Background Track -->
+            <path class="infinity-bg" d="M30,50 C30,20 50,20 50,50 C50,80 70,80 70,50 C70,20 50,20 50,50 C50,80 30,80 30,50 Z" />
+            
+            <!-- Drawing Path -->
+            <!-- Note: The path length is approx ~240 units for dasharray calculation -->
+            <path class="infinity-path" d="M30,50 C30,20 50,20 50,50 C50,80 70,80 70,50 C70,20 50,20 50,50 C50,80 30,80 30,50 Z" />
+
+            <!-- Particle at the tip (using animateMotion) -->
+            <circle class="particle-head" r="3">
+                <animateMotion 
+                    dur="3s" 
+                    repeatCount="indefinite"
+                    path="M30,50 C30,20 50,20 50,50 C50,80 70,80 70,50 C70,20 50,20 50,50 C50,80 30,80 30,50 Z"
+                />
+            </circle>
+        </svg>
+    </div>
+</body>
+</html>

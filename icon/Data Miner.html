@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Miner</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #101015;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        .core {
+            fill: #ffaa00;
+            filter: drop-shadow(0 0 5px #ffaa00);
+            animation: absorb-pulse 3s ease-in-out infinite;
+        }
+        .data-bit {
+            fill: #fff;
+            animation: suck-in 3s ease-in infinite;
+        }
+        .shockwave {
+            fill: none;
+            stroke: #ffaa00;
+            stroke-width: 2;
+            opacity: 0;
+            animation: explode 3s infinite;
+        }
+
+        @keyframes absorb-pulse {
+            0% { r: 10; opacity: 0.8; }
+            70% { r: 20; opacity: 1; fill: #ffaa00; } /* Growing */
+            75% { r: 25; fill: #fff; } /* Critical Mass */
+            80% { r: 10; } /* Collapse/Reset */
+            100% { r: 10; }
+        }
+
+        @keyframes suck-in {
+            0% { transform: translate(var(--tx), var(--ty)) scale(1); opacity: 1; }
+            70% { transform: translate(0, 0) scale(0.5); opacity: 1; } /* Sucked in */
+            71% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes explode {
+            74% { r: 10; opacity: 0; stroke-width: 10; }
+            75% { r: 10; opacity: 1; }
+            90% { r: 45; opacity: 0; stroke-width: 0; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Central Core -->
+            <circle class="core" cx="50" cy="50" r="10" />
+            
+            <!-- Explosion Shockwave -->
+            <circle class="shockwave" cx="50" cy="50" r="10" />
+
+            <!-- Incoming Data Particles -->
+            <g transform="translate(50 50)">
+                <circle class="data-bit" cx="0" cy="0" r="2" style="--tx: -40px; --ty: 0px;" />
+                <circle class="data-bit" cx="0" cy="0" r="2" style="--tx: 40px; --ty: 0px; animation-delay: 0.2s;" />
+                <circle class="data-bit" cx="0" cy="0" r="2" style="--tx: 0px; --ty: -40px; animation-delay: 0.5s;" />
+                <circle class="data-bit" cx="0" cy="0" r="2" style="--tx: 0px; --ty: 40px; animation-delay: 0.3s;" />
+                
+                <circle class="data-bit" cx="0" cy="0" r="1.5" style="--tx: -30px; --ty: -30px; animation-delay: 0.1s;" />
+                <circle class="data-bit" cx="0" cy="0" r="1.5" style="--tx: 30px; --ty: 30px; animation-delay: 0.4s;" />
+                <circle class="data-bit" cx="0" cy="0" r="1.5" style="--tx: 30px; --ty: -30px; animation-delay: 0.6s;" />
+                <circle class="data-bit" cx="0" cy="0" r="1.5" style="--tx: -30px; --ty: 30px; animation-delay: 0.7s;" />
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

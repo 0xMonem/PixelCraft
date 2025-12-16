@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonic Interpreter</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #050510;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        .bar {
+            fill: #00aaff;
+            transform-origin: bottom;
+            animation: listen 2s ease-in-out infinite alternate;
+        }
+        .digital-bit {
+            fill: #d000ff;
+            opacity: 0;
+            animation: upload-data 4s infinite;
+        }
+        
+        @keyframes listen {
+            0% { transform: scaleY(0.2); fill: #00aaff; }
+            40% { transform: scaleY(0.5); }
+            45% { transform: scaleY(1.5); fill: #d000ff; filter: drop-shadow(0 0 10px #d000ff); } /* VOICE DETECTED */
+            50% { transform: scaleY(1.2); }
+            55% { transform: scaleY(1.5); fill: #d000ff; }
+            100% { transform: scaleY(0.2); fill: #00aaff; }
+        }
+
+        @keyframes upload-data {
+            0%, 45% { transform: translateY(0); opacity: 0; }
+            50% { opacity: 1; transform: translateY(-20px); }
+            70% { opacity: 0; transform: translateY(-60px); }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Sound Bars -->
+            <rect class="bar" x="20" y="40" width="8" height="40" style="animation-delay: 0s;" />
+            <rect class="bar" x="32" y="40" width="8" height="40" style="animation-delay: -0.5s;" />
+            <rect class="bar" x="44" y="40" width="8" height="40" style="animation-delay: -1s;" />
+            <rect class="bar" x="56" y="40" width="8" height="40" style="animation-delay: -0.2s;" />
+            <rect class="bar" x="68" y="40" width="8" height="40" style="animation-delay: -0.7s;" />
+            <rect class="bar" x="80" y="40" width="8" height="40" style="animation-delay: -0.4s;" />
+
+            <!-- Digital Bits rising after detection -->
+            <rect class="digital-bit" x="34" y="30" width="4" height="4" style="animation-delay: 0s;" />
+            <rect class="digital-bit" x="58" y="20" width="4" height="4" style="animation-delay: 0.1s;" />
+            <rect class="digital-bit" x="70" y="35" width="4" height="4" style="animation-delay: 0.2s;" />
+            <rect class="digital-bit" x="22" y="25" width="4" height="4" style="animation-delay: 0.3s;" />
+        </svg>
+    </div>
+</body>
+</html>

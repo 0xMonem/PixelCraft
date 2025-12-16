@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viral Injection</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        .virus-body {
+            fill: #00aaff; /* Blue start */
+            stroke: #fff;
+            stroke-width: 1;
+            transform-origin: center bottom;
+            animation: virus-cycle 3s cubic-bezier(0.1, 0.7, 1.0, 0.1) infinite;
+        }
+        .legs {
+            fill: none;
+            stroke: #00aaff;
+            stroke-width: 2;
+            transition: stroke 0.1s;
+            animation: legs-color 3s infinite;
+        }
+        .cell-surface {
+            fill: #333;
+            animation: cell-damage 3s infinite;
+        }
+        .dna-stream {
+            stroke: #00ff00;
+            stroke-width: 3;
+            stroke-dasharray: 20;
+            stroke-dashoffset: 20;
+            opacity: 0;
+            animation: inject-dna 3s infinite;
+        }
+
+        @keyframes virus-cycle {
+            0%, 50% { transform: translateY(0) scaleY(1); fill: #00aaff; }
+            60% { transform: translateY(5px) scaleY(0.8); } /* Compress */
+            65% { transform: translateY(15px) scaleY(1.1); fill: #00ff00; } /* INJECT! + Green Change */
+            70% { transform: translateY(15px) scaleY(1.1); fill: #00ff00; }
+            80% { transform: translateY(0) scaleY(1); fill: #00aaff; } /* Return */
+        }
+
+        @keyframes legs-color {
+            0%, 60% { stroke: #00aaff; }
+            65% { stroke: #00ff00; filter: drop-shadow(0 0 5px #00ff00); }
+            80% { stroke: #00aaff; }
+        }
+
+        @keyframes cell-damage {
+            0%, 65% { fill: #333; }
+            66% { fill: #aa0000; } /* Cell bleeds red upon injection */
+            90% { fill: #333; }
+        }
+
+        @keyframes inject-dna {
+            0%, 64% { opacity: 0; stroke-dashoffset: 20; }
+            65% { opacity: 1; stroke-dashoffset: 20; }
+            75% { opacity: 1; stroke-dashoffset: 0; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Cell Surface -->
+            <path class="cell-surface" d="M0,80 Q20,75 50,80 Q80,85 100,80 V100 H0 Z" />
+            
+            <!-- Injection DNA Stream -->
+            <line class="dna-stream" x1="50" y1="50" x2="50" y2="90" />
+
+            <!-- Virus Legs -->
+            <g class="legs">
+                <path d="M50,60 L30,80" />
+                <path d="M50,60 L70,80" />
+                <path d="M50,60 L20,70" />
+                <path d="M50,60 L80,70" />
+            </g>
+
+            <!-- Virus Head & Body -->
+            <g class="virus-body">
+                <polygon points="40,30 60,30 50,10" /> <!-- Head -->
+                <rect x="45" y="30" width="10" height="30" /> <!-- Neck -->
+                <line x1="40" y1="30" x2="60" y2="30" stroke="#fff" stroke-width="1" />
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

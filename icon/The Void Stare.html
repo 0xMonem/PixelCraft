@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Void Stare</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #050505;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .eye-outline {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 1;
+            opacity: 0.5;
+        }
+        .void-pupil {
+            fill: #000;
+            stroke: #ff00ff; /* Void Energy */
+            stroke-width: 2;
+            filter: drop-shadow(0 0 10px #ff00ff);
+            animation: void-spin 6s linear infinite;
+        }
+        .accretion-disk {
+            fill: none;
+            stroke: url(#void-grad);
+            stroke-width: 4;
+            stroke-dasharray: 20 10;
+            animation: disk-spin 2s linear infinite reverse;
+        }
+        .reality-warp {
+            animation: warp-effect 5s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        @keyframes void-spin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(0.9); stroke: #00ffff; filter: drop-shadow(0 0 15px #00ffff); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes disk-spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes warp-effect {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            20% { transform: translate(-10px, 5px) scale(1.1); } /* Look Left */
+            40% { transform: translate(10px, -5px) scale(0.9); } /* Look Right */
+            50% { transform: translate(0, 0) scale(1.2); } /* STARE CLOSE */
+            60% { transform: translate(0, 0) scale(1); }
+            80% { transform: translate(0, 0) skewX(10deg); } /* Reality Bend */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <defs>
+                <linearGradient id="void-grad" gradientTransform="rotate(90)">
+                    <stop offset="0%" stop-color="#ff00ff" />
+                    <stop offset="100%" stop-color="#00ffff" />
+                </linearGradient>
+                <filter id="distort">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="noise" />
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" />
+                </filter>
+            </defs>
+
+            <g class="reality-warp">
+                <!-- Eye Outline -->
+                <path class="eye-outline" d="M10,50 Q50,10 90,50 Q50,90 10,50 Z" />
+                
+                <!-- Inner Iris/Disk -->
+                <g transform="translate(50 50)">
+                    <circle class="accretion-disk" r="18" />
+                    
+                    <!-- The Black Hole Pupil -->
+                    <circle class="void-pupil" r="10" />
+                    <path d="M-12,0 L-20,0 M12,0 L20,0 M0,-12 L0,-20 M0,12 L0,20" stroke="#fff" stroke-width="1" opacity="0.5">
+                         <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="10s" repeatCount="indefinite" />
+                    </path>
+                </g>
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Stack</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #050510;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .slice {
+            fill: #333;
+            stroke: none;
+            transition: fill 0.2s;
+        }
+        .scanner-beam {
+            fill: url(#beam-grad);
+            opacity: 0.6;
+            animation: scan-up 3s ease-in-out infinite;
+        }
+        
+        /* The Activation Animation */
+        .slice:nth-child(1) { animation: activate 3s infinite 0.3s; }
+        .slice:nth-child(2) { animation: activate 3s infinite 0.6s; }
+        .slice:nth-child(3) { animation: activate 3s infinite 0.9s; }
+        .slice:nth-child(4) { animation: activate 3s infinite 1.2s; }
+        .slice:nth-child(5) { animation: activate 3s infinite 1.5s; }
+
+        @keyframes scan-up {
+            0% { transform: translateY(100px); }
+            100% { transform: translateY(-50px); }
+        }
+
+        @keyframes activate {
+            0% { fill: #333; transform: scaleX(1); }
+            10% { fill: #00ffcc; transform: scaleX(1.1); filter: drop-shadow(0 0 5px #00ffcc); } /* Active */
+            30% { fill: #0088aa; transform: scaleX(1); }
+            100% { fill: #333; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <defs>
+                <linearGradient id="beam-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#00ffcc" stop-opacity="0" />
+                    <stop offset="50%" stop-color="#00ffcc" stop-opacity="0.8" />
+                    <stop offset="100%" stop-color="#00ffcc" stop-opacity="0" />
+                </linearGradient>
+            </defs>
+
+            <g transform="translate(30 20)">
+                <!-- Memory Slices -->
+                <rect class="slice" x="0" y="50" width="40" height="4" rx="2" />
+                <rect class="slice" x="0" y="40" width="40" height="4" rx="2" />
+                <rect class="slice" x="0" y="30" width="40" height="4" rx="2" />
+                <rect class="slice" x="0" y="20" width="40" height="4" rx="2" />
+                <rect class="slice" x="0" y="10" width="40" height="4" rx="2" />
+            </g>
+
+            <!-- Scanner Beam Overlay -->
+            <rect class="scanner-beam" x="20" y="10" width="60" height="10" />
+        </svg>
+    </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero Day Patch</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #150000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .shield-base {
+            fill: none;
+            stroke-width: 3;
+            transition: stroke 0.3s;
+            animation: shield-status 4s infinite;
+        }
+        .crack {
+            fill: none;
+            stroke: #ff0000;
+            stroke-width: 2;
+            animation: crack-appear 4s infinite;
+        }
+        .patch {
+            stroke: #fff;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-dasharray: 20;
+            stroke-dashoffset: 20;
+            animation: patch-apply 4s infinite;
+        }
+        .glow-fix {
+            fill: #00ff00;
+            opacity: 0;
+            animation: flash-green 4s infinite;
+        }
+
+        @keyframes shield-status {
+            0%, 40% { stroke: #00aaff; } /* Safe */
+            45%, 65% { stroke: #ff0000; } /* Danger */
+            70%, 100% { stroke: #00ff00; } /* Patched/Safe */
+        }
+
+        @keyframes crack-appear {
+            0%, 40% { opacity: 0; stroke-dasharray: 0 50; }
+            45% { opacity: 1; stroke-dasharray: 20 0; } /* Crack appears */
+            65% { opacity: 1; }
+            70% { opacity: 0; } /* Gone */
+            100% { opacity: 0; }
+        }
+
+        @keyframes patch-apply {
+            0%, 60% { stroke-dashoffset: 20; opacity: 0; }
+            65% { opacity: 1; stroke-dashoffset: 0; } /* Patch applied */
+            80% { opacity: 1; }
+            85% { opacity: 0; } /* Integrated */
+            100% { opacity: 0; }
+        }
+
+        @keyframes flash-green {
+            69% { opacity: 0; transform: scale(0); }
+            70% { opacity: 0.5; transform: scale(1.2); }
+            80% { opacity: 0; transform: scale(1.5); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- The Shield -->
+            <path class="shield-base" d="M50,15 L80,30 V50 C80,75 50,90 50,90 C50,90 20,75 20,50 V30 Z" />
+
+            <!-- The Crack (Zigzag) -->
+            <path class="crack" d="M40,40 L50,50 L45,60 L55,70" />
+
+            <!-- The Patch (Stitches) -->
+            <line class="patch" x1="35" y1="45" x2="55" y2="45" />
+            <line class="patch" x1="40" y1="55" x2="60" y2="55" style="animation-delay: 0.1s;" />
+            <line class="patch" x1="40" y1="65" x2="60" y2="65" style="animation-delay: 0.2s;" />
+
+            <!-- Healing Flash -->
+            <circle class="glow-fix" cx="50" cy="55" r="25" transform-origin="center" />
+        </svg>
+    </div>
+</body>
+</html>

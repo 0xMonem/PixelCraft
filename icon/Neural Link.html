@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Link</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #020202;
+            overflow: hidden;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .hex-center {
+            fill: #111;
+            stroke: #0f0;
+            stroke-width: 2;
+            filter: drop-shadow(0 0 5px #0f0);
+            animation: breathe 3s ease-in-out infinite;
+            transform-origin: center;
+        }
+        .circuit-line {
+            fill: none;
+            stroke: #0f0;
+            stroke-width: 2;
+            stroke-linecap: round;
+            opacity: 0.3;
+        }
+        .data-packet {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-dasharray: 0 100;
+            filter: drop-shadow(0 0 8px #fff);
+            animation: transmit 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        .nodes {
+            fill: #0f0;
+            animation: flicker 4s infinite;
+        }
+        .outer-ring {
+            fill: none;
+            stroke: #333;
+            stroke-width: 1;
+            stroke-dasharray: 10 10;
+            transform-origin: center;
+            animation: slow-spin 20s linear infinite;
+        }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); stroke: #0f0; }
+            50% { transform: scale(1.05); stroke: #aff; }
+        }
+        @keyframes transmit {
+            0% { stroke-dasharray: 0 100; stroke-dashoffset: 0; opacity: 0; }
+            20% { opacity: 1; }
+            80% { stroke-dasharray: 20 100; opacity: 1; }
+            100% { stroke-dasharray: 0 100; stroke-dashoffset: -100; opacity: 0; }
+        }
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+            52% { opacity: 0.8; }
+            54% { opacity: 0.3; }
+        }
+        @keyframes slow-spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <circle class="outer-ring" cx="50" cy="50" r="45" />
+            
+            <path class="circuit-line" d="M50 30 L50 10 M50 70 L50 90 M30 50 L10 50 M70 50 L90 50 M35 35 L20 20 M65 65 L80 80 M35 65 L20 80 M65 35 L80 20" />
+            
+            <path class="data-packet" d="M50 30 L50 10">
+                <animate attributeName="stroke-dashoffset" from="20" to="-20" dur="1.5s" repeatCount="indefinite" />
+            </path>
+            <path class="data-packet" d="M30 50 L10 50" style="animation-delay: 0.5s;" />
+            <path class="data-packet" d="M70 50 L90 50" style="animation-delay: 0.2s;" />
+            <path class="data-packet" d="M50 70 L50 90" style="animation-delay: 0.7s;" />
+            
+            <circle class="nodes" cx="50" cy="10" r="2" />
+            <circle class="nodes" cx="90" cy="50" r="2" />
+            <circle class="nodes" cx="50" cy="90" r="2" />
+            <circle class="nodes" cx="10" cy="50" r="2" />
+
+            <path class="hex-center" d="M50 30 L67 40 L67 60 L50 70 L33 60 L33 40 Z" />
+            <circle cx="50" cy="50" r="5" fill="#fff">
+                <animate attributeName="opacity" values="0.5;1;0.5" dur="1s" repeatCount="indefinite" />
+            </circle>
+        </svg>
+    </div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel Eye</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+        }
+        .box {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        .eye-ball {
+            fill: none;
+            stroke: #f00;
+            stroke-width: 1.5;
+            filter: drop-shadow(0 0 10px #f00);
+        }
+        .iris {
+            fill: none;
+            stroke: #ff0055;
+            stroke-width: 4;
+            stroke-dasharray: 10 5;
+            transform-origin: center;
+            animation: scan-rotate 3s linear infinite;
+        }
+        .pupil {
+            fill: #fff;
+            transform-origin: center;
+            animation: dilate 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 5px #fff);
+        }
+        .shutter {
+            fill: #220000;
+            opacity: 0.8;
+            transform-origin: center;
+            animation: blink 5s infinite;
+        }
+        .hud-ring {
+            fill: none;
+            stroke: #ff0000;
+            stroke-width: 1;
+            opacity: 0.5;
+            stroke-dasharray: 60 120;
+            transform-origin: center;
+            animation: spin-hud 8s linear infinite reverse;
+        }
+        .target-line {
+            stroke: #fff;
+            stroke-width: 1;
+            opacity: 0;
+            animation: target-lock 2s infinite;
+        }
+        @keyframes scan-rotate {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        @keyframes dilate {
+            0%, 100% { transform: scale(1); }
+            10% { transform: scale(0.4); }
+            20% { transform: scale(1); }
+            60% { transform: scale(0.8); }
+        }
+        @keyframes spin-hud {
+            to { transform: rotate(360deg); }
+        }
+        @keyframes blink {
+            0%, 45%, 55%, 100% { transform: scaleY(0); }
+            50% { transform: scaleY(1); }
+        }
+        @keyframes target-lock {
+            0% { opacity: 0; transform: scale(1.5); }
+            50% { opacity: 0.8; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.5); }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <svg viewBox="0 0 100 100">
+            <path class="eye-ball" d="M10,50 Q50,10 90,50 Q50,90 10,50 Z" />
+            
+            <circle class="hud-ring" cx="50" cy="50" r="35" />
+            <circle class="hud-ring" cx="50" cy="50" r="28" style="animation-duration: 4s; stroke-dasharray: 20 20;" />
+
+            <circle class="iris" cx="50" cy="50" r="15" />
+            <circle class="pupil" cx="50" cy="50" r="5" />
+            
+            <rect class="target-line" x="49" y="20" width="2" height="10" />
+            <rect class="target-line" x="49" y="70" width="2" height="10" />
+            <rect class="target-line" x="20" y="49" width="10" height="2" />
+            <rect class="target-line" x="70" y="49" width="10" height="2" />
+
+            <!-- Eyelids for blinking effect -->
+            <path class="shutter" d="M10,50 Q50,10 90,50 L90,0 L10,0 Z" style="transform-origin: top center;">
+                <animateTransform attributeName="transform" type="scale" values="1 0; 1 1; 1 0" dur="0.2s" begin="2s;5s;7s" />
+            </path>
+            <path class="shutter" d="M10,50 Q50,90 90,50 L90,100 L10,100 Z" style="transform-origin: bottom center;">
+                <animateTransform attributeName="transform" type="scale" values="1 0; 1 1; 1 0" dur="0.2s" begin="2s;5s;7s" />
+            </path>
+        </svg>
+    </div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reasoning Engine</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0d0d12;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .gear {
+            fill: none;
+            stroke-width: 4;
+            stroke-linecap: round;
+            transform-origin: center;
+        }
+        .gear-outer {
+            stroke: #444;
+            stroke-dasharray: 10 20;
+            animation: spin-thinking 3s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+        }
+        .gear-inner {
+            stroke: #ff9900; /* Thinking Color */
+            stroke-dasharray: 60 100;
+            animation: process-data 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 5px #ff9900);
+        }
+        .core-dot {
+            fill: #fff;
+            animation: pulse-solve 3s infinite;
+        }
+        
+        /* The Magic Animation Sequence */
+        @keyframes spin-thinking {
+            0% { transform: rotate(0deg); stroke: #444; }
+            50% { transform: rotate(180deg); stroke: #fff; } /* Processing */
+            100% { transform: rotate(360deg); stroke: #444; }
+        }
+
+        @keyframes process-data {
+            0% { stroke-dashoffset: 0; stroke: #ff9900; transform: rotate(0deg) scale(0.8); }
+            50% { stroke-dashoffset: -50; stroke: #00ccff; transform: rotate(-90deg) scale(1); filter: drop-shadow(0 0 10px #00ccff); } /* SOLVED */
+            100% { stroke-dashoffset: -160; stroke: #ff9900; transform: rotate(-180deg) scale(0.8); }
+        }
+
+        @keyframes pulse-solve {
+            0%, 40% { transform: scale(0.5); opacity: 0.5; }
+            50% { transform: scale(1.5); opacity: 1; fill: #00ccff; } /* Epiphany Moment */
+            60% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0.5); opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Background Ring -->
+            <circle cx="50" cy="50" r="40" stroke="#222" stroke-width="2" fill="none" />
+            
+            <!-- Outer Mechanics -->
+            <circle class="gear gear-outer" cx="50" cy="50" r="35" />
+            
+            <!-- Inner Logic Stream -->
+            <circle class="gear gear-inner" cx="50" cy="50" r="20" />
+            
+            <!-- The Solution Core -->
+            <circle class="core-dot" cx="50" cy="50" r="6" />
+            
+            <!-- Connection Lines appearing on solve -->
+            <g stroke="#00ccff" stroke-width="2" opacity="0">
+                <line x1="50" y1="20" x2="50" y2="10" />
+                <line x1="80" y1="50" x2="90" y2="50" />
+                <line x1="50" y1="80" x2="50" y2="90" />
+                <line x1="20" y1="50" x2="10" y2="50" />
+                <animate attributeName="opacity" values="0;0;1;0" dur="3s" repeatCount="indefinite" />
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

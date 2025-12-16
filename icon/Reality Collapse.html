@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reality Collapse</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .grid-line {
+            stroke: #333;
+            stroke-width: 1;
+            transform-origin: center;
+            animation: grid-warp 4s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        }
+        .singularity {
+            fill: #fff;
+            animation: implode-explode 4s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        }
+        .debris {
+            fill: url(#bang-grad);
+            opacity: 0;
+            animation: debris-fly 4s cubic-bezier(0.1, 0.8, 0.2, 1) infinite;
+        }
+
+        @keyframes grid-warp {
+            0% { transform: scale(1) rotate(0); stroke: #333; }
+            40% { transform: scale(0.1) rotate(90deg); stroke: #fff; opacity: 1; } /* SUCK IN */
+            45% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(0); opacity: 0; }
+            55% { transform: scale(1.5); opacity: 0; stroke: #ff00ff; } /* Explode invisible force */
+            100% { transform: scale(1) rotate(0); stroke: #333; opacity: 1; } /* Reset */
+        }
+
+        @keyframes implode-explode {
+            0%, 30% { r: 0; opacity: 0; }
+            40% { r: 5; opacity: 1; fill: #fff; } /* Gather energy */
+            42% { r: 2; fill: #000; stroke: #fff; stroke-width: 2; } /* Compress */
+            45% { r: 50; opacity: 1; fill: #fff; } /* BANG */
+            55% { r: 100; opacity: 0; } /* Fade out */
+            100% { r: 0; opacity: 0; }
+        }
+
+        @keyframes debris-fly {
+            44% { transform: translate(0,0) scale(0); opacity: 0; }
+            45% { transform: translate(0,0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <defs>
+                <radialGradient id="bang-grad">
+                    <stop offset="0%" stop-color="#fff" />
+                    <stop offset="50%" stop-color="#ff00ff" />
+                    <stop offset="100%" stop-color="#00ffff" />
+                </radialGradient>
+            </defs>
+
+            <!-- Warping Grid -->
+            <g>
+                <line class="grid-line" x1="10" y1="50" x2="90" y2="50" />
+                <line class="grid-line" x1="50" y1="10" x2="50" y2="90" />
+                <line class="grid-line" x1="20" y1="20" x2="80" y2="80" />
+                <line class="grid-line" x1="80" y1="20" x2="20" y2="80" />
+                <circle class="grid-line" cx="50" cy="50" r="20" fill="none" />
+                <circle class="grid-line" cx="50" cy="50" r="35" fill="none" />
+            </g>
+
+            <!-- Explosion Debris -->
+            <g transform="translate(50 50)">
+                <circle class="debris" r="2" style="--tx: -40px; --ty: -40px;" />
+                <circle class="debris" r="3" style="--tx: 40px; --ty: -20px;" />
+                <circle class="debris" r="1.5" style="--tx: 0px; --ty: 50px;" />
+                <circle class="debris" r="2.5" style="--tx: -30px; --ty: 30px;" />
+                <circle class="debris" r="2" style="--tx: 30px; --ty: 40px;" />
+                <circle class="debris" r="3" style="--tx: 50px; --ty: 0px;" />
+                <circle class="debris" r="1" style="--tx: -50px; --ty: 10px;" />
+                <circle class="debris" r="2" style="--tx: 0px; --ty: -50px;" />
+            </g>
+
+            <!-- Central Singularity -->
+            <circle class="singularity" cx="50" cy="50" r="0" />
+        </svg>
+    </div>
+</body>
+</html>

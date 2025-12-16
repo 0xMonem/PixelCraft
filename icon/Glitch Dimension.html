@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glitch Dimension</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #101010;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        .layer {
+            fill: none;
+            stroke-width: 3;
+            transform-origin: center;
+            mix-blend-mode: screen; /* Magic happens here */
+        }
+        .red { stroke: #ff0000; animation: glitch-r 3s infinite; }
+        .green { stroke: #00ff00; animation: glitch-g 3s infinite; }
+        .blue { stroke: #0000ff; animation: glitch-b 3s infinite; }
+        
+        .static-cube {
+            stroke: #fff;
+            stroke-width: 1;
+            fill: none;
+            opacity: 0.2;
+        }
+
+        @keyframes glitch-r {
+            0%, 80% { transform: translate(0,0); }
+            82% { transform: translate(-5px, 2px); }
+            84% { transform: translate(5px, -2px); }
+            86% { transform: translate(-5px, -2px); }
+            100% { transform: translate(0,0); }
+        }
+
+        @keyframes glitch-g {
+            0%, 80% { transform: translate(0,0); }
+            82% { transform: translate(5px, -2px); }
+            84% { transform: translate(-5px, 2px); }
+            86% { transform: translate(5px, 2px); }
+            100% { transform: translate(0,0); }
+        }
+
+        @keyframes glitch-b {
+            0%, 80% { transform: translate(0,0); }
+            82% { transform: translate(2px, 5px); }
+            84% { transform: translate(-2px, -5px); }
+            86% { transform: translate(0, 0); }
+            100% { transform: translate(0,0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Background Static Cube -->
+            <rect class="static-cube" x="30" y="30" width="40" height="40" />
+
+            <!-- Glitching Layers -->
+            <!-- Red Channel -->
+            <rect class="layer red" x="30" y="30" width="40" height="40" />
+            
+            <!-- Green Channel -->
+            <rect class="layer green" x="30" y="30" width="40" height="40" />
+            
+            <!-- Blue Channel -->
+            <rect class="layer blue" x="30" y="30" width="40" height="40" />
+            
+            <!-- Glitch Scratches -->
+            <path d="M20,50 H80" stroke="#fff" stroke-width="1" opacity="0">
+                <animate attributeName="opacity" values="0;0;1;0" dur="3s" begin="2.4s" repeatCount="indefinite" />
+                <animate attributeName="d" values="M20,50 H80; M20,20 H80; M20,80 H80" dur="0.2s" repeatCount="indefinite" />
+            </path>
+        </svg>
+    </div>
+</body>
+</html>

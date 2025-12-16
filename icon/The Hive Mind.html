@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hive Mind</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #050000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        .hive-body {
+            fill: #300;
+            stroke: #500;
+            stroke-width: 2;
+            animation: body-pulse 4s infinite;
+        }
+        .veins {
+            fill: none;
+            stroke: #ff0000;
+            stroke-width: 1;
+            opacity: 0.3;
+            animation: vein-glow 4s infinite;
+        }
+        .eye-sclera {
+            fill: #ffaa00;
+            filter: drop-shadow(0 0 5px #ffaa00);
+        }
+        .pupil {
+            fill: #000;
+            animation: pupil-look 4s infinite;
+        }
+        .eyelid {
+            fill: #300;
+            transform-origin: center;
+            animation: blink-scare 4s cubic-bezier(0.8, 0, 0.2, 1) infinite;
+        }
+        
+        @keyframes body-pulse {
+            0%, 40% { transform: scale(1); fill: #300; stroke: #500; }
+            50% { transform: scale(1.1); fill: #500; stroke: #ffaa00; } /* WAKE UP */
+            60% { transform: scale(1.1); }
+            100% { transform: scale(1); fill: #300; stroke: #500; }
+        }
+
+        @keyframes vein-glow {
+            0%, 40% { opacity: 0.3; stroke: #ff0000; }
+            50% { opacity: 1; stroke: #ffff00; stroke-width: 2; }
+            100% { opacity: 0.3; stroke: #ff0000; }
+        }
+
+        @keyframes blink-scare {
+            0%, 45% { transform: scaleY(1); } /* Closed */
+            48% { transform: scaleY(0); } /* OPEN SUDDENLY */
+            60% { transform: scaleY(0); } /* Stay Open */
+            65% { transform: scaleY(1); } /* Close */
+            100% { transform: scaleY(1); }
+        }
+
+        @keyframes pupil-look {
+            0%, 45% { transform: translate(0,0); }
+            50% { transform: translate(0,0); }
+            52% { transform: translate(2px, 0); }
+            54% { transform: translate(-2px, 0); }
+            60% { transform: translate(0,0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Main Hive Shape -->
+            <path class="hive-body" d="M50,10 C80,10 90,30 90,50 C90,80 70,90 50,90 C30,90 10,80 10,50 C10,30 20,10 50,10 Z" />
+            
+            <!-- Veins -->
+            <path class="veins" d="M50,10 L50,30 M90,50 L70,50 M50,90 L50,70 M10,50 L30,50" />
+
+            <!-- CENTER EYE -->
+            <g transform="translate(50 50)">
+                <ellipse class="eye-sclera" cx="0" cy="0" rx="15" ry="8" />
+                <circle class="pupil" cx="0" cy="0" r="4" />
+                <ellipse class="eyelid" cx="0" cy="0" rx="16" ry="9" />
+            </g>
+
+            <!-- TOP EYE -->
+            <g transform="translate(50 25)">
+                <ellipse class="eye-sclera" cx="0" cy="0" rx="8" ry="5" />
+                <circle class="pupil" cx="0" cy="0" r="2" />
+                <ellipse class="eyelid" cx="0" cy="0" rx="9" ry="6" />
+            </g>
+
+            <!-- RIGHT EYE -->
+            <g transform="translate(75 50) rotate(90)">
+                <ellipse class="eye-sclera" cx="0" cy="0" rx="8" ry="5" />
+                <circle class="pupil" cx="0" cy="0" r="2" />
+                <ellipse class="eyelid" cx="0" cy="0" rx="9" ry="6" />
+            </g>
+
+             <!-- LEFT EYE -->
+             <g transform="translate(25 50) rotate(90)">
+                <ellipse class="eye-sclera" cx="0" cy="0" rx="8" ry="5" />
+                <circle class="pupil" cx="0" cy="0" r="2" />
+                <ellipse class="eyelid" cx="0" cy="0" rx="9" ry="6" />
+            </g>
+
+            <!-- BOTTOM EYE -->
+            <g transform="translate(50 75)">
+                <ellipse class="eye-sclera" cx="0" cy="0" rx="8" ry="5" />
+                <circle class="pupil" cx="0" cy="0" r="2" />
+                <ellipse class="eyelid" cx="0" cy="0" rx="9" ry="6" />
+            </g>
+        </svg>
+    </div>
+</body>
+</html>
