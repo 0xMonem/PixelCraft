@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wormhole Gate</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #050015;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .vortex {
+            fill: none;
+            stroke: #9d00ff;
+            stroke-width: 1;
+            transform-origin: center;
+            animation: spin-vortex 10s linear infinite;
+        }
+        .star-line {
+            stroke: #fff;
+            stroke-width: 1;
+            stroke-linecap: round;
+            opacity: 0;
+            animation: warp-speed 2s linear infinite;
+        }
+        .gate-ring {
+            fill: none;
+            stroke: #00ffff;
+            stroke-width: 3;
+            filter: drop-shadow(0 0 5px #00ffff);
+            animation: pulse-gate 2s ease-in-out infinite alternate;
+        }
+        .traveler {
+            fill: #fff;
+            animation: enter-wormhole 4s ease-in infinite;
+        }
+
+        @keyframes spin-vortex {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes warp-speed {
+            0% { stroke-dasharray: 0 50; stroke-dashoffset: 0; opacity: 0; }
+            50% { opacity: 1; }
+            100% { stroke-dasharray: 50 0; stroke-dashoffset: -50; opacity: 0; }
+        }
+
+        @keyframes pulse-gate {
+            0% { transform: scale(1); stroke-width: 3; }
+            100% { transform: scale(1.05); stroke-width: 5; }
+        }
+
+        @keyframes enter-wormhole {
+            0% { transform: translate(0, 50px) scale(0.5); opacity: 0; }
+            20% { opacity: 1; }
+            50% { transform: translate(0, 0) scale(1); } /* Center */
+            80% { transform: translate(0, 0) scale(0); opacity: 0; } /* Sucked in */
+            100% { transform: translate(0, 0) scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <defs>
+                <radialGradient id="deep-space" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#000" />
+                    <stop offset="100%" stop-color="#2a0040" />
+                </radialGradient>
+            </defs>
+
+            <!-- Background Vortex -->
+            <circle cx="50" cy="50" r="45" fill="url(#deep-space)" />
+            
+            <g class="vortex">
+                <circle cx="50" cy="50" r="10" stroke-dasharray="2 2" />
+                <circle cx="50" cy="50" r="20" stroke-dasharray="4 4" />
+                <circle class="vortex" cx="50" cy="50" r="30" stroke-dasharray="8 8" style="animation-direction: reverse;" />
+                <circle class="vortex" cx="50" cy="50" r="40" stroke-dasharray="16 16" />
+            </g>
+
+            <!-- Warp Lines (Stars stretching) -->
+            <line class="star-line" x1="50" y1="50" x2="10" y2="10" />
+            <line class="star-line" x1="50" y1="50" x2="90" y2="10" style="animation-delay: 0.5s;" />
+            <line class="star-line" x1="50" y1="50" x2="10" y2="90" style="animation-delay: 1s;" />
+            <line class="star-line" x1="50" y1="50" x2="90" y2="90" style="animation-delay: 1.5s;" />
+
+            <!-- The Gate Ring -->
+            <circle class="gate-ring" cx="50" cy="50" r="25" />
+
+            <!-- The Traveler Object -->
+            <path class="traveler" d="M45,80 L50,70 L55,80 L50,85 Z" />
+        </svg>
+    </div>
+</body>
+</html>

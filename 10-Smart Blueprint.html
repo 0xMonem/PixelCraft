@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Blueprint</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e3799; /* Blueprint Blue */
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .house-lines {
+            fill: #fff;
+            fill-opacity: 0;
+            stroke: #fff;
+            stroke-width: 2;
+            stroke-dasharray: 200;
+            stroke-dashoffset: 200;
+            stroke-linejoin: round;
+            animation: build-house 4s ease-in-out infinite;
+        }
+        .window-light {
+            fill: #ffd700;
+            opacity: 0;
+            animation: lights-on 4s ease-in-out infinite;
+        }
+        .measurement-line {
+            stroke: #fff;
+            stroke-width: 1;
+            stroke-dasharray: 2 2;
+            opacity: 0.5;
+        }
+
+        @keyframes build-house {
+            0% { stroke-dashoffset: 200; fill-opacity: 0; }
+            40% { stroke-dashoffset: 0; fill-opacity: 0; } /* Drawn */
+            50% { fill-opacity: 0.1; } /* Solidify */
+            90% { fill-opacity: 0.1; stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: 200; fill-opacity: 0; } /* Reset */
+        }
+
+        @keyframes lights-on {
+            0%, 50% { opacity: 0; }
+            60% { opacity: 1; } /* Lights ON */
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Measurement Grid Lines (Blueprint style) -->
+            <line class="measurement-line" x1="10" y1="80" x2="90" y2="80" />
+            <line class="measurement-line" x1="20" y1="20" x2="20" y2="90" />
+            <text x="85" y="75" fill="#fff" font-family="monospace" font-size="6" opacity="0.5">10m</text>
+
+            <!-- House Structure -->
+            <g transform="translate(25 25)">
+                <!-- Main Body -->
+                <path class="house-lines" d="M0,25 L25,0 L50,25 L50,55 L0,55 Z" />
+                
+                <!-- Windows -->
+                <rect class="window-light" x="10" y="30" width="10" height="10" />
+                <rect class="window-light" x="30" y="30" width="10" height="10" style="animation-delay: 0.2s;" />
+                
+                <!-- Door Frame (Drawn) -->
+                <path class="house-lines" d="M20,55 V40 H30 V55" style="stroke-dasharray: 50; animation-delay: 0.5s;" />
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

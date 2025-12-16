@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Core</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .ring {
+            fill: none;
+            stroke-width: 2;
+            transform-origin: center;
+        }
+        .ring-outer {
+            stroke: #0088ff;
+            stroke-dasharray: 20 40;
+            animation: spin 8s linear infinite, panic-color 5s infinite;
+        }
+        .ring-mid {
+            stroke: #00aaff;
+            stroke-dasharray: 50 20;
+            animation: spin-rev 5s linear infinite, panic-color 5s infinite;
+        }
+        .core-eye {
+            fill: #00ffff;
+            animation: breathe 5s infinite, panic-fill 5s infinite;
+            filter: drop-shadow(0 0 10px #00ffff);
+        }
+        .glitch-bar {
+            fill: #ff0000;
+            opacity: 0;
+            animation: glitch-anim 5s infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        @keyframes spin-rev {
+            to { transform: rotate(-360deg); }
+        }
+        
+        @keyframes breathe {
+            0%, 60% { transform: scale(1); }
+            65% { transform: scale(0.5); }
+            70% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* The Panic/Error State Animation */
+        @keyframes panic-color {
+            0%, 60% { stroke: #0088ff; } /* Normal Blue */
+            62% { stroke: #ff0000; filter: drop-shadow(0 0 5px #ff0000); } /* ERROR RED */
+            70% { stroke: #ff0000; transform: translate(2px, 2px); } /* Shake */
+            72% { stroke: #ff0000; transform: translate(-2px, -2px); }
+            75% { stroke: #0088ff; filter: none; } /* Return */
+        }
+        
+        @keyframes panic-fill {
+            0%, 60% { fill: #00ffff; }
+            62% { fill: #ff0000; }
+            75% { fill: #00ffff; }
+        }
+
+        @keyframes glitch-anim {
+            0%, 61% { opacity: 0; }
+            62% { opacity: 1; transform: scaleX(1.5); }
+            64% { opacity: 0; }
+            66% { opacity: 1; transform: scaleX(0.8); }
+            68% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 100 100">
+            <!-- Glitch Background elements -->
+            <rect class="glitch-bar" x="20" y="45" width="60" height="2" />
+            <rect class="glitch-bar" x="10" y="55" width="80" height="1" style="animation-delay: 0.1s;" />
+
+            <!-- Rotating Rings -->
+            <circle class="ring ring-outer" cx="50" cy="50" r="40" />
+            <circle class="ring ring-mid" cx="50" cy="50" r="25" />
+            
+            <!-- Center Logic Eye -->
+            <circle class="core-eye" cx="50" cy="50" r="10" />
+            <path class="core-eye" d="M50,35 L55,45 L45,45 Z" style="opacity: 0.5; animation-direction: reverse;" />
+            <path class="core-eye" d="M50,65 L55,55 L45,55 Z" style="opacity: 0.5; animation-direction: reverse;" />
+        </svg>
+    </div>
+</body>
+</html>
