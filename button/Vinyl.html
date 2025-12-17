@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vinyl</title>
+<style>
+body{background:#f1f2f6;height:100vh;display:flex;justify-content:center;align-items:center;margin:0;}
+.vinyl-btn{width:100px;height:100px;border-radius:50%;background:repeating-radial-gradient(#333 0, #333 10px, #000 11px);border:none;cursor:pointer;position:relative;box-shadow:0 10px 20px rgba(0,0,0,0.3);}
+.label{position:absolute;top:30%;left:30%;width:40%;height:40%;background:#e84393;border-radius:50%;}
+.hole{position:absolute;top:45%;left:45%;width:10%;height:10%;background:#f1f2f6;border-radius:50%;}
+.vinyl-btn:hover{animation:spin 2s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+<button class="vinyl-btn"><div class="label"></div><div class="hole"></div></button>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liquid Fill</title>
+    <style>
+        body {
+            background: #eef2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .liquid-btn {
+            position: relative;
+            padding: 20px 50px;
+            border: 2px solid #4973ff;
+            background: transparent;
+            color: #4973ff;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            overflow: hidden;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 1;
+        }
+
+        .liquid-btn:hover {
+            color: white;
+            border-color: #4973ff;
+        }
+
+        .wave {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #4973ff;
+            z-index: -1;
+            transition: top 0.6s ease-in-out;
+        }
+
+        .liquid-btn:hover .wave {
+            top: 0;
+        }
+
+        /* Pure CSS Wave Shape */
+        .wave::before, .wave::after {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%; /* Start slightly above the fill area */
+            left: -50%;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 40%; /* Makes it roundish/wavy */
+            animation: spin 6s linear infinite;
+        }
+
+        .wave::after {
+            border-radius: 45%;
+            background: rgba(255, 255, 255, 0.7);
+            animation: spin 10s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="liquid-btn">
+        Upload
+        <div class="wave"></div>
+    </button>
+
+</body>
+</html>

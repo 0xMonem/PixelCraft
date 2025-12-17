@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Flap</title>
+<style>
+body{background:#2d3436;height:100vh;display:flex;justify-content:center;align-items:center;margin:0;}
+.clap-btn{background:#000;color:#fff;border:none;padding:20px 40px;cursor:pointer;position:relative;}
+.top{position:absolute;top:-15px;left:0;width:100%;height:15px;background:repeating-linear-gradient(90deg,#fff 0,#fff 10px,#000 10px,#000 20px);transform-origin:bottom left;transform:rotate(-20deg);transition:0.2s;}
+.clap-btn:hover .top{transform:rotate(0deg);}
+</style>
+</head>
+<body>
+<button class="clap-btn"><div class="top"></div>ACTION!</button>
+</body>
+</html>

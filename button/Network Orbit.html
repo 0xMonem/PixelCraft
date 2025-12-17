@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Orbit</title>
+    <style>
+        body {
+            background: #0c2461;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            perspective: 800px;
+        }
+
+        .orbit-btn {
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 20px 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 18px;
+            letter-spacing: 3px;
+            cursor: pointer;
+            border-radius: 5px;
+            transform-style: preserve-3d;
+            transition: 0.3s;
+        }
+
+        .orbit-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(74, 105, 189, 0.6);
+        }
+
+        /* The Ring/Path */
+        .ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 140%;
+            height: 180%;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) rotateX(70deg);
+            pointer-events: none;
+        }
+
+        /* The Satellite Dot */
+        .satellite {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: #4a69bd;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #4a69bd;
+            offset-path: path("M0,0 C100,0 100,100 0,100 C-100,100 -100,0 0,0"); /* Approximation for circular motion support varies */
+            /* Using simpler animation for broader support */
+            animation: orbit 3s linear infinite;
+        }
+        
+        /* Simulating orbit with transforms instead of offset-path for better compatibility */
+        .orbit-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 140%;
+            height: 180%;
+            transform: translate(-50%, -50%) rotateX(70deg);
+            pointer-events: none;
+        }
+        
+        .ball {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            margin-left: -5px;
+            margin-top: -5px;
+            background: #60a3bc;
+            border-radius: 50%;
+            animation: moveAround 4s linear infinite;
+            box-shadow: 0 0 15px #60a3bc;
+        }
+
+        @keyframes moveAround {
+            0% { transform: rotate(0deg) translateX(85px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(85px) rotate(-360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="orbit-btn">
+        NETWORK
+        <div class="orbit-container">
+            <div class="ball"></div>
+        </div>
+        <div class="ring"></div>
+    </button>
+
+</body>
+</html>

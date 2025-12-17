@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFO</title>
+    <style>
+        body { background: #000; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+
+        .ufo-btn {
+            position: relative;
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 20px 50px;
+            border: 1px solid #636e72;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            overflow: visible;
+        }
+
+        .saucer {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 15px;
+            background: #b2bec3;
+            border-radius: 50%;
+            border: 2px solid #636e72;
+            z-index: 2;
+            transition: top 0.3s;
+        }
+
+        .dome {
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 10px;
+            background: #74b9ff;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .beam {
+            position: absolute;
+            top: 50%; /* Center of saucer */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 60px solid rgba(85, 239, 196, 0.4);
+            opacity: 0;
+            transition: 0.3s;
+            pointer-events: none;
+        }
+
+        .ufo-btn:hover .beam { opacity: 1; }
+        .ufo-btn:hover { color: #55efc4; border-color: #55efc4; }
+        .ufo-btn:hover .saucer { top: -30px; }
+    </style>
+</head>
+<body>
+    <button class="ufo-btn">
+        <div class="saucer">
+            <div class="dome"></div>
+        </div>
+        <div class="beam"></div>
+        ABDUCT ME
+    </button>
+</body>
+</html>

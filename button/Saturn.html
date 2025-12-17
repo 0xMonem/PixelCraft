@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saturn</title>
+    <style>
+        body { background: #192a56; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; perspective: 1000px; }
+
+        .saturn-btn {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #f1c40f, #e67e22);
+            border: none;
+            cursor: pointer;
+            color: transparent; /* Text hidden, visual only */
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+            box-shadow: 0 0 20px rgba(241, 196, 15, 0.4);
+        }
+
+        .ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 140px;
+            height: 40px;
+            border: 8px solid rgba(236, 240, 241, 0.6);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) rotateX(70deg) rotateY(0deg);
+            pointer-events: none;
+            transition: 0.5s;
+        }
+
+        .saturn-btn:hover {
+            transform: rotateZ(15deg);
+        }
+
+        .saturn-btn:hover .ring {
+            border-color: #fff;
+            transform: translate(-50%, -50%) rotateX(70deg) rotateZ(180deg);
+        }
+    </style>
+</head>
+<body>
+    <button class="saturn-btn">
+        <div class="ring"></div>
+    </button>
+</body>
+</html>

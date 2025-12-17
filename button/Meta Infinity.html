@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Infinity</title>
+    <style>
+        body { background: #e0e6ed; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+
+        .meta-btn {
+            background: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            color: #0668E1;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(6, 104, 225, 0.15);
+            transition: 0.3s;
+        }
+
+        .meta-svg {
+            width: 30px; height: 20px;
+            overflow: visible;
+        }
+
+        .infinity-path {
+            fill: none;
+            stroke: url(#meta-grad);
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-dasharray: 60;
+            stroke-dashoffset: 0;
+            transition: 0.3s;
+        }
+
+        .meta-btn:hover {
+            transform: scale(1.05);
+            background: #f0f8ff;
+        }
+
+        .meta-btn:hover .infinity-path {
+            animation: flow 2s linear infinite;
+        }
+
+        @keyframes flow {
+            0% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: 120; }
+        }
+    </style>
+</head>
+<body>
+    <button class="meta-btn">
+        <svg class="meta-svg" viewBox="0 0 50 30">
+            <defs>
+                <linearGradient id="meta-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#00C6FF" />
+                    <stop offset="100%" style="stop-color:#0072FF" />
+                </linearGradient>
+            </defs>
+            <!-- Infinity Loop -->
+            <path class="infinity-path" d="M10,15 Q10,5 25,15 T40,15 T25,15 T10,15" /> 
+        </svg>
+        Meta AI
+    </button>
+</body>
+</html>

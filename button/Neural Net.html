@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Net</title>
+    <style>
+        body { background: #0f172a; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+
+        .neural-btn {
+            background: #1e293b;
+            color: #94a3b8;
+            border: 1px solid #334155;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: 0.3s;
+        }
+
+        .neural-svg { width: 30px; height: 30px; }
+        
+        .node { fill: #64748b; transition: 0.3s; }
+        .link { stroke: #475569; stroke-width: 2; transition: 0.3s; }
+
+        .neural-btn:hover {
+            border-color: #3b82f6;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .neural-btn:hover .node { fill: #3b82f6; }
+        .neural-btn:hover .link { stroke: #60a5fa; }
+        
+        /* Staggered glow animation */
+        .neural-btn:hover .link:nth-child(1) { animation: pulse 1s infinite; }
+        .neural-btn:hover .link:nth-child(2) { animation: pulse 1s 0.2s infinite; }
+        .neural-btn:hover .link:nth-child(3) { animation: pulse 1s 0.4s infinite; }
+
+        @keyframes pulse {
+            0% { stroke-opacity: 0.5; }
+            50% { stroke-opacity: 1; stroke-width: 3; }
+            100% { stroke-opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <button class="neural-btn">
+        <svg class="neural-svg" viewBox="0 0 30 30">
+            <!-- Lines (Links) -->
+            <line class="link" x1="5" y1="5" x2="15" y2="15" />
+            <line class="link" x1="5" y1="25" x2="15" y2="15" />
+            <line class="link" x1="15" y1="15" x2="25" y2="15" />
+            <!-- Dots (Nodes) -->
+            <circle class="node" cx="5" cy="5" r="3" />
+            <circle class="node" cx="5" cy="25" r="3" />
+            <circle class="node" cx="15" cy="15" r="3" />
+            <circle class="node" cx="25" cy="15" r="3" />
+        </svg>
+        Neural Connect
+    </button>
+</body>
+</html>

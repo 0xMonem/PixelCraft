@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB Glow</title>
+    <style>
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .rgb-btn {
+            position: relative;
+            z-index: 0;
+            width: 200px;
+            height: 60px;
+            border-radius: 10px;
+            border: none;
+            background: #111;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+            outline: none;
+            overflow: visible; /* Important for the glow */
+        }
+
+        /* The Moving Gradient */
+        .rgb-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400%;
+            z-index: -1;
+            border-radius: 12px;
+            animation: glowing 20s linear infinite;
+        }
+        
+        /* The Blur Effect (Glow) */
+        .rgb-btn::after {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(20px); /* The magic */
+            border-radius: 12px;
+            animation: glowing 20s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .rgb-btn:hover::after {
+            opacity: 1;
+        }
+
+        .rgb-btn:active {
+            color: #000;
+            font-weight: 900;
+        }
+
+        .rgb-btn:active::before {
+            background: #fff;
+        }
+
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="rgb-btn">START GAME</button>
+
+</body>
+</html>

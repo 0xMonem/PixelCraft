@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoot Goal</title>
+    <style>
+        body { background: #2c3e50; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+
+        .goal-btn {
+            position: relative;
+            background: #27ae60;
+            color: white;
+            padding: 15px 50px;
+            border: 2px solid #ecf0f1;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Pitch Lines */
+        .goal-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%; width: 2px; height: 100%;
+            background: rgba(255,255,255,0.3);
+        }
+        .goal-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%; width: 40px; height: 40px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .ball {
+            position: absolute;
+            left: -20px;
+            width: 15px; height: 15px;
+            background: white;
+            border-radius: 50%;
+            background-image: radial-gradient(circle at 5px 5px, black 2px, transparent 2.5px);
+            background-size: 8px 8px;
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .net-svg {
+            width: 30px; height: 30px;
+            fill: none; stroke: white; stroke-width: 2;
+            margin-left: auto; /* Push to right */
+            transition: 0.2s;
+        }
+
+        .goal-btn:hover .ball {
+            left: calc(100% - 45px); /* Shoot to the net */
+            transform: rotate(360deg);
+        }
+
+        .goal-btn:hover .net-svg {
+            transform: scale(1.2) rotate(-5deg); /* Net impact */
+            transition-delay: 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <button class="goal-btn">
+        <div class="ball"></div>
+        SHOOT
+        <svg class="net-svg" viewBox="0 0 24 24">
+            <path d="M4,4 L20,4 L20,20 L4,20 M8,4 L8,20 M12,4 L12,20 M16,4 L16,20 M4,8 L20,8 M4,12 L20,12 M4,16 L20,16" opacity="0.8"/>
+        </svg>
+    </button>
+</body>
+</html>

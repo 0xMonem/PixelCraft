@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tube Play</title>
+    <style>
+        body {
+            background: #e5e5e5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .tube-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: transform 0.2s;
+        }
+
+        .tube-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .rect-shape {
+            fill: #FF0000;
+            transition: fill 0.3s;
+            rx: 20; /* Rounded corners */
+        }
+
+        .tube-btn:hover .rect-shape {
+            fill: #cc0000;
+            filter: drop-shadow(0 10px 15px rgba(204, 0, 0, 0.4));
+        }
+
+        .play-icon {
+            fill: white;
+            transform-origin: center;
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .tube-btn:hover .play-icon {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+
+    <button class="tube-btn">
+        <svg width="120" height="84" viewBox="0 0 120 84">
+            <!-- The Red Box -->
+            <rect class="rect-shape" width="120" height="84"></rect>
+            <!-- The Play Triangle -->
+            <path class="play-icon" d="M48,27 L80,42 L48,57 Z" />
+        </svg>
+    </button>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket Launch</title>
+    <style>
+        body { background: #0c1a2e; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+
+        .rocket-btn {
+            background: linear-gradient(to bottom, #2980b9, #2c3e50);
+            color: white;
+            border: 2px solid #3498db;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .rocket-svg { width: 24px; height: 24px; fill: white; transition: 0.5s; }
+
+        .fire {
+            position: absolute;
+            bottom: -20px;
+            left: 22px; /* Align with rocket */
+            width: 10px;
+            height: 10px;
+            background: #e74c3c;
+            border-radius: 50%;
+            opacity: 0;
+            filter: blur(2px);
+        }
+
+        .rocket-btn:hover { border-color: #e74c3c; box-shadow: 0 0 15px #e74c3c; }
+        
+        .rocket-btn:hover .rocket-svg {
+            transform: translate(5px, -15px) rotate(45deg);
+        }
+
+        .rocket-btn:hover .fire {
+            opacity: 1;
+            animation: thrust 0.2s infinite alternate;
+        }
+
+        @keyframes thrust {
+            0% { transform: translateY(0) scale(1); background: #f1c40f; }
+            100% { transform: translateY(10px) scale(1.5); background: #e74c3c; }
+        }
+    </style>
+</head>
+<body>
+    <button class="rocket-btn">
+        <svg class="rocket-svg" viewBox="0 0 24 24">
+            <path d="M12,2.5c0,0-7,4-7,12c0,3.5,2,6,2,6l5-2l5,2c0,0,2-2.5,2-6C19,6.5,12,2.5,12,2.5z"/>
+        </svg>
+        <div class="fire"></div>
+        LAUNCH
+    </button>
+</body>
+</html>

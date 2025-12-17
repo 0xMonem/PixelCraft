@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popcorn</title>
+    <style>
+        body { background: #2d3436; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+
+        .pop-btn {
+            position: relative;
+            background: #d63031;
+            color: white;
+            border: none;
+            padding: 40px 20px 15px 20px; /* Space on top for popcorn */
+            font-family: sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            /* Bucket Shape */
+            clip-path: polygon(10% 0, 90% 0, 80% 100%, 20% 100%);
+            width: 120px;
+        }
+
+        .stripe {
+            position: absolute;
+            top: 0; bottom: 0; width: 15px; background: white;
+            z-index: -1;
+        }
+
+        /* The Corn Kernels */
+        .corn {
+            position: absolute;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            background: #f1c40f;
+            border-radius: 50%;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .pop-btn:hover .corn { opacity: 1; animation: pop 0.6s ease-out infinite; }
+        .pop-btn:hover .corn:nth-child(1) { left: 20%; animation-delay: 0s; }
+        .pop-btn:hover .corn:nth-child(2) { left: 50%; animation-delay: 0.2s; }
+        .pop-btn:hover .corn:nth-child(3) { left: 70%; animation-delay: 0.1s; }
+
+        @keyframes pop {
+            0% { transform: translateY(0) scale(0.5); }
+            50% { transform: translateY(-30px) scale(1.2); }
+            100% { transform: translateY(0) scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <button class="pop-btn">
+        <div class="stripe" style="left: 20%"></div>
+        <div class="stripe" style="left: 50%"></div>
+        <div class="stripe" style="left: 80%"></div>
+        
+        <div class="corn"></div>
+        <div class="corn"></div>
+        <div class="corn"></div>
+        
+        POPCORN
+    </button>
+</body>
+</html>

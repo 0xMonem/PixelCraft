@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Void Portal</title>
+    <style>
+        body {
+            background: #1a0029;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .void-btn {
+            position: relative;
+            padding: 1.5rem 3rem;
+            font-size: 1.2rem;
+            color: #e0b0ff;
+            background: #000;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            z-index: 1;
+            overflow: hidden;
+            transition: color 0.4s;
+            font-weight: 700;
+        }
+
+        .void-btn:hover {
+            color: #fff;
+        }
+
+        /* The Swirling Portal */
+        .void-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0%,
+                #7b1fa2 25%,
+                transparent 50%,
+                #4a148c 75%,
+                transparent 100%
+            );
+            animation: spin-void 4s linear infinite;
+            z-index: -2;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        /* Inner darkness to cover the center */
+        .void-btn::after {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            background: #05000a;
+            border-radius: 999px;
+            z-index: -1;
+            transition: inset 0.3s;
+        }
+
+        .void-btn:hover::before {
+            opacity: 1;
+            animation-duration: 2s; /* Faster spin */
+        }
+
+        .void-btn:hover::after {
+            inset: 6px; /* Reveal more of the portal */
+            background: #1a0029;
+        }
+
+        @keyframes spin-void {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="void-btn">ENTER VOID</button>
+
+</body>
+</html>

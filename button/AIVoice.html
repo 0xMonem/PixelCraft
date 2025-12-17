@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Voice</title>
+    <style>
+        body { background: #000; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+
+        .voice-btn {
+            background: #111;
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 50px;
+            border: 2px solid #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .bars {
+            display: flex;
+            gap: 3px;
+            height: 20px;
+            align-items: center;
+        }
+
+        .bar {
+            width: 3px;
+            height: 5px;
+            background: #fff;
+            border-radius: 2px;
+            transition: 0.2s;
+        }
+
+        .voice-btn:hover {
+            border-color: #00ff88;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+        }
+
+        .voice-btn:hover .bar {
+            background: #00ff88;
+            animation: sound 0.5s infinite ease-in-out alternate;
+        }
+
+        .voice-btn:hover .bar:nth-child(1) { animation-delay: 0s; height: 10px; }
+        .voice-btn:hover .bar:nth-child(2) { animation-delay: 0.1s; height: 20px; }
+        .voice-btn:hover .bar:nth-child(3) { animation-delay: 0.2s; height: 15px; }
+        .voice-btn:hover .bar:nth-child(4) { animation-delay: 0.3s; height: 20px; }
+        .voice-btn:hover .bar:nth-child(5) { animation-delay: 0.4s; height: 10px; }
+
+        @keyframes sound {
+            0% { transform: scaleY(0.5); }
+            100% { transform: scaleY(1.5); }
+        }
+    </style>
+</head>
+<body>
+    <button class="voice-btn">
+        <div class="bars">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        Speak Now
+    </button>
+</body>
+</html>

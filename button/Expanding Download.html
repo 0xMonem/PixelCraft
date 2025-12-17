@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Expanding Download</title>
+<style>
+body{background:#6c5ce7;height:100vh;display:flex;justify-content:center;align-items:center;margin:0;}
+.dl-btn{background:#fff;color:#6c5ce7;border:none;width:60px;height:60px;border-radius:50%;cursor:pointer;position:relative;overflow:hidden;transition:0.3s;}
+.dl-btn:hover{width:180px;border-radius:30px;}
+.dl-btn::after{content:'DOWNLOAD';position:absolute;left:60px;top:20px;font-weight:bold;opacity:0;transition:0.3s;}
+.dl-btn:hover::after{opacity:1;}
+.arrow{position:absolute;left:18px;top:18px;width:24px;height:24px;fill:none;stroke:#6c5ce7;stroke-width:3;}
+</style>
+</head>
+<body>
+<button class="dl-btn"><svg class="arrow" viewBox="0 0 24 24"><path d="M12 3v12m-5-5l5 5 5-5m-10 6h10"/></svg></button>
+</body>
+</html>

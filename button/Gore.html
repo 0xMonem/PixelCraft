@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gore</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .blood-btn {
+            position: relative;
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            padding: 1em 2em;
+            background: #333;
+            color: #cc0000;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 2px;
+            overflow: hidden;
+            transition: 0.3s;
+            border-bottom: 4px solid #cc0000;
+        }
+
+        .blood-btn:hover {
+            color: #fff;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        .drip {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .drip path {
+            fill: #cc0000;
+            transform: translateY(-100%);
+            transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+
+        .blood-btn:hover .drip path {
+            transform: translateY(0%);
+        }
+
+        .text {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="blood-btn">
+        <span class="text">SCREAM</span>
+        <svg class="drip" viewBox="0 0 200 100" preserveAspectRatio="none">
+            <path d="M0,0 L200,0 L200,10 C180,30 170,10 150,40 C130,10 120,60 100,20 C80,60 70,10 50,40 C30,10 20,30 0,10 Z" />
+        </svg>
+    </button>
+
+</body>
+</html>

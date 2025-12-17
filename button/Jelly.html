@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jelly</title>
+    <style>
+        body {
+            background: #6c5ce7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .jelly-btn {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            padding: 0.8em 2em;
+            color: #6c5ce7;
+            background: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: background 0.3s;
+        }
+
+        .jelly-btn:hover {
+            animation: jelly 0.9s both; /* The magic animation */
+            background: #a29bfe;
+            color: #fff;
+        }
+
+        @keyframes jelly {
+            0% { transform: scale(1, 1); }
+            30% { transform: scale(1.25, 0.75); }
+            40% { transform: scale(0.75, 1.25); }
+            50% { transform: scale(1.15, 0.85); }
+            65% { transform: scale(0.95, 1.05); }
+            75% { transform: scale(1.05, 0.95); }
+            100% { transform: scale(1, 1); }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="jelly-btn">BOUNCE!</button>
+
+</body>
+</html>

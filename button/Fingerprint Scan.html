@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fingerprint Scan</title>
+<style>
+body{background:#000;height:100vh;display:flex;justify-content:center;align-items:center;margin:0;}
+.finger-btn{background:transparent;border:2px solid #0984e3;color:#0984e3;padding:10px 30px;border-radius:5px;cursor:pointer;display:flex;align-items:center;gap:10px;}
+.print-svg path{fill:none;stroke:#0984e3;stroke-width:2;stroke-dasharray:50;stroke-dashoffset:50;transition:0.5s;}
+.finger-btn:hover path{stroke-dashoffset:0;}
+.finger-btn:hover{background:#0984e3;color:#fff;}
+.finger-btn:hover path{stroke:#fff;}
+</style>
+</head>
+<body>
+<button class="finger-btn"><svg class="print-svg" width="24" height="30" viewBox="0 0 24 30"><path d="M12 2a10 10 0 0 0-10 10v10"/><path d="M12 6a6 6 0 0 0-6 6v10"/><path d="M12 10a2 2 0 0 0-2 2v10"/></svg>SCAN ID</button>
+</body>
+</html>

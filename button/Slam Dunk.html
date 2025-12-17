@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slam Dunk</title>
+    <style>
+        body { background: #f5f6fa; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+
+        .dunk-btn {
+            position: relative;
+            background: #e67e22;
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            cursor: pointer;
+            overflow: hidden;
+            /* Basketball Texture */
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.1) 10px, rgba(0,0,0,0.1) 12px);
+        }
+
+        .ball-icon {
+            position: absolute;
+            top: -40px;
+            right: 30px;
+            width: 20px; height: 20px;
+            background: #d35400;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            transition: 0.5s cubic-bezier(0.5, 0, 0.75, 0); /* Gravity ease */
+        }
+
+        .hoop {
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+            width: 40px; height: 5px;
+            border: 2px solid white;
+            border-top: none;
+            opacity: 0.5;
+        }
+
+        .dunk-btn:hover .ball-icon {
+            top: 50%;
+            transform: translateY(-50%);
+            animation: bounce 0.6s ease infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(-50%); }
+            to { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <button class="dunk-btn">
+        SLAM DUNK
+        <div class="hoop"></div>
+        <div class="ball-icon"></div>
+    </button>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth Leaf</title>
+    <style>
+        body {
+            background-color: #f0f7f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .grow-btn {
+            position: relative;
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            padding: 1em 2.5em;
+            background: transparent;
+            color: #2d6a4f;
+            border: 2px solid #2d6a4f;
+            border-radius: 50px; /* Pill shape */
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .grow-btn:hover {
+            background: #2d6a4f;
+            color: #fff;
+            padding-right: 3.5em; /* Make space for the leaf */
+        }
+
+        .leaf-icon {
+            position: absolute;
+            right: 1.5em;
+            width: 1.5em;
+            height: 1.5em;
+            opacity: 0;
+            transform: scale(0) rotate(-45deg);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            fill: #95d5b2;
+        }
+
+        .grow-btn:hover .leaf-icon {
+            opacity: 1;
+            transform: scale(1.5) rotate(0deg);
+            right: 1em;
+        }
+
+        /* Responsive adjustments for very small screens */
+        @media (max-width: 350px) {
+            .grow-btn {
+                padding: 0.8em 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="grow-btn">
+        Plant Now
+        <svg class="leaf-icon" viewBox="0 0 24 24">
+            <path d="M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3,21,5,14,5.25,9,6.25S2,11.5,2,13.5a6.23,6.23,0,0,0,1.75,3.75C7,8,17,8,17,8Z"/>
+        </svg>
+    </button>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger</title>
+    <style>
+        body { background: #f7f1e3; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+
+        .burger-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px; /* Spacing between ingredients */
+            transition: gap 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .bun-top { width: 60px; height: 25px; background: #f39c12; border-radius: 30px 30px 5px 5px; border: 2px solid #d35400; }
+        .lettuce { width: 65px; height: 10px; background: #2ecc71; border-radius: 10px; border: 2px solid #27ae60; }
+        .patty { width: 60px; height: 15px; background: #5d4037; border-radius: 5px; border: 2px solid #3e2723; }
+        .bun-bottom { width: 60px; height: 20px; background: #f39c12; border-radius: 5px 5px 20px 20px; border: 2px solid #d35400; }
+        
+        .label { font-size: 14px; font-weight: bold; color: #d35400; margin-top: 5px; text-transform: uppercase; }
+
+        .burger-btn:hover { gap: 0px; /* Stack them tight */ transform: scale(1.1); }
+        .burger-btn:hover .label { color: #e67e22; }
+    </style>
+</head>
+<body>
+    <button class="burger-btn">
+        <div class="bun-top"></div>
+        <div class="lettuce"></div>
+        <div class="patty"></div>
+        <div class="bun-bottom"></div>
+        <span class="label">Delicious</span>
+    </button>
+</body>
+</html>

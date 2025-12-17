@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Receipt</title>
+    <style>
+        body {
+            background-color: #2d3436;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .printer-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .print-btn {
+            z-index: 2; /* Sit on top of the paper */
+            position: relative;
+            background: #0984e3;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            width: 200px;
+            transition: 0.3s;
+        }
+
+        .paper {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            background: #dfe6e9;
+            padding: 20px 10px 10px 10px;
+            color: #2d3436;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            text-align: center;
+            border-radius: 0 0 5px 5px;
+            z-index: 1; /* Behind the button */
+            transition: top 0.5s ease-out;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            
+            /* Hidden state */
+            top: 10px; 
+            opacity: 0;
+        }
+
+        .printer-wrapper:hover .paper {
+            top: 100%; /* Slides down */
+            opacity: 1;
+        }
+        
+        .printer-wrapper:hover .print-btn {
+            background: #0870c0;
+            border-radius: 8px 8px 0 0; /* Flat bottom when printing */
+        }
+
+        .line {
+            height: 2px;
+            background: #b2bec3;
+            margin: 5px auto;
+            width: 80%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="printer-wrapper">
+        <button class="print-btn">GET RECEIPT</button>
+        <div class="paper">
+            <span>--- INVOICE ---</span><br><br>
+            Item: UI Design<br>
+            Price: $99.00<br>
+            <span class="line"></span>
+            <span>Thank You!</span>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><title>Live Indicato</title>
+<style>
+body{background:#000;height:100vh;display:flex;justify-content:center;align-items:center;margin:0;}
+.live-btn{background:transparent;border:2px solid #e74c3c;color:#e74c3c;padding:10px 30px;font-weight:bold;letter-spacing:2px;cursor:pointer;display:flex;align-items:center;gap:10px;}
+.dot{width:10px;height:10px;background:#e74c3c;border-radius:50%;animation:pulse 1s infinite;}
+@keyframes pulse{0%{opacity:1;}50%{opacity:0.3;}100%{opacity:1;}}
+</style>
+</head>
+<body>
+<button class="live-btn"><div class="dot"></div>LIVE</button>
+</body>
+</html>

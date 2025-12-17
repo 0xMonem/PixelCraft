@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar Scan</title>
+    <style>
+        body { background: #191919; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+
+        .per-btn {
+            background: #208b8b;
+            color: white;
+            border: 1px solid #208b8b;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-family: sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .per-btn:hover {
+            background: transparent;
+            color: #208b8b;
+        }
+
+        .radar-svg {
+            width: 24px; height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .per-btn:hover .radar-svg {
+            animation: spin-scan 2s linear infinite;
+        }
+
+        @keyframes spin-scan {
+            0% { transform: rotate(0deg); opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { transform: rotate(360deg); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <button class="per-btn">
+        <svg class="radar-svg" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke-opacity="0.5" />
+            <path d="M12 12 L19 5" /> <!-- Scan line -->
+            <circle cx="12" cy="12" r="2" fill="currentColor" />
+        </svg>
+        Ask Anything
+    </button>
+</body>
+</html>

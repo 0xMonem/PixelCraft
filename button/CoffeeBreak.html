@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Break</title>
+    <style>
+        body { background: #dcdde1; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        
+        .coffee-btn {
+            background: #6F4E37;
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 10px;
+            border: 2px solid #4b3621;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .coffee-btn:hover { background: #4b3621; }
+
+        .steam {
+            fill: none;
+            stroke: rgba(255,255,255,0.8);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-dasharray: 10;
+            stroke-dashoffset: 10;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .coffee-btn:hover .steam {
+            opacity: 1;
+            animation: rise 1.5s linear infinite;
+        }
+        
+        .coffee-btn:hover .steam:nth-child(2) { animation-delay: 0.2s; }
+        .coffee-btn:hover .steam:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes rise {
+            0% { stroke-dashoffset: 10; transform: translateY(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { stroke-dashoffset: -10; transform: translateY(-10px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <button class="coffee-btn">
+        <svg width="30" height="40" viewBox="0 0 30 40" style="overflow: visible;">
+            <!-- Cup -->
+            <path d="M5,20 L5,35 Q5,40 10,40 L20,40 Q25,40 25,35 L25,20 Z" fill="#fff"/>
+            <path d="M25,22 Q30,22 30,27 Q30,32 25,32" fill="none" stroke="#fff" stroke-width="2"/>
+            <!-- Steam Lines -->
+            <path class="steam" d="M10,15 Q15,10 10,5" />
+            <path class="steam" d="M15,15 Q20,10 15,5" />
+            <path class="steam" d="M20,15 Q25,10 20,5" />
+        </svg>
+        Coffee Break
+    </button>
+</body>
+</html>
