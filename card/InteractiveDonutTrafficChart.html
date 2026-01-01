@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Donut Traffic Chart</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
+        }
+        .card {
+            width: 300px;
+            height: 300px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .donut-svg {
+            width: 250px;
+            height: 250px;
+            transform: rotate(-90deg);
+        }
+        .donut-segment {
+            fill: none;
+            stroke-width: 30;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .donut-segment:hover {
+            stroke-width: 35;
+        }
+        .center-text {
+            position: absolute;
+            text-align: center;
+            pointer-events: none;
+        }
+        .value { font-size: 28px; font-weight: bold; color: #333; }
+        .label { font-size: 14px; color: #888; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <svg id="chart" class="donut-svg" viewBox="0 0 100 100">
+            <!-- Data: 40% (Blue) -->
+            <circle class="donut-segment" data-value="40%" data-label="Desktop" cx="50" cy="50" r="40" stroke="#007bff" stroke-dasharray="251.2" stroke-dashoffset="0" />
+            <!-- Data: 30% (Green) -->
+            <circle class="donut-segment" data-value="30%" data-label="Mobile" cx="50" cy="50" r="40" stroke="#28a745" stroke-dasharray="251.2" stroke-dashoffset="100.48" />
+            <!-- Data: 20% (Yellow) -->
+            <circle class="donut-segment" data-value="20%" data-label="Tablet" cx="50" cy="50" r="40" stroke="#ffc107" stroke-dasharray="251.2" stroke-dashoffset="175.84" />
+            <!-- Data: 10% (Red) -->
+            <circle class="donut-segment" data-value="10%" data-label="Other" cx="50" cy="50" r="40" stroke="#dc3545" stroke-dasharray="251.2" stroke-dashoffset="226.08" />
+        </svg>
+        <div class="center-text">
+            <div id="value" class="value">Traffic</div>
+            <div id="label" class="label">Source</div>
+        </div>
+    </div>
+    
+    <script>
+        const segments = document.querySelectorAll('.donut-segment');
+        const valueText = document.getElementById('value');
+        const labelText = document.getElementById('label');
+
+        segments.forEach(segment => {
+            segment.addEventListener('mouseover', () => {
+                valueText.textContent = segment.getAttribute('data-value');
+                labelText.textContent = segment.getAttribute('data-label');
+            });
+            segment.addEventListener('mouseout', () => {
+                valueText.textContent = 'Traffic';
+                labelText.textContent = 'Source';
+            });
+        });
+    </script>
+</body>
+</html>

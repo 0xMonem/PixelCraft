@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronin Protocol Cyber Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            font-family: 'Arial Black', sans-serif;
+        }
+        .samurai-card {
+            width: 320px;
+            height: 480px;
+            position: relative;
+            background: #111;
+            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%, 0 20px);
+            color: white;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .samurai-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 20px 20px 0px rgba(255, 0, 0, 0.2);
+        }
+        .accent-red {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 100%;
+            background: #ff003c;
+            clip-path: polygon(40% 0, 100% 0, 100% 100%, 0% 100%);
+            z-index: 1;
+        }
+        .content {
+            position: relative;
+            z-index: 2;
+            padding: 30px;
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .logo-mark {
+            width: 60px;
+            height: 60px;
+            background: white;
+            mask: url(#); /* Placeholder for complexity */
+            clip-path: circle(50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .kanji {
+            font-size: 30px;
+            color: #111;
+            font-weight: bold;
+        }
+        h2 {
+            font-size: 40px;
+            line-height: 0.9;
+            margin: 0;
+            text-transform: uppercase;
+            mix-blend-mode: exclusion;
+        }
+        .serial {
+            font-family: monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            writing-mode: vertical-rl;
+            position: absolute;
+            top: 30px;
+            right: 15px;
+            color: white;
+        }
+        .tech-lines {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            width: 100px;
+            height: 4px;
+            background: white;
+        }
+        .tech-lines::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 0;
+            width: 60%;
+            height: 2px;
+            background: white;
+        }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .btn-slice {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-slice:hover {
+            background: white;
+            color: #ff003c;
+        }
+    </style>
+</head>
+<body>
+    <div class="samurai-card">
+        <div class="accent-red"></div>
+        <div class="serial">MK-IV-8821</div>
+        
+        <div class="content">
+            <div class="logo-mark">
+                <span class="kanji">侍</span>
+            </div>
+            
+            <div>
+                <h2>Ronin<br>Protocol</h2>
+                <div class="tech-lines"></div>
+            </div>
+
+            <div class="card-footer">
+                <div style="font-size:10px; width: 100px;">
+                    COMBAT READY<br>
+                    NEURO LINKED
+                </div>
+                <button class="btn-slice">ENGAGE</button>
+            </div>
+        </div>
+        
+        <!-- Decoration SVG Overlay -->
+        <svg style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0;" viewBox="0 0 320 480">
+            <line x1="20" y1="20" x2="30" y2="20" stroke="white" stroke-width="2" />
+            <line x1="20" y1="20" x2="20" y2="30" stroke="white" stroke-width="2" />
+            <path d="M280 460 L300 460 L300 440" stroke="white" stroke-width="2" fill="none"/>
+        </svg>
+    </div>
+</body>
+</html>

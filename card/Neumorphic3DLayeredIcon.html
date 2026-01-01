@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neumorphic 3D Layered Icon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #e6e7ee;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .card {
+            width: 300px;
+            height: 300px;
+            background: #e6e7ee;
+            border-radius: 20px;
+            box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.5), 10px 10px 15px rgba(70, 70, 70, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            perspective: 800px;
+        }
+        .icon-container {
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .icon-layer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .card:hover .icon-container {
+            transform: rotateX(20deg) rotateY(-20deg);
+        }
+        .card:hover .l1 { transform: translate(-50%, -50%) translateZ(1px); }
+        .card:hover .l2 { transform: translate(-50%, -50%) translateZ(2px); }
+        .card:hover .l3 { transform: translate(-50%, -50%) translateZ(3px); }
+        .card:hover .l4 { transform: translate(-50%, -50%) translateZ(4px); }
+        .card:hover .l5 { transform: translate(-50%, -50%) translateZ(5px); }
+        .card:hover .l6 { transform: translate(-50%, -50%) translateZ(6px); }
+        .card:hover .l7 { transform: translate(-50%, -50%) translateZ(7px); }
+        .card:hover .l8 { transform: translate(-50%, -50%) translateZ(8px); }
+        .card:hover .l9 { transform: translate(-50%, -50%) translateZ(9px); }
+        .card:hover .l10 { transform: translate(-50%, -50%) translateZ(10px); }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="icon-container">
+            <svg class="icon-layer l1" width="100" height="100" viewBox="0 0 24 24" fill="#a0a0a0"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
+            <svg class="icon-layer l2" width="100" height="100" viewBox="0 0 24 24" fill="#a8a8a8"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
+            <svg class="icon-layer l3" width="100" height="100" viewBox="0 0 24 24" fill="#b0b0b0"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
+            <svg class="icon-layer l4" width="100" height="100" viewBox="0 0 24 24" fill="#b8b8b8"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
+            <svg class="icon-layer l5" width="100" height="100" viewBox="0 0 24 24" fill="#c0c0c0"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
+            <svg class="icon-layer l6" width="100" height="100" viewBox="0 0 24 24" fill="#c8c8c8"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
+            <svg class="icon-layer l7" width="100" height="100" viewBox="0 0 24 24" fill="#d0d0d0"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
+            <svg class="icon-layer l8" width="100" height="100" viewBox="0 0 24 24" fill="#d8d8d8"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
+            <svg class="icon-layer l9" width="100" height="100" viewBox="0 0 24 24" fill="#e0e0e0"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
+            <svg class="icon-layer l10" width="100" height="100" viewBox="0 0 24 24" fill="#e8e8e8"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
+        </div>
+    </div>
+</body>
+</html>

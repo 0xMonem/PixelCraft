@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Glow Icon Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+        }
+        .card {
+            width: 250px;
+            height: 350px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .icon-svg {
+            width: 100px;
+            height: 100px;
+            transition: filter 0.5s ease;
+            cursor: pointer;
+        }
+        .card:hover .icon-svg {
+            filter: url(#soft-glow);
+        }
+        .icon-path {
+            stroke: #aaa;
+            stroke-width: 1;
+            fill: none;
+            transition: stroke 0.5s ease;
+        }
+        .card:hover .icon-path {
+            stroke: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <svg class="icon-svg" viewBox="0 0 100 100">
+            <defs>
+                <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#fff" flood-opacity="0.1" />
+                </filter>
+            </defs>
+            <path class="icon-path" d="M50,10 L10,90 L90,90 Z" />
+            <path class="icon-path" d="M50,10 L50,60" />
+        </svg>
+    </div>
+</body>
+</html>

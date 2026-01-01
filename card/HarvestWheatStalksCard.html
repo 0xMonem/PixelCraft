@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harvest Wheat Stalks Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #faf0e6;
+        }
+        .card {
+            width: 300px;
+            height: 200px;
+            background: #e1c699;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .wheat-stalk {
+            position: absolute;
+            bottom: 0;
+            transition: transform 0.5s ease-in-out;
+        }
+        .s1 { left: 50px; }
+        .s2 { left: 120px; }
+        .s3 { left: 200px; }
+        .card:hover .s1 { transform: rotate(-5deg); }
+        .card:hover .s2 { transform: rotate(3deg); }
+        .card:hover .s3 { transform: rotate(-4deg); }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <svg class="wheat-stalk s1" height="150" width="30" viewBox="0 0 30 150">
+            <path d="M15 150 V 20" stroke="#8b5e34" stroke-width="2"/>
+            <ellipse cx="15" cy="10" rx="10" ry="5" fill="#d4ac6e"/>
+        </svg>
+        <svg class="wheat-stalk s2" height="180" width="30" viewBox="0 0 30 180">
+            <path d="M15 180 V 25" stroke="#8b5e34" stroke-width="2"/>
+            <ellipse cx="15" cy="15" rx="12" ry="6" fill="#d4ac6e"/>
+        </svg>
+        <svg class="wheat-stalk s3" height="160" width="30" viewBox="0 0 30 160">
+            <path d="M15 160 V 15" stroke="#8b5e34" stroke-width="2"/>
+            <ellipse cx="15" cy="10" rx="9" ry="4" fill="#d4ac6e"/>
+        </svg>
+    </div>
+</body>
+</html>

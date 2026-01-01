@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient Perspective Flip Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            font-family: 'Arial', sans-serif;
+        }
+        .flip-card {
+            width: 300px;
+            height: 400px;
+            perspective: 1500px;
+            background-color: transparent;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Safari */
+            backface-visibility: hidden;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .flip-card-front {
+            background: linear-gradient(45deg, #ff6e7f, #bfe9ff);
+            color: white;
+        }
+        .flip-card-back {
+            background: white;
+            color: #333;
+            transform: rotateY(180deg);
+        }
+        h2 { margin: 10px 0; }
+        p { font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="16" x2="12" y2="12" />
+                    <line x1="12" y1="8" x2="12.01" y2="8" />
+                </svg>
+                <h2>Hover Me</h2>
+                <p>To reveal more information</p>
+            </div>
+            <div class="flip-card-back">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="#333">
+                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.09,8.59L17.5,10L11,16.5Z"/>
+                </svg>
+                <h2>Details</h2>
+                <p>This side is revealed using 3D transforms. Purely hand-coded with SVG and CSS.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

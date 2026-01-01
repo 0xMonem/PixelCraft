@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Interactive Globe</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000;
+        }
+        .globe-container {
+            width: 300px;
+            height: 300px;
+            perspective: 1000px;
+        }
+        .globe {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: slow-spin 30s linear infinite;
+        }
+        .globe-map {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400"><path fill="%230f0" d="M400,0 C200,0,0,100,0,200 C0,300,200,400,400,400 C600,400,800,300,800,200 C800,100,600,0,400,0 Z M150,150 L200,100 L250,150 Z M500,250 L600,200 L700,300 Z"/></svg>');
+            background-size: cover;
+            border-radius: 50%;
+            backface-visibility: hidden;
+        }
+        @keyframes slow-spin {
+            to { transform: rotateY(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="globe-container" id="container">
+        <div class="globe" id="globe">
+            <!-- This will be populated by JS -->
+        </div>
+    </div>
+    <script>
+        const globe = document.getElementById('globe');
+        const container = document.getElementById('container');
+        const numSlices = 20;
+
+        for (let i = 0; i < numSlices; i++) {
+            const slice = document.createElement('div');
+            slice.className = 'globe-map';
+            const rotation = (360 / numSlices) * i;
+            slice.style.transform = `rotateY(${rotation}deg) translateZ(145px)`;
+            slice.style.backgroundPosition = `${-i * (800 / numSlices)}px 0`;
+            globe.appendChild(slice);
+        }
+
+        let currentY = 0;
+        container.addEventListener('mousemove', (e) => {
+            globe.style.animation = 'none';
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            currentY = (x - rect.width / 2) * 0.5;
+            globe.style.transform = `rotateY(${currentY}deg)`;
+        });
+        
+        container.addEventListener('mouseleave', () => {
+             globe.style.animation = 'slow-spin 30s linear infinite';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Vertical Timeline Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            font-family: 'Poppins', sans-serif;
+        }
+        .card {
+            width: 350px;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .timeline {
+            position: relative;
+        }
+        .timeline-svg {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 2px;
+            height: 95%;
+        }
+        .timeline-line {
+            stroke: #ddd;
+            stroke-width: 2;
+        }
+        .timeline-item {
+            padding-left: 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #007bff;
+            transition: transform 0.2s;
+        }
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.2);
+        }
+        .date {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+        h4 {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="timeline">
+            <svg class="timeline-svg">
+                <line class="timeline-line" x1="1" y1="0" x2="1" y2="100%"/>
+            </svg>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="date">Feb 2024</div>
+                <h4>Project Kick-off</h4>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot" style="border-color:#28a745;"></div>
+                <div class="date">Jun 2024</div>
+                <h4>Design Phase Complete</h4>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot" style="border-color:#ffc107;"></div>
+                <div class="date">Dec 2024</div>
+                <h4>Development Started</h4>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot" style="border-color:#6c757d;"></div>
+                <div class="date">Now</div>
+                <h4>Beta Testing</h4>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

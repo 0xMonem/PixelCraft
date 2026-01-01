@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Friendly Sustain Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f5f1;
+        }
+        .card {
+            width: 300px;
+            height: 420px;
+            background: #4caf50;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px;
+            box-sizing: border-box;
+            font-family: 'Helvetica', sans-serif;
+            color: white;
+            transition: box-shadow 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.3);
+        }
+        .leaf-svg {
+            position: absolute;
+            bottom: -50px;
+            right: -80px;
+            width: 300px;
+            height: 300px;
+            opacity: 0.2;
+            transform: rotate(-30deg);
+            transition: transform 0.5s ease;
+        }
+        .card:hover .leaf-svg {
+            transform: rotate(-25deg) scale(1.1);
+        }
+        h2 {
+            font-size: 28px;
+            font-weight: 300;
+            margin: 0;
+        }
+        .cta-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 5px;
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <svg class="leaf-svg" viewBox="0 0 100 100">
+            <path fill="white" d="M85,15 C50,15 50,40 50,40 C50,40 50,15 15,15 C15,50 40,50 40,50 C40,50 15,50 15,85 C50,85 50,60 50,60 C50,60 50,85 85,85 C85,50 60,50 60,50 C60,50 85,50 85,15 Z" />
+        </svg>
+        
+        <h2>Eco Friendly</h2>
+        <p>Sustainable solutions for a greener future. Join our movement.</p>
+        <a href="#" class="cta-link">Learn More</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Modern Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .card {
+            width: 280px;
+            height: 380px;
+            position: relative;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="2" cy="2" r="1" fill="%23e0e0e0"/></svg>');
+            background-size: 15px 15px;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 30px;
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .card:hover {
+            background-color: #fafafa;
+        }
+        .category {
+            font-size: 11px;
+            color: #aaa;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        h2 {
+            font-size: 28px;
+            font-weight: 300;
+            color: #222;
+            margin: 10px 0;
+        }
+        .plus-btn {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .card:hover .plus-btn {
+            opacity: 1;
+        }
+        .plus-btn::before, .plus-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 1px;
+            background: #aaa;
+            transform: translate(-50%, -50%);
+        }
+        .plus-btn::after {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="category">Article</div>
+        <h2>Less, But Better.</h2>
+        <div class="plus-btn"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Saiyan Power Aura</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+            font-family: 'Saiyan Sans', sans-serif; /* A typical Dragon Ball font */
+        }
+        .card {
+            width: 350px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .aura-svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            filter: url(#aura-glow);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .card:hover .aura-svg {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+        .aura-path {
+            fill: #ffd700;
+            animation: flicker 0.2s infinite;
+        }
+        @keyframes flicker {
+            50% { opacity: 0.8; transform: scale(1.02); }
+        }
+        .text {
+            color: white;
+            font-size: 80px;
+            letter-spacing: 5px;
+            z-index: 2;
+            transition: transform 0.1s;
+        }
+        .card:hover .text {
+            animation: shake 0.1s infinite;
+        }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px); }
+            50% { transform: translate(-1px, -1px); }
+            100% { transform: translate(1px, -1px); }
+        }
+        .lightning {
+            position: absolute;
+            stroke: white;
+            stroke-width: 2;
+            opacity: 0;
+        }
+        .card:hover .lightning {
+            animation: flash 0.5s infinite;
+        }
+        @keyframes flash {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <svg width="0" height="0">
+        <defs>
+            <filter id="aura-glow">
+                <feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="3" result="turbulence"/>
+                <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="20"/>
+                <feGaussianBlur stdDeviation="5" />
+            </filter>
+        </defs>
+    </svg>
+    <div class="card">
+        <svg class="aura-svg" viewBox="0 0 200 200">
+            <path class="aura-path" d="M100,0 C150,50 150,150 100,200 C50,150 50,50 100,0 Z" />
+        </svg>
+        <svg class="lightning" width="100%" height="100%" style="z-index:3;">
+            <path d="M100 20 L80 100 L120 100 L100 180" fill="none" />
+            <path d="M250 50 L200 120 L240 120 L220 200" fill="none" />
+        </svg>
+        <div class="text">POWER</div>
+    </div>
+</body>
+</html>

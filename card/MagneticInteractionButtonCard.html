@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magnetic Interaction Button Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            font-family: sans-serif;
+        }
+        .card {
+            width: 300px;
+            height: 400px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .placeholder-svg {
+            width: 150px;
+            height: 150px;
+            fill: #e0e0e0;
+        }
+        h2 { margin: 0; color: #333; }
+        .magnetic-btn {
+            padding: 15px 35px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <svg class="placeholder-svg" viewBox="0 0 100 100">
+            <rect width="100" height="100" rx="10" />
+            <circle cx="50" cy="50" r="20" fill="white" />
+        </svg>
+        <h2>Magnetic Button</h2>
+        <button class="magnetic-btn" id="mBtn">Get Closer</button>
+    </div>
+
+    <script>
+        const btn = document.getElementById('mBtn');
+
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            btn.style.transform = `translateX(${x * 0.4}px) translateY(${y * 0.4}px)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translateX(0px) translateY(0px)';
+        });
+    </script>
+</body>
+</html>

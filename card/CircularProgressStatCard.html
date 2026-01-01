@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular Progress Stat Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f4f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .stat-card {
+            width: 300px;
+            height: 400px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 87, 184, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .chart-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 20px 0;
+        }
+        .chart-svg {
+            transform: rotate(-90deg);
+        }
+        .chart-circle {
+            fill: none;
+            stroke-width: 20;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .c1 { stroke: #007bff; stroke-dasharray: 440; stroke-dashoffset: 110; /* 75% */ }
+        .c2 { stroke: #28a745; stroke-dasharray: 440; stroke-dashoffset: 264; /* 40% */ }
+        .c3 { stroke: #ffc107; stroke-dasharray: 440; stroke-dashoffset: 352; /* 20% */ }
+        .stat-card:hover .chart-circle {
+            stroke-dashoffset: 0;
+        }
+        .chart-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .percentage {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+        }
+        .label {
+            color: #888;
+        }
+        .legend {
+            width: 100%;
+            margin-top: 20px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="stat-card">
+        <h3>Project Status</h3>
+        <div class="chart-container">
+            <svg class="chart-svg" width="180" height="180" viewBox="0 0 160 160">
+                <!-- Data: 75% -->
+                <circle class="chart-circle c1" cx="80" cy="80" r="70" />
+            </svg>
+            <div class="chart-center">
+                <div class="percentage">75%</div>
+                <div class="label">Complete</div>
+            </div>
+        </div>
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot" style="background-color: #007bff;"></div>
+                <span>Tasks Done</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background-color: #e9ecef;"></div>
+                <span>Tasks Remaining</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

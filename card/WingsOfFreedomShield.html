@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wings of Freedom Shield Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #4a4137;
+            font-family: 'Trajan Pro', serif;
+        }
+        .card {
+            width: 350px;
+            height: 450px;
+            position: relative;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        .layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+            transform-style: preserve-3d;
+        }
+        .shield {
+            width: 100%;
+            height: 100%;
+            background: #f0ead6;
+            clip-path: polygon(50% 0%, 100% 10%, 100% 80%, 50% 100%, 0% 80%, 0% 10%);
+        }
+        .wings-svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 250px;
+            height: 250px;
+            transform: translate(-50%, -50%) translateZ(40px);
+        }
+        .text {
+            position: absolute;
+            bottom: 60px;
+            width: 100%;
+            text-align: center;
+            font-size: 32px;
+            color: #3d352d;
+            transform: translateZ(60px);
+        }
+        .card:hover .layer {
+            transform: rotateY(-15deg) rotateX(15deg);
+        }
+        .card:hover .wings-svg {
+            transform: translate(-50%, -50%) translateZ(80px) scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="layer">
+            <div class="shield"></div>
+            <svg class="wings-svg" viewBox="0 0 100 100">
+                <!-- Left Wing -->
+                <path d="M45 50 L10 30 L10 70 Z" fill="#78909c"/>
+                <path d="M45 50 L10 30 L25 50 L10 70 Z" fill="#fff"/>
+                <!-- Right Wing -->
+                <path d="M55 50 L90 30 L90 70 Z" fill="#78909c"/>
+                <path d="M55 50 L90 30 L75 50 L90 70 Z" fill="#455a64"/>
+            </svg>
+            <div class="text">SHINZOU WO SASAGEYO</div>
+        </div>
+    </div>
+</body>
+</html>

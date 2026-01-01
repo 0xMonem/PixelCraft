@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Particle Explosion Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f8f8;
+            font-family: 'Poppins', sans-serif;
+        }
+        .card {
+            width: 400px;
+            height: 300px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .main-text {
+            font-size: 150px;
+            font-weight: 900;
+            color: #333;
+            transition: opacity 0.4s, transform 0.4s;
+        }
+        .card:hover .main-text {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        .particle {
+            position: absolute;
+            background: #ccc;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            transition: transform 0.8s, opacity 0.8s;
+        }
+        .card:hover .particle {
+            transform: translate(var(--tx, 0), var(--ty, 0)) scale(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="card">
+        <div class="main-text">100</div>
+        <!-- JS will populate particles -->
+    </div>
+
+    <script>
+        const card = document.getElementById('card');
+        const colors = ['#00f3ff', '#ff0055', '#a8e063', '#d4af37', '#e0e5ec'];
+        for (let i = 0; i < 100; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.setProperty('--tx', `${(Math.random() - 0.5) * 400}px`);
+            p.style.setProperty('--ty', `${(Math.random() - 0.5) * 300}px`);
+            p.style.background = colors[i % colors.length];
+            p.style.transitionDelay = `${Math.random() * 0.4}s`;
+            card.appendChild(p);
+        }
+    </script>
+</body>
+</html>

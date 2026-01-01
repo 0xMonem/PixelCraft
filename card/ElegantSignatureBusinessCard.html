@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Signature Business Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0a0a0a;
+            font-family: 'Playfair Display', serif;
+        }
+        .card {
+            width: 350px;
+            height: 220px;
+            background: #1c1c1c;
+            border-left: 5px solid #c0c0c0;
+            padding: 30px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .name {
+            font-size: 28px;
+            color: #fff;
+        }
+        .title {
+            font-size: 14px;
+            color: #888;
+        }
+        .signature-svg {
+            width: 150px;
+            align-self: flex-end;
+        }
+        .signature-path {
+            stroke: #c0c0c0;
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 500;
+            stroke-dashoffset: 500;
+            animation: draw-sig 3s ease-out forwards;
+        }
+        @keyframes draw-sig {
+            to { stroke-dashoffset: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div>
+            <div class="name">Alex Smith</div>
+            <div class="title">Creative Director</div>
+        </div>
+        <svg class="signature-svg" viewBox="0 0 200 80">
+            <path class="signature-path" d="M10,70 Q 30,10 60,50 T 110,60 Q 150,80 190,20"/>
+        </svg>
+    </div>
+</body>
+</html>

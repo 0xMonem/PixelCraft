@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Orbit Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000428;
+            background: linear-gradient(to bottom, #004e92, #000428);
+            font-family: 'Verdana', sans-serif;
+        }
+        .orbit-card {
+            width: 320px;
+            height: 480px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 50px rgba(0, 78, 146, 0.5);
+            transition: transform 0.4s ease;
+        }
+        .orbit-card:hover {
+            transform: scale(1.05);
+        }
+        .system-svg {
+            width: 250px;
+            height: 250px;
+        }
+        .title {
+            color: white;
+            font-size: 26px;
+            margin-top: 30px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+        .ring {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.3);
+            stroke-width: 1;
+            transform-origin: center;
+        }
+        .planet {
+            fill: white;
+        }
+        .r1 { animation: spin 10s linear infinite; }
+        .r2 { animation: spin 15s linear infinite reverse; }
+        .r3 { animation: spin 20s linear infinite; }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="orbit-card">
+        <svg class="system-svg" viewBox="0 0 200 200">
+            <!-- Core -->
+            <circle cx="100" cy="100" r="15" fill="#00c6ff" filter="drop-shadow(0 0 10px #00c6ff)"/>
+            
+            <!-- Orbit 1 -->
+            <g class="r1">
+                <circle cx="100" cy="100" r="40" class="ring" stroke-dasharray="10 10"/>
+                <circle cx="140" cy="100" r="4" class="planet" />
+            </g>
+            
+            <!-- Orbit 2 -->
+            <g class="r2">
+                <circle cx="100" cy="100" r="65" class="ring" stroke-dasharray="50 50"/>
+                <circle cx="100" cy="35" r="6" class="planet" fill="#ffd700"/>
+            </g>
+            
+            <!-- Orbit 3 -->
+            <g class="r3">
+                <circle cx="100" cy="100" r="90" class="ring" stroke="rgba(255,255,255,0.1)"/>
+                <circle cx="10" cy="100" r="3" class="planet" />
+            </g>
+        </svg>
+        <div class="title">Galaxy</div>
+    </div>
+</body>
+</html>

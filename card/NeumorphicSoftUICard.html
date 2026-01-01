@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neumorphic Soft UI Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #e0e5ec;
+            font-family: 'Lato', sans-serif;
+        }
+        .card {
+            width: 300px;
+            height: 300px;
+            background: #e0e5ec;
+            border-radius: 20px;
+            box-shadow: 
+                -7px -7px 20px 0px #fff9,
+                7px 7px 20px 0px #0001;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: box-shadow 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 
+                -10px -10px 25px 0px #fff9,
+                10px 10px 25px 0px #0001;
+        }
+        .icon-holder {
+            width: 80px;
+            height: 80px;
+            background: #e0e5ec;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 
+                inset -5px -5px 15px 0px #fff9,
+                inset 5px 5px 15px 0px #0001;
+        }
+        .icon-svg {
+            width: 30px;
+            height: 30px;
+            stroke: #a3b1c6;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #5b6a80;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="icon-holder">
+            <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 17.58A5 5 0 0 0 15 8c-1.85 0-3.54.96-4.4 2.44M4 14.5A5 5 0 0 0 9 20h9a5 5 0 0 0 2-9.5A5.5 5.5 0 0 0 12 4Z"/>
+            </svg>
+        </div>
+        <div class="title">Soft UI</div>
+    </div>
+</body>
+</html>

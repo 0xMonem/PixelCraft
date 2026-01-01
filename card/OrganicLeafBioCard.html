@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Leaf Bio Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f1f8e9;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .leaf-card {
+            width: 300px;
+            height: 400px;
+            background: linear-gradient(135deg, #a5d6a7, #66bb6a);
+            border-radius: 0 100px 0 100px;
+            position: relative;
+            box-shadow: 10px 10px 30px rgba(76, 175, 80, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            transition: transform 0.3s;
+        }
+        .leaf-card:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+        .veins {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+        .content {
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+        }
+        .icon-box {
+            background: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        h2 { font-size: 24px; margin: 0; }
+        p { font-size: 14px; opacity: 0.9; }
+        .btn {
+            background: white;
+            color: #4caf50;
+            padding: 10px 25px;
+            border-radius: 20px;
+            border: none;
+            margin-top: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="leaf-card">
+        <svg class="veins" viewBox="0 0 300 400">
+            <path d="M0 400 C 150 200, 150 200, 300 0" stroke="white" stroke-width="2" fill="none"/>
+            <path d="M100 270 L 50 220" stroke="white" stroke-width="2" fill="none"/>
+            <path d="M120 240 L 180 200" stroke="white" stroke-width="2" fill="none"/>
+            <path d="M140 310 L 200 340" stroke="white" stroke-width="2" fill="none"/>
+            <path d="M200 130 L 250 160" stroke="white" stroke-width="2" fill="none"/>
+            <path d="M80 350 L 130 380" stroke="white" stroke-width="2" fill="none"/>
+        </svg>
+
+        <div class="content">
+            <div class="icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#4caf50">
+                    <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                </svg>
+            </div>
+            <h2>Bio Energy</h2>
+            <p>Powered by nature. 100% Organic design philosophy.</p>
+            <button class="btn">Plant Tree</button>
+        </div>
+    </div>
+</body>
+</html>

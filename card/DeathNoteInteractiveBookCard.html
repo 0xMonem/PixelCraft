@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Death Note Interactive Book Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #333;
+        }
+        .card-container {
+            width: 300px;
+            height: 420px;
+            perspective: 1200px;
+        }
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            transform-origin: left;
+        }
+        .card-container:hover .card {
+            transform: rotateY(-30deg);
+        }
+        .cover, .inside {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            box-sizing: border-box;
+        }
+        .cover {
+            background: #212121;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Old English Text MT', serif;
+            font-size: 32px;
+            color: #bdbdbd;
+        }
+        .inside {
+            background: #fafafa;
+            transform: rotateY(180deg);
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            color: #333;
+            font-size: 14px;
+        }
+        .apple-svg {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            opacity: 0;
+            transition: opacity 0.5s 0.3s;
+        }
+        .card-container:hover .apple-svg {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">
+            <div class="cover">
+                Death Note
+            </div>
+            <div class="inside">
+                <p>The human whose name is written in this note shall die.</p>
+                <svg class="apple-svg" viewBox="0 0 100 100">
+                    <path d="M50,20 C80,20 90,50 80,70 C70,90 30,90 20,70 C10,50 20,20 50,20" fill="#f44336"/>
+                    <path d="M50 20 Q 60 10 55 5" stroke="#6d4c41" stroke-width="4" fill="none"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

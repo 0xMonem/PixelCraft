@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Shine Text Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #111;
+        }
+        .card {
+            width: 300px;
+            height: 200px;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .text {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: #444;
+            position: relative;
+        }
+        .shine-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(100deg, transparent, #fff, transparent);
+            background-size: 50% 100%;
+            background-repeat: no-repeat;
+            mix-blend-mode: color-dodge;
+            animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            from { background-position: -100% 0; }
+            to { background-position: 200% 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="text">
+            LUX
+            <div class="shine-effect"></div>
+        </div>
+    </div>
+</body>
+</html>

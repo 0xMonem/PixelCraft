@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Grid Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .card {
+            width: 300px;
+            height: 300px;
+            background: white;
+            padding: 20px;
+        }
+        .grid-svg {
+            width: 100%;
+            height: 100%;
+        }
+        .grid-line {
+            stroke: #ccc;
+            stroke-width: 1;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card:hover .grid-line {
+            stroke: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="card">
+        <svg class="grid-svg" id="gridSvg">
+            <!-- JS Populated -->
+        </svg>
+    </div>
+
+    <script>
+        const svg = document.getElementById('gridSvg');
+        const card = document.getElementById('card');
+        const size = 300;
+        const step = 30;
+
+        for (let i = 0; i <= size; i += step) {
+            const hLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            hLine.setAttribute('class', 'grid-line');
+            hLine.setAttribute('x1', 0); hLine.setAttribute('y1', i);
+            hLine.setAttribute('x2', size); hLine.setAttribute('y2', i);
+            svg.appendChild(hLine);
+            
+            const vLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            vLine.setAttribute('class', 'grid-line');
+            vLine.setAttribute('x1', i); vLine.setAttribute('y1', 0);
+            vLine.setAttribute('x2', i); vLine.setAttribute('y2', size);
+            svg.appendChild(vLine);
+        }
+
+        const lines = document.querySelectorAll('.grid-line');
+        card.addEventListener('mouseover', () => {
+            lines.forEach(line => {
+                const moveX = (Math.random() - 0.5) * 10;
+                const moveY = (Math.random() - 0.5) * 10;
+                line.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+        card.addEventListener('mouseleave', () => {
+            lines.forEach(line => {
+                line.style.transform = 'translate(0, 0)';
+            });
+        });
+    </script>
+</body>
+</html>

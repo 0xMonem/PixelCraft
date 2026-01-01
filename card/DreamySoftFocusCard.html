@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dreamy Soft Focus Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fff;
+            font-family: Helvetica, sans-serif;
+            overflow: hidden;
+        }
+        .dream-card {
+            width: 320px;
+            height: 480px;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(30px);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+        .bg-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .bubble {
+            animation: floatBubble 10s infinite ease-in-out alternate;
+        }
+        .b1 { animation-duration: 8s; }
+        .b2 { animation-duration: 12s; animation-direction: alternate-reverse; }
+        .b3 { animation-duration: 15s; }
+        
+        @keyframes floatBubble {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 40px); }
+        }
+        
+        h2 {
+            font-size: 32px;
+            color: #333;
+            margin: 0 0 10px 0;
+            letter-spacing: -1px;
+        }
+        p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .tag {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: #333;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dream-card">
+        <div class="tag">Dreamy</div>
+        
+        <svg class="bg-shapes" viewBox="0 0 320 480">
+            <defs>
+                <filter id="blurFilter">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
+                </filter>
+            </defs>
+            <circle class="bubble b1" cx="50" cy="100" r="80" fill="#ffcdb2" filter="url(#blurFilter)" opacity="0.8"/>
+            <circle class="bubble b2" cx="280" cy="300" r="100" fill="#b5838d" filter="url(#blurFilter)" opacity="0.6"/>
+            <circle class="bubble b3" cx="100" cy="400" r="90" fill="#e5989b" filter="url(#blurFilter)" opacity="0.7"/>
+            <circle class="bubble b1" cx="200" cy="50" r="60" fill="#ffb4a2" filter="url(#blurFilter)" opacity="0.6"/>
+        </svg>
+
+        <h2>Soft<br>Focus</h2>
+        <p>A minimalist design approach using heavy Gaussian blur for a soothing visual experience.</p>
+    </div>
+</body>
+</html>

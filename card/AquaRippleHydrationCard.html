@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqua Ripple Hydration Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #e3f2fd;
+            font-family: 'Verdana', sans-serif;
+        }
+        .ripple-card {
+            width: 280px;
+            height: 380px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(33, 150, 243, 0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .ripple-card:hover {
+            transform: translateY(-5px);
+        }
+        .ripple-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .circle-ripple {
+            fill: none;
+            stroke: #2196f3;
+            stroke-width: 1;
+            opacity: 0;
+            transform-origin: center;
+            animation: ripple 3s linear infinite;
+        }
+        .c1 { animation-delay: 0s; }
+        .c2 { animation-delay: 1s; }
+        .c3 { animation-delay: 2s; }
+        
+        @keyframes ripple {
+            0% { transform: scale(0.1); opacity: 0.8; stroke-width: 5; }
+            100% { transform: scale(2.5); opacity: 0; stroke-width: 0; }
+        }
+        
+        .icon-drop {
+            z-index: 2;
+            width: 60px;
+            height: 60px;
+            fill: #2196f3;
+            filter: drop-shadow(0 5px 10px rgba(33, 150, 243, 0.4));
+        }
+        h3 {
+            z-index: 2;
+            color: #1565c0;
+            margin: 20px 0 0 0;
+        }
+        p {
+            z-index: 2;
+            color: #90caf9;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ripple-card">
+        <svg class="ripple-bg" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="50" class="circle-ripple c1" />
+            <circle cx="100" cy="100" r="50" class="circle-ripple c2" />
+            <circle cx="100" cy="100" r="50" class="circle-ripple c3" />
+        </svg>
+        
+        <svg class="icon-drop" viewBox="0 0 24 24">
+            <path d="M12,2C12,2 5,10.64 5,15.5C5,19.36 8.13,22.5 12,22.5C15.87,22.5 19,19.36 19,15.5C19,10.64 12,2 12,2Z"/>
+        </svg>
+        
+        <h3>Pure Aqua</h3>
+        <p>Hydration Reminder</p>
+    </div>
+</body>
+</html>

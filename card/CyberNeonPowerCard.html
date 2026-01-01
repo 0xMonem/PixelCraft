@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Neon Power Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #090909;
+            font-family: sans-serif;
+        }
+        .neon-card {
+            position: relative;
+            width: 280px;
+            height: 380px;
+            background: #000;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+        .neon-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            filter: drop-shadow(0 0 5px #0ff) drop-shadow(0 0 10px #0ff);
+        }
+        .rect-path {
+            fill: none;
+            stroke: #0ff;
+            stroke-width: 3;
+            stroke-dasharray: 400; 
+            stroke-dashoffset: 0;
+            animation: dash 5s linear infinite;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: 800; }
+        }
+        h2 {
+            color: #fff;
+            font-size: 32px;
+            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+            margin: 0 0 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+        p {
+            color: #ccc;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .btn {
+            margin-top: 30px;
+            padding: 10px 25px;
+            background: transparent;
+            border: 2px solid #d303fc;
+            color: #d303fc;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(211, 3, 252, 0.2);
+        }
+        .btn:hover {
+            background: #d303fc;
+            color: white;
+            box-shadow: 0 0 30px #d303fc;
+        }
+        .icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="neon-card">
+        <svg class="neon-border" width="100%" height="100%">
+            <rect x="5" y="5" width="97%" height="97%" rx="10" ry="10" class="rect-path" />
+        </svg>
+        
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#d303fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+        </svg>
+        
+        <h2>POWER</h2>
+        <p>Unlimited energy source detected. Synchronization complete.</p>
+        <button class="btn">Activate</button>
+    </div>
+</body>
+</html>

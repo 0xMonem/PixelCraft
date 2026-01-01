@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vortex Dimensional Portal Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1a1a2e;
+            font-family: sans-serif;
+        }
+        .card {
+            width: 300px;
+            height: 450px;
+            border-radius: 20px;
+            background: linear-gradient(180deg, #16213e, #0f3460);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.02);
+        }
+        .portal-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            z-index: 1;
+        }
+        .card-info {
+            z-index: 2;
+            text-align: center;
+            background: rgba(22, 33, 62, 0.8);
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        h2 {
+            margin: 0;
+            background: -webkit-linear-gradient(#e94560, #ff9a9e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 28px;
+        }
+        p {
+            font-size: 14px;
+            color: #ccc;
+        }
+        .rotate-slow { animation: rot 20s linear infinite; }
+        .rotate-fast { animation: rot 10s linear infinite reverse; }
+        @keyframes rot {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <svg class="portal-bg" viewBox="0 0 200 200">
+            <defs>
+                <linearGradient id="p-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#e94560;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#533483;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <g transform="translate(100,100)">
+                <circle r="90" fill="none" stroke="url(#p-grad)" stroke-width="1" stroke-dasharray="10 10" class="rotate-slow" opacity="0.3"/>
+                <circle r="70" fill="none" stroke="#e94560" stroke-width="2" stroke-dasharray="50 20" class="rotate-fast" opacity="0.5"/>
+                <circle r="50" fill="none" stroke="#0f3460" stroke-width="4" class="rotate-slow"/>
+                <circle r="30" fill="url(#p-grad)" class="pulse"/>
+                
+                <!-- Rays -->
+                <line x1="0" y1="-100" x2="0" y2="100" stroke="rgba(255,255,255,0.05)" stroke-width="20" class="rotate-slow" />
+                <line x1="-100" y1="0" x2="100" y2="0" stroke="rgba(255,255,255,0.05)" stroke-width="20" class="rotate-slow" />
+            </g>
+        </svg>
+        
+        <div class="card-info">
+            <h2>VORTEX</h2>
+            <p>Dimensional Shift</p>
+        </div>
+    </div>
+</body>
+</html>

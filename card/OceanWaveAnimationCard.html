@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocean Wave Animation Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0c1445;
+        }
+        .card {
+            width: 320px;
+            height: 450px;
+            position: relative;
+            overflow: hidden;
+            background: #14285b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .water-bg {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            animation: pan 15s linear infinite;
+        }
+        @keyframes pan {
+            from { transform: translateX(0) translateY(0); }
+            to { transform: translateX(-50%) translateY(-50%); }
+        }
+        .wave {
+            fill: none;
+            stroke: #3498db;
+            stroke-width: 2;
+        }
+        .text {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 60px;
+            font-weight: bold;
+            color: white;
+            z-index: 2;
+            position: relative;
+        }
+        .text span {
+            display: inline-block;
+            animation: wave-text 1s ease-in-out infinite alternate;
+        }
+        .text span:nth-child(2) { animation-delay: 0.1s; }
+        .text span:nth-child(3) { animation-delay: 0.2s; }
+        .text span:nth-child(4) { animation-delay: 0.3s; }
+        .text span:nth-child(5) { animation-delay: 0.4s; }
+
+        @keyframes wave-text {
+            to { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <svg class="water-bg" viewBox="0 0 400 400">
+            <path class="wave" d="M0 100 C50 50, 150 150, 200 100 S 350 50, 400 100" />
+            <path class="wave" d="M0 200 C50 150, 150 250, 200 200 S 350 150, 400 200" />
+            <path class="wave" d="M0 300 C50 250, 150 350, 200 300 S 350 250, 400 300" />
+        </svg>
+        <div class="text">
+            <span>W</span><span>A</span><span>T</span><span>E</span><span>R</span>
+        </div>
+    </div>
+</body>
+</html>

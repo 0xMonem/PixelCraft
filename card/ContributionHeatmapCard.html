@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contribution Heatmap Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fff;
+            font-family: 'Consolas', monospace;
+        }
+        .card {
+            padding: 20px;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+        }
+        .heatmap-svg {
+            display: block;
+        }
+        .day {
+            stroke: rgba(0,0,0,0.05);
+            transition: fill 0.2s;
+        }
+        .day:hover {
+            stroke: #000;
+        }
+        .label {
+            font-size: 10px;
+            fill: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <svg class="heatmap-svg" width="280" height="120">
+            <g transform="translate(20, 20)">
+                <text class="label" x="-15" y="10">Mon</text>
+                <text class="label" x="-15" y="40">Wed</text>
+                <text class="label" x="-15" y="70">Fri</text>
+                
+                <g class="week">
+                    <rect class="day" width="15" height="15" x="0" y="0" fill="#c6e48b" rx="2"/>
+                    <rect class="day" width="15" height="15" x="0" y="20" fill="#7bc96f" rx="2"/>
+                    <rect class="day" width="15" height="15" x="0" y="40" fill="#239a3b" rx="2"/>
+                    <rect class="day" width="15" height="15" x="0" y="60" fill="#196127" rx="2"/>
+                </g>
+                <g class="week" transform="translate(20, 0)">
+                    <rect class="day" width="15" height="15" x="0" y="0" fill="#c6e48b" rx="2"/>
+                    <rect class="day" width="15" height="15" x="0" y="20" fill="#c6e48b" rx="2"/>
+                    <rect class="day" width="15" height="15" x="0" y="40" fill="#7bc96f" rx="2"/>
+                    <rect class="day" width="15" height="15" x="0" y="60" fill="#239a3b" rx="2"/>
+                </g>
+                <g class="week" transform="translate(40, 0)">
+                    <rect class="day" width="15" height="15" x="0" y="0" fill="#7bc96f" rx="2"/>
+                    <rect class="day" width="15" height="15" x="0" y="20" fill="#c6e48b" rx="2"/>
+                    <rect class="day" width="15" height="15" x="0" y="40" fill="#196127" rx="2"/>
+                    <rect class="day" width="15" height="15" x="0" y="60" fill="#7bc96f" rx="2"/>
+                </g>
+                 <g class="week" transform="translate(60, 0)">
+                    <rect class="day" width="15" height="15" x="0" y="0" fill="#239a3b" rx="2"/>
+                    <rect class="day" width="15" height="15" x="0" y="20" fill="#c6e48b" rx="2"/>
+                    <rect class="day" width="15" height="15" x="0" y="40" fill="#c6e48b" rx="2"/>
+                    <rect class="day" width="15" height="15" x="0" y="60" fill="#7bc96f" rx="2"/>
+                </g>
+                 <g class="week" transform="translate(80, 0)">
+                    <rect class="day" width="15" height="15" x="0" y="0" fill="#196127" rx="2"/>
+                    <rect class="day" width="15" height="15" x="0" y="20" fill="#239a3b" rx="2"/>
+                    <rect class="day" width="15" height="15" x="0" y="40" fill="#7bc96f" rx="2"/>
+                    <rect class="day" width="15" height="15" x="0" y="60" fill="#c6e48b" rx="2"/>
+                </g>
+            </g>
+        </svg>
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Shatter Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .card {
+            width: 300px;
+            height: 420px;
+            background: #ffc107;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arial', sans-serif;
+            font-size: 80px;
+            font-weight: bold;
+            color: #d32f2f;
+        }
+        .shatter-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+        .piece {
+            position: absolute;
+            background: #ffc107;
+            transition: transform 0.5s ease-out;
+        }
+        .card.punched .piece {
+            transform: translate(var(--tx, 0), var(--ty, 0)) rotate(var(--r, 0));
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="card">
+        OK.
+        <div class="shatter-overlay" id="overlay">
+             <!-- JS will populate pieces for the shatter effect -->
+        </div>
+    </div>
+    <script>
+        const card = document.getElementById('card');
+        card.addEventListener('click', () => {
+            if (card.classList.contains('punched')) return;
+            card.classList.add('punched');
+            const overlay = document.getElementById('overlay');
+            for (let i = 0; i < 20; i++) {
+                const piece = document.createElement('div');
+                piece.className = 'piece';
+                piece.style.top = `${Math.random() * 100}%`;
+                piece.style.left = `${Math.random() * 100}%`;
+                piece.style.width = `${Math.random() * 50 + 20}px`;
+                piece.style.height = `${Math.random() * 50 + 20}px`;
+                piece.style.setProperty('--tx', `${(Math.random() - 0.5) * 500}px`);
+                piece.style.setProperty('--ty', `${(Math.random() - 0.5) * 500}px`);
+                piece.style.setProperty('--r', `${(Math.random() - 0.5) * 720}deg`);
+                overlay.appendChild(piece);
+            }
+        });
+    </script>
+</body>
+</html>

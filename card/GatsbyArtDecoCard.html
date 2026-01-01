@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gatsby Art Deco Luxury Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1a1a1a;
+        }
+        .card {
+            width: 300px;
+            height: 420px;
+            background: #222;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pattern-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .pattern-path {
+            stroke: #d4af37;
+            stroke-width: 1;
+            fill: none;
+            stroke-dasharray: 200;
+            stroke-dashoffset: 200;
+            transition: stroke-dashoffset 1s ease;
+        }
+        .card:hover .pattern-path {
+            stroke-dashoffset: 0;
+        }
+        .content {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            color: #fff;
+            z-index: 2;
+        }
+        h2 {
+            font-size: 28px;
+            font-weight: 400;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <svg class="pattern-svg">
+            <defs>
+                <pattern id="art-deco" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <path class="pattern-path" d="M0 50 L50 0 L100 50 L50 100 Z" />
+                    <circle class="pattern-path" cx="50" cy="50" r="25" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#art-deco)" />
+        </svg>
+        <div class="content">
+            <h2>GATSBY</h2>
+        </div>
+    </div>
+</body>
+</html>

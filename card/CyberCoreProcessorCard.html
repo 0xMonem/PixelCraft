@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk Quantum Core Processor Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0b0c10;
+            font-family: 'Courier New', monospace;
+        }
+        .chip-card {
+            width: 280px;
+            height: 400px;
+            background: #1f2833;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(102, 252, 241, 0.1);
+            overflow: hidden;
+            border: 1px solid #45a29e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+        .chip-card:hover {
+            box-shadow: 0 0 30px rgba(102, 252, 241, 0.3);
+            transform: translateY(-5px);
+        }
+        .chip-svg {
+            width: 150px;
+            height: 150px;
+            margin-top: 30px;
+            filter: drop-shadow(0 0 5px #66fcf1);
+        }
+        .info {
+            margin-top: 40px;
+            text-align: center;
+            width: 100%;
+        }
+        h3 {
+            color: #66fcf1;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .specs {
+            margin-top: 20px;
+            border-top: 1px solid #45a29e;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        .spec-item {
+            color: #c5c6c7;
+            font-size: 12px;
+        }
+        .trace {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: draw 3s linear infinite;
+        }
+        @keyframes draw {
+            to { stroke-dashoffset: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="chip-card">
+        <svg class="chip-svg" viewBox="0 0 100 100">
+            <rect x="25" y="25" width="50" height="50" fill="#0b0c10" stroke="#66fcf1" stroke-width="2" rx="5" />
+            <path class="trace" d="M25 40 H10" stroke="#45a29e" stroke-width="2" fill="none"/>
+            <path class="trace" d="M25 50 H5" stroke="#45a29e" stroke-width="2" fill="none"/>
+            <path class="trace" d="M25 60 H10" stroke="#45a29e" stroke-width="2" fill="none"/>
+            <path class="trace" d="M75 40 H90" stroke="#45a29e" stroke-width="2" fill="none"/>
+            <path class="trace" d="M75 50 H95" stroke="#45a29e" stroke-width="2" fill="none"/>
+            <path class="trace" d="M75 60 H90" stroke="#45a29e" stroke-width="2" fill="none"/>
+            <path class="trace" d="M40 25 V10" stroke="#45a29e" stroke-width="2" fill="none"/>
+            <path class="trace" d="M50 25 V5" stroke="#45a29e" stroke-width="2" fill="none"/>
+            <path class="trace" d="M60 25 V10" stroke="#45a29e" stroke-width="2" fill="none"/>
+            <rect x="40" y="40" width="20" height="20" fill="#66fcf1" />
+        </svg>
+        <div class="info">
+            <h3>Q-Core X1</h3>
+            <div class="specs">
+                <span class="spec-item">7nm</span>
+                <span class="spec-item">128 Core</span>
+                <span class="spec-item">5.0 GHz</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

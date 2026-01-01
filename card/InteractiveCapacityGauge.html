@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Capacity Gauge</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f7f6;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .card {
+            width: 280px;
+            height: 280px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .gauge-svg {
+            width: 200px;
+            height: 100px;
+        }
+        .gauge-bg {
+            fill: none;
+            stroke: #eee;
+            stroke-width: 20;
+        }
+        .gauge-fill {
+            fill: none;
+            stroke: #4caf50;
+            stroke-width: 20;
+            stroke-dasharray: 314; /* half circumference of a 100r circle */
+            stroke-dashoffset: 314;
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+        .card:hover .gauge-fill {
+            /* 100% = 0, 0% = 314. So 80% = 314 * (1 - 0.8) = 62.8 */
+            stroke-dashoffset: 62.8; 
+        }
+        .needle {
+            transform-origin: 100px 100px;
+            transition: transform 1s ease-in-out;
+        }
+        .card:hover .needle {
+            /* 0% = -90deg, 100% = 90deg. So 80% = -90 + (180 * 0.8) = 54deg */
+            transform: rotate(54deg);
+        }
+        .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-top: -30px;
+        }
+        .label {
+            color: #999;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <svg class="gauge-svg" viewBox="0 0 200 100">
+            <path class="gauge-bg" d="M10,100 A90,90 0 0,1 190,100" />
+            <path class="gauge-fill" d="M10,100 A90,90 0 0,1 190,100" />
+            <line class="needle" x1="100" y1="100" x2="100" y2="20" stroke="#555" stroke-width="3" stroke-linecap="round" transform="rotate(-90)" />
+            <circle cx="100" cy="100" r="5" fill="#555" />
+        </svg>
+        <div class="value">80%</div>
+        <div class="label">Capacity</div>
+    </div>
+</body>
+</html>

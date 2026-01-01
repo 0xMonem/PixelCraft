@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layered Depth Paper Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #faf3e0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .paper-card {
+            width: 320px;
+            height: 480px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .paper-layers {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-out;
+        }
+        .paper-card:hover .l1 { transform: translateY(5px); }
+        .paper-card:hover .l2 { transform: translateY(10px); }
+        .paper-card:hover .l3 { transform: translateY(15px); }
+        .paper-card:hover .l4 { transform: translateY(20px); }
+
+        .content {
+            position: relative;
+            z-index: 10;
+        }
+        h2 {
+            color: #5e4a3c;
+            font-size: 28px;
+            margin: 0 0 10px 0;
+        }
+        p {
+            color: #a08c7d;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="paper-card">
+        <div class="paper-layers">
+            <svg class="layer l1" viewBox="0 0 320 480" preserveAspectRatio="none">
+                <defs><filter id="shadow1"><feDropShadow dx="0" dy="-5" stdDeviation="5" flood-color="#000" flood-opacity="0.05"/></filter></defs>
+                <path d="M0,480 H320 V250 C200,350 120,150 0,250 Z" fill="#eabf9f" filter="url(#shadow1)" />
+            </svg>
+            <svg class="layer l2" viewBox="0 0 320 480" preserveAspectRatio="none">
+                <defs><filter id="shadow2"><feDropShadow dx="0" dy="-5" stdDeviation="5" flood-color="#000" flood-opacity="0.05"/></filter></defs>
+                <path d="M0,480 H320 V280 C220,380 100,200 0,280 Z" fill="#b68973" filter="url(#shadow2)" />
+            </svg>
+            <svg class="layer l3" viewBox="0 0 320 480" preserveAspectRatio="none">
+                 <defs><filter id="shadow3"><feDropShadow dx="0" dy="-5" stdDeviation="5" flood-color="#000" flood-opacity="0.05"/></filter></defs>
+                <path d="M0,480 H320 V320 C240,420 80,250 0,320 Z" fill="#7a5c58" filter="url(#shadow3)" />
+            </svg>
+             <svg class="layer l4" viewBox="0 0 320 480" preserveAspectRatio="none">
+                <path d="M0,480 H320 V380 C200,450 100,350 0,380 Z" fill="#1e212d" />
+            </svg>
+        </div>
+        <div class="content">
+            <h2>Layered Depth</h2>
+            <p>Crafted with SVG & shadow filters.</p>
+        </div>
+    </div>
+</body>
+</html>

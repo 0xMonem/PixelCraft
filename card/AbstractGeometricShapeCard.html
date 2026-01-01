@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract Geometric Shape Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5dc;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+        .card {
+            width: 300px;
+            height: 420px;
+            background: #fff;
+            border: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+        .shape {
+            position: absolute;
+            transition: all 0.5s ease;
+        }
+        .red-rect {
+            top: 40px;
+            left: -50px;
+            width: 150px;
+            height: 50px;
+            background: #e24a4a;
+            transform: rotate(-30deg);
+        }
+        .blue-circle {
+            bottom: 50px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            background: #3a7ca5;
+            border-radius: 50%;
+        }
+        .yellow-triangle {
+            bottom: -50px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid #f9d74a;
+        }
+        .line {
+            top: 50%;
+            left: 50%;
+            width: 1px;
+            height: 200px;
+            background: #333;
+        }
+        .card:hover .red-rect {
+            left: 20px;
+        }
+        .card:hover .blue-circle {
+            transform: scale(0.8);
+        }
+        .card:hover .yellow-triangle {
+            bottom: -20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="shape red-rect"></div>
+        <div class="shape blue-circle"></div>
+        <div class="shape yellow-triangle"></div>
+        <div class="shape line"></div>
+    </div>
+</body>
+</html>

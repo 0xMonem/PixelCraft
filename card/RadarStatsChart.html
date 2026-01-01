@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar Stats Chart</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1a1d24;
+            font-family: 'Arial', sans-serif;
+        }
+        .card {
+            width: 320px;
+            height: 320px;
+            background: #23272f;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .radar-svg {
+            width: 250px;
+            height: 250px;
+        }
+        .grid-line, .axis-line {
+            stroke: #444;
+            stroke-width: 1;
+        }
+        .data-shape {
+            fill: rgba(0, 255, 132, 0.4);
+            stroke: #00ff84;
+            stroke-width: 2;
+            transition: all 0.3s ease-in-out;
+        }
+        .card:hover .data-shape {
+            transform: scale(1.05);
+        }
+        .label {
+            fill: #aaa;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <svg class="radar-svg" viewBox="-125 -125 250 250">
+            <!-- Grid -->
+            <circle class="grid-line" r="40" fill="none"/>
+            <circle class="grid-line" r="80" fill="none"/>
+            <circle class="grid-line" r="120" fill="none"/>
+            <!-- Axes -->
+            <line class="axis-line" x1="0" y1="0" x2="0" y2="-120" />
+            <line class="axis-line" x1="0" y1="0" x2="104" y2="-60" />
+            <line class="axis-line" x1="0" y1="0" x2="104" y2="60" />
+            <line class="axis-line" x1="0" y1="0" x2="0" y2="120" />
+            <line class="axis-line" x1="0" y1="0" x2="-104" y2="60" />
+            <line class="axis-line" x1="0" y1="0" x2="-104" y2="-60" />
+            <!-- Data polygon -->
+            <polygon class="data-shape" points="0,-100 90,-40 70,70 0,90 -80,50 -60,-80" />
+            <!-- Labels -->
+            <text class="label" x="0" y="-125" text-anchor="middle">ATK</text>
+            <text class="label" x="110" y="-60" text-anchor="start">DEF</text>
+            <text class="label" x="110" y="65" text-anchor="start">SPD</text>
+            <text class="label" x="0" y="130" text-anchor="middle">HP</text>
+            <text class="label" x="-110" y="65" text-anchor="end">MP</text>
+            <text class="label" x="-110" y="-60" text-anchor="end">RES</text>
+        </svg>
+    </div>
+</body>
+</html>

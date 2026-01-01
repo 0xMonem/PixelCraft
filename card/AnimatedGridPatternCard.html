@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Grid Pattern Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fff;
+        }
+        .card {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+        .pattern-svg {
+            width: 100%;
+            height: 100%;
+        }
+        .line {
+            stroke: white;
+            stroke-width: 2;
+        }
+        .lines1 {
+            animation: move 4s linear infinite;
+        }
+        .lines2 {
+            animation: move 6s linear infinite reverse;
+        }
+        .card:hover .lines1, .card:hover .lines2 {
+            animation-duration: 1s;
+        }
+        @keyframes move {
+            from { transform: translateY(-50px); }
+            to { transform: translateY(50px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <svg class="pattern-svg">
+            <defs>
+                <pattern id="p1" width="50" height="50" patternUnits="userSpaceOnUse">
+                    <line class="line" x1="0" y1="25" x2="50" y2="25"/>
+                </pattern>
+                <pattern id="p2" width="50" height="50" patternUnits="userSpaceOnUse" patternTransform="rotate(90)">
+                     <line class="line" x1="0" y1="25" x2="50" y2="25"/>
+                </pattern>
+            </defs>
+            <rect class="lines1" width="100%" height="100%" fill="url(#p1)"/>
+            <rect class="lines2" width="100%" height="100%" fill="url(#p2)" opacity="0.5"/>
+        </svg>
+    </div>
+</body>
+</html>

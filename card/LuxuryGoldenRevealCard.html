@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Golden Reveal Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #121212;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .card {
+            width: 300px;
+            height: 420px;
+            background: #1a1a1a;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+        }
+        .reveal-line {
+            position: absolute;
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .line-top, .line-bottom {
+            width: 100%;
+            height: 2px;
+        }
+        .line-left, .line-right {
+            width: 2px;
+            height: 100%;
+        }
+        .line-top { top: 0; left: 0; transform: translateX(-100%); }
+        .line-bottom { bottom: 0; right: 0; transform: translateX(100%); }
+        .line-left { top: 0; left: 0; transform: translateY(100%); }
+        .line-right { bottom: 0; right: 0; transform: translateY(-100%); }
+
+        .card:hover .line-top, .card:hover .line-bottom { transform: translateX(0); }
+        .card:hover .line-left, .card:hover .line-right { transform: translateY(0); }
+
+        .content {
+            color: #ccc;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s 0.3s, transform 0.5s 0.3s;
+        }
+        .card:hover .content {
+            opacity: 1;
+            transform: scale(1);
+        }
+        h2 {
+            font-size: 28px;
+            font-weight: 300;
+            color: #d4af37;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="reveal-line line-top"></div>
+        <div class="reveal-line line-bottom"></div>
+        <div class="reveal-line line-left"></div>
+        <div class="reveal-line line-right"></div>
+        <div class="content">
+            <h2>Elegance</h2>
+            <p>A Touch of Gold</p>
+        </div>
+    </div>
+</body>
+</html>

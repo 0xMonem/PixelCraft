@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Color Blending Effect</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fff;
+        }
+        .card {
+            width: 350px;
+            height: 250px;
+            background: #f0f0f0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .circle {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            mix-blend-mode: screen;
+        }
+        .c1 {
+            background: #ff0055; /* Magenta */
+            animation: move1 8s infinite alternate;
+        }
+        .c2 {
+            background: #00f3ff; /* Cyan */
+            animation: move2 8s infinite alternate;
+        }
+        .text {
+            color: #000;
+            font-family: 'Poppins', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            mix-blend-mode: darken;
+            z-index: 2;
+        }
+        @keyframes move1 {
+            from { transform: translate(-100px, -100px); }
+            to { transform: translate(100px, 100px); }
+        }
+        @keyframes move2 {
+            from { transform: translate(100px, -100px); }
+            to { transform: translate(-100px, 100px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+        <div class="text">BLEND</div>
+    </div>
+</body>
+</html>

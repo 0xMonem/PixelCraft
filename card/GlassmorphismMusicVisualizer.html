@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphism Music Visualizer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #2d3436;
+            font-family: Arial, sans-serif;
+        }
+        .music-card {
+            width: 300px;
+            height: 450px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .visualizer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            z-index: 1;
+        }
+        .bar {
+            width: 10px;
+            margin: 0 3px;
+            background: linear-gradient(to top, #ff7675, #fab1a0);
+            border-radius: 5px 5px 0 0;
+            animation: bounce 1s infinite ease-in-out;
+        }
+        .content-box {
+            background: white;
+            height: 35%;
+            width: 100%;
+            z-index: 2;
+            border-radius: 30px 30px 0 0;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        h2 { margin: 0; font-size: 20px; color: #2d3436; }
+        p { margin: 5px 0 0; color: #636e72; font-size: 14px; }
+        
+        .bar:nth-child(1) { height: 40px; animation-delay: 0.1s; }
+        .bar:nth-child(2) { height: 80px; animation-delay: 0.3s; }
+        .bar:nth-child(3) { height: 50px; animation-delay: 0.5s; }
+        .bar:nth-child(4) { height: 90px; animation-delay: 0.2s; }
+        .bar:nth-child(5) { height: 60px; animation-delay: 0.4s; }
+        .bar:nth-child(6) { height: 30px; animation-delay: 0.1s; }
+        
+        @keyframes bounce {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.5); }
+        }
+    </style>
+</head>
+<body>
+    <div class="music-card">
+        <div class="visualizer">
+            <!-- Using SVG for background pattern -->
+            <svg style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:-1;" viewBox="0 0 300 300">
+                <circle cx="150" cy="50" r="100" fill="#fab1a0" opacity="0.2" />
+            </svg>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="content-box">
+            <h2>Sonic Boom</h2>
+            <p>Visualizing frequencies in real-time glass.</p>
+        </div>
+    </div>
+</body>
+</html>

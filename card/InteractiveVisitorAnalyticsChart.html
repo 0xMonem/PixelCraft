@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Monthly Visitor Analytics</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fff;
+            font-family: 'Roboto', sans-serif;
+        }
+        .card {
+            width: 350px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.05);
+        }
+        .chart-container {
+            position: relative;
+        }
+        .chart-svg {
+            width: 100%;
+            height: 150px;
+        }
+        .line-path {
+            fill: none;
+            stroke: #007bff;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .tracker-line {
+            stroke: #ccc;
+            stroke-width: 1;
+            stroke-dasharray: 3 3;
+            opacity: 0;
+        }
+        .tracker-dot {
+            fill: #007bff;
+            stroke: white;
+            stroke-width: 2;
+            opacity: 0;
+        }
+        .tooltip {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0;
+            transform: translate(-50%, -120%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h3>Monthly Visitors</h3>
+        <div class="chart-container" id="container">
+            <div class="tooltip" id="tooltip"></div>
+            <svg id="chart" class="chart-svg" viewBox="0 0 310 150">
+                <path id="path" class="line-path" d="M5,100 C 50,20 80,130 155,80 S 250,20 305,50" />
+                <line id="trackerLine" class="tracker-line" y1="0" y2="150" />
+                <circle id="trackerDot" class="tracker-dot" r="5" />
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById('container');
+        const chart = document.getElementById('chart');
+        const path = document.getElementById('path');
+        const tooltip = document.getElementById('tooltip');
+        const trackerLine = document.getElementById('trackerLine');
+        const trackerDot = document.getElementById('trackerDot');
+        const pathLength = path.getTotalLength();
+
+        chart.addEventListener('mousemove', (e) => {
+            const rect = chart.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+
+            trackerLine.setAttribute('x1', mouseX);
+            trackerLine.setAttribute('x2', mouseX);
+            trackerLine.style.opacity = 1;
+            
+            let beginning = 0, end = pathLength, target;
+            while (true) {
+                target = Math.floor((beginning + end) / 2);
+                let pos = path.getPointAtLength(target);
+                if ((target === end || target === beginning) && pos.x !== mouseX) {
+                    break;
+                }
+                if (pos.x > mouseX) end = target;
+                else if (pos.x < mouseX) beginning = target;
+                else break;
+            }
+            
+            const pos = path.getPointAtLength(target);
+            trackerDot.setAttribute('cx', pos.x);
+            trackerDot.setAttribute('cy', pos.y);
+            trackerDot.style.opacity = 1;
+            
+            tooltip.style.left = `${pos.x}px`;
+            tooltip.style.top = `${pos.y}px`;
+            tooltip.textContent = `Value: ${Math.round(150 - pos.y)}`;
+            tooltip.style.opacity = 1;
+        });
+
+        chart.addEventListener('mouseleave', () => {
+            trackerLine.style.opacity = 0;
+            trackerDot.style.opacity = 0;
+            tooltip.style.opacity = 0;
+        });
+    </script>
+</body>
+</html>

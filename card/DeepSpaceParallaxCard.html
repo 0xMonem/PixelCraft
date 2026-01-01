@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Space Parallax Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+            font-family: 'Poppins', sans-serif;
+        }
+        .card {
+            width: 300px;
+            height: 420px;
+            position: relative;
+            perspective: 2000px;
+        }
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            background: #111;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            transform-style: preserve-3d;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+        }
+        .layer {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease-out;
+        }
+        .bg-layer {
+            transform: translateZ(0px); /* Base layer */
+            opacity: 0.2;
+        }
+        .object-layer {
+            transform: translateZ(80px); /* Middle layer */
+        }
+        .text-layer {
+            transform: translateZ(120px); /* Top layer */
+            color: white;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        h2 { font-size: 28px; margin: 0; }
+    </style>
+</head>
+<body>
+    <div class="card" id="card">
+        <div class="card-inner">
+            <div class="layer bg-layer" id="bgLayer">
+                <svg width="400" height="400" viewBox="0 0 200 200">
+                    <circle cx="100" cy="100" r="80" fill="#ff0055" />
+                    <circle cx="50" cy="50" r="50" fill="#00f3ff" />
+                </svg>
+            </div>
+            <div class="layer object-layer" id="objectLayer">
+                 <svg width="150" height="150" viewBox="0 0 100 100">
+                    <polygon points="50,5 95,35 80,95 20,95 5,35" fill="rgba(255,255,255,0.8)" stroke="white" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="layer text-layer" id="textLayer">
+                <h2>Deep Space</h2>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const card = document.getElementById('card');
+        
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (x - centerX) / -20;
+            
+            card.querySelector('.card-inner').style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            
+            // Parallax on layers
+            card.getElementById('bgLayer').style.transform = `translateX(${(x - centerX) / -20}px) translateY(${(y - centerY) / -20}px) translateZ(0px)`;
+            card.getElementById('objectLayer').style.transform = `translateX(${(x - centerX) / 15}px) translateY(${(y - centerY) / 15}px) translateZ(80px)`;
+            card.getElementById('textLayer').style.transform = `translateX(${(x - centerX) / 10}px) translateY(${(y - centerY) / 10}px) translateZ(120px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+             card.querySelector('.card-inner').style.transform = `rotateX(0deg) rotateY(0deg)`;
+             card.querySelectorAll('.layer').forEach(layer => {
+                 const z = layer.style.transform.match(/translateZ\((.*?)px\)/);
+                 layer.style.transform = `translateX(0px) translateY(0px) ${z ? z[0] : ''}`;
+             });
+        });
+    </script>
+</body>
+</html>

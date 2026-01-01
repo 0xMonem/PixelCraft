@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Pixel Grid</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #eee;
+        }
+        .card {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .pixel {
+            width: 30px;
+            height: 30px;
+            background: #000;
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="card">
+        <!-- JS Populated -->
+    </div>
+    <script>
+        const card = document.getElementById('card');
+        for (let i = 0; i < 100; i++) {
+            const pixel = document.createElement('div');
+            pixel.className = 'pixel';
+            if ((Math.floor(i / 10) + i) % 2 === 0) {
+                pixel.style.background = '#fff';
+            }
+            card.appendChild(pixel);
+        }
+
+        const pixels = document.querySelectorAll('.pixel');
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            pixels.forEach((pixel, i) => {
+                const pixelX = (i % 10) * 30 + 15;
+                const pixelY = Math.floor(i / 10) * 30 + 15;
+                const dist = Math.sqrt(Math.pow(pixelX - mouseX, 2) + Math.pow(pixelY - mouseY, 2));
+                const scale = Math.max(0, 1 - dist / 200);
+                pixel.style.transform = `scale(${1 + scale})`;
+            });
+        });
+
+         card.addEventListener('mouseleave', () => {
+             pixels.forEach(pixel => {
+                 pixel.style.transform = 'scale(1)';
+             });
+         });
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forward Minimalist Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            font-family: 'Inter', sans-serif;
+        }
+        .card {
+            width: 320px;
+            height: 200px;
+            padding: 30px;
+            box-sizing: border-box;
+            background: white;
+            position: relative;
+        }
+        .content {
+            position: relative;
+            display: inline-block;
+        }
+        .divider {
+            position: absolute;
+            top: 50%;
+            left: -20px;
+            width: 1px;
+            height: 0;
+            background: #ddd;
+            transition: height 0.5s ease;
+        }
+        .card:hover .divider {
+            height: 100%;
+        }
+        h2 {
+            font-size: 16px;
+            font-weight: 400;
+            color: #333;
+            margin: 0;
+        }
+        p {
+            font-size: 12px;
+            color: #aaa;
+            margin: 5px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="content">
+            <div class="divider"></div>
+            <h2>FWRD</h2>
+            <p>Thinking forward.</p>
+        </div>
+    </div>
+</body>
+</html>

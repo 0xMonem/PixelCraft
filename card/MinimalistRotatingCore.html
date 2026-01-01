@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Rotating Core</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fafafa;
+        }
+        .card {
+            width: 250px;
+            height: 250px;
+            background: white;
+            border: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .icon-svg {
+            width: 60px;
+            height: 60px;
+            stroke: #333;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .rotating-part {
+            transform-origin: center;
+            transition: transform 0.4s ease-in-out;
+        }
+        .card:hover .rotating-part {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <svg class="icon-svg" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" />
+            <circle class="rotating-part" cx="12" cy="12" r="4" />
+        </svg>
+    </div>
+</body>
+</html>

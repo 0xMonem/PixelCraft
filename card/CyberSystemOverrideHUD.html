@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber System Override HUD</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+            font-family: 'Consolas', monospace;
+        }
+        .card {
+            width: 340px;
+            height: 220px;
+            position: relative;
+            background: rgba(0, 255, 255, 0.02);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+        }
+        .hud-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .content {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            color: #0ff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #0ff;
+            padding-bottom: 5px;
+        }
+        .title {
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .status {
+            background: #0ff;
+            color: #000;
+            padding: 0 5px;
+            font-size: 12px;
+        }
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .data-item span {
+            display: block;
+            font-size: 10px;
+            opacity: 0.7;
+        }
+        .data-item strong {
+            font-size: 18px;
+        }
+        .spin-ring {
+            transform-origin: 50% 50%;
+            animation: spin 10s linear infinite;
+        }
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+        .blink {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0.3; }
+        }
+        .btn {
+            background: transparent;
+            border: 1px solid #0ff;
+            color: #0ff;
+            padding: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-family: inherit;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #0ff;
+            color: #000;
+            box-shadow: 0 0 20px #0ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <svg class="hud-overlay" viewBox="0 0 340 220">
+            <!-- Frame -->
+            <path d="M10,0 L330,0 L340,10 L340,210 L330,220 L10,220 L0,210 L0,10 Z" fill="none" stroke="#0ff" stroke-width="1" opacity="0.5"/>
+            <!-- Corners -->
+            <path d="M0,40 V10 L10,0 H40" fill="none" stroke="#0ff" stroke-width="2"/>
+            <path d="M300,0 H330 L340,10 V40" fill="none" stroke="#0ff" stroke-width="2"/>
+            <path d="M340,180 V210 L330,220 H300" fill="none" stroke="#0ff" stroke-width="2"/>
+            <path d="M40,220 H10 L0,210 V180" fill="none" stroke="#0ff" stroke-width="2"/>
+            <!-- Decorative Element -->
+            <g transform="translate(260, 160)">
+                <circle cx="0" cy="0" r="30" stroke="#0ff" stroke-width="1" fill="none" opacity="0.3"/>
+                <circle class="spin-ring" cx="0" cy="0" r="25" stroke="#0ff" stroke-width="1" stroke-dasharray="10 5" fill="none"/>
+                <circle cx="0" cy="0" r="5" fill="#0ff" class="blink"/>
+            </g>
+        </svg>
+
+        <div class="content">
+            <div class="header">
+                <span class="title">Sys.Override</span>
+                <span class="status">ONLINE</span>
+            </div>
+            <div class="data-grid">
+                <div class="data-item">
+                    <span>CORE TEMP</span>
+                    <strong>402°K</strong>
+                </div>
+                <div class="data-item">
+                    <span>MEMORY</span>
+                    <strong>64 EB</strong>
+                </div>
+                <div class="data-item">
+                    <span>UPTIME</span>
+                    <strong>99.9%</strong>
+                </div>
+            </div>
+            <button class="btn">Initiate</button>
+        </div>
+    </div>
+</body>
+</html>

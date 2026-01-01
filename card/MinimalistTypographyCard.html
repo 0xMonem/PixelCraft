@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Typography Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fff;
+            font-family: 'SF Mono', 'Courier New', monospace;
+        }
+        .card {
+            width: 350px;
+            padding: 40px;
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 30px;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #000;
+            position: relative;
+            display: inline-block;
+        }
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background: #000;
+            transition: width 0.4s ease;
+        }
+        .card:hover .title::after {
+            width: 100%;
+        }
+        .id-num {
+            font-size: 12px;
+            color: #aaa;
+        }
+        p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #666;
+            margin: 0;
+        }
+        .footer {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="title">Project Alpha</div>
+            <div class="id-num">/043</div>
+        </div>
+        <p>A minimalist design system focused on typography and white space. The core idea is to remove all distractions, allowing the content to be the primary focus of the user.</p>
+        <div class="footer">
+            <span>[Read More]</span>
+            <span>2025</span>
+        </div>
+    </div>
+</body>
+</html>

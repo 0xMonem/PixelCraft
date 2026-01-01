@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Spotlight Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+            font-family: 'Poppins', sans-serif;
+        }
+        .card {
+            width: 300px;
+            height: 420px;
+            position: relative;
+            border-radius: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            transform-style: preserve-3d;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #111;
+            z-index: 1;
+        }
+        .spotlight {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 40%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 2;
+        }
+        .content {
+            z-index: 3;
+            transform: translateZ(50px);
+        }
+        h2 {
+            margin: 0;
+            font-size: 28px;
+        }
+        p {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="card">
+        <div class="spotlight" id="spotlight"></div>
+        <div class="content">
+            <h2>Spotlight Effect</h2>
+            <p>The light follows your cursor.</p>
+        </div>
+    </div>
+    <script>
+        const card = document.getElementById('card');
+        const spotlight = document.getElementById('spotlight');
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            spotlight.style.opacity = '1';
+            spotlight.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 40%)`;
+
+            const rotateX = (y - rect.height / 2) / 10;
+            const rotateY = (x - rect.width / 2) / -10;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            card.style.boxShadow = '0 40px 60px rgba(0,0,0,0.5)';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            spotlight.style.opacity = '0';
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            card.style.boxShadow = 'none';
+        });
+    </script>
+</body>
+</html>

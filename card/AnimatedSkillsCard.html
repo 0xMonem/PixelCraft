@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Skills Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .card {
+            width: 320px;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        h3 {
+            margin: 0 0 20px 0;
+            color: #343a40;
+            font-size: 18px;
+        }
+        .skill {
+            margin-bottom: 15px;
+        }
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 12px;
+            color: #6c757d;
+        }
+        .progress-bar-svg {
+            width: 100%;
+            height: 8px;
+        }
+        .progress-bg {
+            fill: #e9ecef;
+        }
+        .progress-fill {
+            fill: #4e73df;
+            transition: width 0.8s ease-out;
+        }
+        .card:hover .p1 { width: 90%; }
+        .card:hover .p2 { width: 75%; }
+        .card:hover .p3 { width: 60%; }
+        .card:hover .p4 { width: 85%; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h3>Skills Overview</h3>
+        <div class="skill">
+            <div class="skill-header"><span>SVG</span><span>90%</span></div>
+            <svg class="progress-bar-svg">
+                <rect class="progress-bg" width="100%" height="8" rx="4"/>
+                <rect class="progress-fill p1" width="0%" height="8" rx="4"/>
+            </svg>
+        </div>
+        <div class="skill">
+            <div class="skill-header"><span>CSS</span><span>75%</span></div>
+            <svg class="progress-bar-svg">
+                <rect class="progress-bg" width="100%" height="8" rx="4"/>
+                <rect class="progress-fill p2" width="0%" height="8" rx="4" style="fill:#1cc88a;"/>
+            </svg>
+        </div>
+        <div class="skill">
+            <div class="skill-header"><span>HTML</span><span>60%</span></div>
+            <svg class="progress-bar-svg">
+                <rect class="progress-bg" width="100%" height="8" rx="4"/>
+                <rect class="progress-fill p3" width="0%" height="8" rx="4" style="fill:#36b9cc;"/>
+            </svg>
+        </div>
+        <div class="skill">
+            <div class="skill-header"><span>JavaScript</span><span>85%</span></div>
+            <svg class="progress-bar-svg">
+                <rect class="progress-bg" width="100%" height="8" rx="4"/>
+                <rect class="progress-fill p4" width="0%" height="8" rx="4" style="fill:#f6c23e;"/>
+            </svg>
+        </div>
+    </div>
+</body>
+</html>

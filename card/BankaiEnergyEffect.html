@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bankai Energy Effect</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+        }
+        .card {
+            width: 350px;
+            height: 350px;
+            background: #111;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .kanji-svg {
+            width: 200px;
+            height: 200px;
+            transition: filter 0.5s ease;
+        }
+        .kanji-path {
+            fill: #fff;
+        }
+        .card:hover .kanji-svg {
+            filter: url(#bankai-energy);
+        }
+    </style>
+</head>
+<body>
+    <svg width="0" height="0">
+        <defs>
+            <filter id="bankai-energy">
+                <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/>
+                <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="20" xChannelSelector="R" yChannelSelector="A"/>
+                <feColorMatrix type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 -0.5" />
+                 <feFlood flood-color="#ff0000" result="flood"/>
+                <feComposite in="flood" in2="SourceAlpha" operator="in"/>
+                <feMerge>
+                    <feMergeNode/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+    </svg>
+    <div class="card">
+        <svg class="kanji-svg" viewBox="0 0 100 100">
+            <!-- 卍解 (Bankai) -->
+            <path class="kanji-path" d="M20 20 H80 V30 H20 Z M50 20 V80 H60 V20 Z M20 50 H80 V60 H20 Z M20 80 H80 V90 H20 Z" />
+        </svg>
+    </div>
+</body>
+</html>

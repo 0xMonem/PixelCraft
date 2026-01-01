@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual Contrast Inversion Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            font-family: 'Helvetica', sans-serif;
+        }
+        .card {
+            width: 300px;
+            height: 420px;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px;
+            box-sizing: border-box;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            cursor: pointer;
+        }
+        .card:hover {
+            background: #000;
+        }
+        .card > * {
+            transition: color 0.4s ease;
+        }
+        .card:hover > * {
+            color: #fff;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: bold;
+            color: #000;
+        }
+        .card-body {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        h2 {
+            font-size: 64px;
+            margin: 0;
+            font-weight: 900;
+            color: #000;
+            line-height: 1;
+        }
+        .card-footer {
+            font-size: 12px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <span>Concept</span>
+            <span>044</span>
+        </div>
+        <div class="card-body">
+            <h2>DUAL</h2>
+        </div>
+        <div class="card-footer">
+            Click to invert
+        </div>
+    </div>
+</body>
+</html>

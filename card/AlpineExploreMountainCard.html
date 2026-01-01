@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpine Explore Mountain Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4e9d8;
+            font-family: 'Lora', serif;
+        }
+        .card {
+            width: 300px;
+            height: 420px;
+            background: linear-gradient(to bottom, #f9d4ab, #f4e9d8);
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(133, 98, 55, 0.15);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+        }
+        .landscape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .mountain {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            transition: transform 0.5s ease-out;
+        }
+        .card:hover .m1 { transform: translateY(-20px); }
+        .card:hover .m2 { transform: translateY(-10px); }
+        .content {
+            z-index: 10;
+            margin-bottom: 40px;
+            color: #5d4037;
+        }
+        h2 {
+            font-size: 28px;
+            margin: 0;
+        }
+        p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="landscape">
+            <svg class="mountain m1" viewBox="0 0 300 252" preserveAspectRatio="none">
+                <path d="M0,252 L150,50 L300,252 Z" fill="#856237" opacity="0.4"/>
+            </svg>
+             <svg class="mountain m2" viewBox="0 0 300 252" preserveAspectRatio="none">
+                <path d="M0,252 L80,100 L200,252 Z" fill="#a47e48" opacity="0.6"/>
+            </svg>
+             <svg class="mountain m3" viewBox="0 0 300 252" preserveAspectRatio="none">
+                <path d="M150,252 L250,120 L300,252 Z" fill="#bf9757" opacity="0.8"/>
+            </svg>
+             <svg class="mountain m4" viewBox="0 0 300 252" preserveAspectRatio="none">
+                <path d="M0,252 H300 V180 L200,200 L100,160 L0,200 Z" fill="#d9b166"/>
+            </svg>
+        </div>
+        <div class="content">
+            <h2>Explore</h2>
+            <p>The Mountains Are Calling</p>
+        </div>
+    </div>
+</body>
+</html>

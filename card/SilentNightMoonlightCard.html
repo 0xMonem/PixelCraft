@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silent Night Moonlight Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #03041a;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .card {
+            width: 300px;
+            height: 420px;
+            background: linear-gradient(to bottom, #0d112e, #1a2a4c);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #f0f0f0;
+        }
+        .moon {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            box-shadow: 0 0 30px #f0f0f0, 0 0 50px #fff;
+        }
+        .reflection {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 100px;
+        }
+        .reflect-path {
+            stroke: rgba(240, 240, 240, 0.5);
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 10 5;
+            animation: flow 4s linear infinite;
+        }
+        @keyframes flow {
+            to { stroke-dashoffset: -100; }
+        }
+        .content {
+            z-index: 2;
+        }
+        h2 {
+            font-size: 28px;
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="moon"></div>
+        <svg class="reflection" viewBox="0 0 150 100">
+            <path class="reflect-path" d="M10,10 C 40,30 70,0 100,20 S 130,50 140,40" />
+            <path class="reflect-path" d="M10,30 C 40,50 70,20 100,40 S 130,70 140,60" style="animation-delay: -1s;" />
+            <path class="reflect-path" d="M10,50 C 40,70 70,40 100,60 S 130,90 140,80" style="animation-delay: -2s;"/>
+        </svg>
+        <div class="content">
+            <h2>Silent Night</h2>
+        </div>
+    </div>
+</body>
+</html>

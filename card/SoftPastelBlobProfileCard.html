@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soft Pastel Blob Profile Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fff0f5;
+            font-family: 'Verdana', sans-serif;
+        }
+        .profile-card {
+            width: 280px;
+            height: 380px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(255, 105, 180, 0.2);
+        }
+        .avatar-container {
+            width: 140px;
+            height: 140px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .avatar-blob {
+            width: 100%;
+            height: 100%;
+            fill: #ffb7b2;
+            transition: d 0.5s ease;
+        }
+        .avatar-face {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+        }
+        h3 {
+            color: #444;
+            margin: 0;
+            font-size: 20px;
+        }
+        span {
+            display: block;
+            color: #888;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+        .stats {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        .stat-box strong {
+            display: block;
+            font-size: 18px;
+            color: #ff6f61;
+        }
+        .stat-box small {
+            font-size: 11px;
+            color: #aaa;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <div class="avatar-container">
+            <svg viewBox="0 0 200 200" width="140" height="140">
+                <defs>
+                    <clipPath id="blob-mask">
+                         <path d="M41.9,-54.6C54.6,-46.8,65.6,-36.1,70.5,-23.4C75.4,-10.7,74.2,4,69.5,17.2C64.8,30.4,56.6,42,46.1,51.3C35.6,60.6,22.8,67.6,9.3,68.9C-4.2,70.3,-18.3,66,-31.1,58.5C-43.9,51,-55.4,40.3,-62.4,27.6C-69.4,14.9,-71.9,0.2,-67.2,-12.3C-62.5,-24.8,-50.6,-35.1,-38.9,-43.2C-27.2,-51.3,-15.7,-57.2,-1.9,-54.6C11.9,-52,29.2,-62.4,41.9,-54.6Z" transform="translate(100 100)" />
+                    </clipPath>
+                </defs>
+                <rect width="100%" height="100%" fill="#ffe4e1" clip-path="url(#blob-mask)" />
+                
+                <!-- Simple Face Illustration inside the blob -->
+                <g clip-path="url(#blob-mask)" transform="translate(100 100)">
+                    <circle cx="-20" cy="-10" r="5" fill="#555" />
+                    <circle cx="20" cy="-10" r="5" fill="#555" />
+                    <path d="M-15 20 Q0 35 15 20" stroke="#555" stroke-width="3" fill="none" />
+                    <circle cx="-40" cy="10" r="10" fill="#ffb7b2" opacity="0.5" />
+                    <circle cx="40" cy="10" r="10" fill="#ffb7b2" opacity="0.5" />
+                </g>
+            </svg>
+        </div>
+        
+        <h3>Sarah Doe</h3>
+        <span>UI/UX Designer</span>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <strong>124</strong>
+                <small>Projects</small>
+            </div>
+            <div class="stat-box">
+                <strong>8.5k</strong>
+                <small>Followers</small>
+            </div>
+            <div class="stat-box">
+                <strong>35</strong>
+                <small>Awards</small>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

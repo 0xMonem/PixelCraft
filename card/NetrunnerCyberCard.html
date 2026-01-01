@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netrunner Cyberpunk Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #050505;
+            font-family: 'Arial', sans-serif;
+        }
+        .cyber-card {
+            position: relative;
+            width: 300px;
+            height: 420px;
+            background: #121212;
+            clip-path: polygon(
+                20px 0, 100% 0, 
+                100% calc(100% - 20px), calc(100% - 20px) 100%, 
+                0 100%, 0 20px
+            );
+            transition: all 0.3s ease;
+        }
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, #00f3ff, #ff0055);
+            z-index: -1;
+            margin: -2px; 
+            clip-path: polygon(
+                20px 0, 100% 0, 
+                100% calc(100% - 20px), calc(100% - 20px) 100%, 
+                0 100%, 0 20px
+            );
+        }
+        .inner-content {
+            position: absolute;
+            inset: 2px;
+            background: #0a0a0a;
+            clip-path: polygon(
+                20px 0, 100% 0, 
+                100% calc(100% - 20px), calc(100% - 20px) 100%, 
+                0 100%, 0 20px
+            );
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+        .glitch-icon {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 10px 0;
+            font-size: 24px;
+        }
+        .cyber-btn {
+            margin-top: auto;
+            background: #ff0055;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .cyber-btn:hover {
+            background: #00f3ff;
+            color: #000;
+        }
+        .card-stat {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+        }
+        .stat-item {
+            color: #888;
+            font-size: 12px;
+        }
+        .stat-val {
+            display: block;
+            color: #00f3ff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-card">
+        <div class="inner-content">
+            <svg class="glitch-icon" viewBox="0 0 100 100">
+                <defs>
+                    <linearGradient id="cyber-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00f3ff" />
+                        <stop offset="100%" stop-color="#ff0055" />
+                    </linearGradient>
+                </defs>
+                <path d="M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z" fill="none" stroke="url(#cyber-grad)" stroke-width="4" />
+                <path d="M50 30 L50 70" stroke="#333" stroke-width="2" />
+                <path d="M30 50 L70 50" stroke="#333" stroke-width="2" />
+                <circle cx="50" cy="50" r="10" fill="#ff0055" />
+            </svg>
+            <h2>Netrunner</h2>
+            <div class="card-stat">
+                <div class="stat-item">
+                    SPEED
+                    <span class="stat-val">10GB/s</span>
+                </div>
+                <div class="stat-item">
+                    RAM
+                    <span class="stat-val">128TB</span>
+                </div>
+            </div>
+            <button class="cyber-btn">Jack In</button>
+        </div>
+    </div>
+</body>
+</html>

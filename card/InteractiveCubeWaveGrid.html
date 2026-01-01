@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Cube Wave Grid</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #222;
+        }
+        .card {
+            width: 320px;
+            height: 400px;
+            background: #333;
+            border-radius: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 10px;
+            perspective: 800px;
+        }
+        .cube {
+            width: 50px;
+            height: 50px;
+            background: #555;
+            transition: transform 0.3s ease-in-out;
+        }
+        /* JS will handle hover effect */
+    </style>
+</head>
+<body>
+    <div class="card" id="card">
+        <!-- JS will populate this -->
+    </div>
+
+    <script>
+        const card = document.getElementById('card');
+        const gridSize = 5; // 5x5 grid
+        for (let i = 0; i < gridSize * gridSize; i++) {
+            const cube = document.createElement('div');
+            cube.className = 'cube';
+            card.appendChild(cube);
+        }
+
+        const cubes = document.querySelectorAll('.cube');
+        cubes.forEach((cube, index) => {
+            cube.addEventListener('mouseover', () => {
+                cubes.forEach((c, i) => {
+                    const dist = Math.abs(index - i);
+                    const delay = dist * 50; // delay in ms
+                    setTimeout(() => {
+                        c.style.transform = `translateZ(${50 - dist * 10}px)`;
+                    }, delay);
+                });
+            });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            cubes.forEach(cube => {
+                cube.style.transform = 'translateZ(0px)';
+            });
+        });
+    </script>
+</body>
+</html>

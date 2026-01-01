@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtuoso Minimalist Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #222831;
+            font-family: 'Bodoni MT', 'Didot', 'Big Caslon', 'Times New Roman', serif;
+        }
+        .card {
+            width: 320px;
+            height: 400px;
+            background: #393e46;
+            padding: 40px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        .initial {
+            font-size: 100px;
+            font-weight: 400;
+            color: #eeeeee;
+            line-height: 1;
+        }
+        .divider {
+            width: 50px;
+            height: 1px;
+            background: #d4af37;
+            margin: 20px 0;
+            transition: width 0.4s ease;
+        }
+        .card:hover .divider {
+            width: 80px;
+        }
+        .text {
+            font-size: 16px;
+            color: #aaa;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="initial">V</div>
+        <div class="divider"></div>
+        <div class="text">Virtuoso</div>
+    </div>
+</body>
+</html>
