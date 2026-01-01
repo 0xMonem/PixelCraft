@@ -19,20 +19,11 @@ This repository serves as:
 
 ---
 
-## 🛠 Core Technologies
+## 🎨 Beautiful Button Design (HTML & CSS)
 
-PixelCraft is built using industry-standard web technologies:
+0
 
-- **HTML5**  
-  Semantic, accessible, and well-structured markup.
-
-- **CSS3**  
-  Advanced styling, responsive layouts, animations, and transitions.
-
-- **SVG**  
-  Resolution-independent vector graphics for sharp and modern visuals.
-
-No JavaScript frameworks. No dependencies. Maximum control.
+Modern, professional **button designs** built using pure HTML & CSS — pixel perfect, responsive, and visually appealing.
 
 ---
 
@@ -46,6 +37,14 @@ No JavaScript frameworks. No dependencies. Maximum control.
 - Cross-browser compatibility  
 
 Each asset is optimized for real-world production use.
+
+---
+
+## 📌 Awesome Input Field Designs
+
+1
+
+Stunning **input fields** crafted with precision — fully styled for modern interfaces.
 
 ---
 
