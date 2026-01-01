@@ -19,32 +19,19 @@ This repository serves as:
 
 ---
 
-## 🎨 Beautiful Button Design (HTML & CSS)
+## 🎨 Beautiful HTML & CSS Buttons
 
 0
 
-Modern, professional **button designs** built using pure HTML & CSS — pixel perfect, responsive, and visually appealing.
+دي بعض **تصميمات أزرار احترافية HTML & CSS** — تناسب واجهات UI حديثة، ألوان جذابة وأشكال أنيقة بتدي تجربة مستخدم ممتازة👌 1
 
 ---
 
-## 🎯 Key Features
+## 🎯 Stunning Input Field Designs
 
-- Enterprise-grade UI components  
-- Custom-designed SVG icons and visuals  
-- Fully responsive layouts  
-- High-performance, lightweight assets  
-- Clean, maintainable, and scalable codebase  
-- Cross-browser compatibility  
+2
 
-Each asset is optimized for real-world production use.
-
----
-
-## 📌 Awesome Input Field Designs
-
-1
-
-Stunning **input fields** crafted with precision — fully styled for modern interfaces.
+صور **حقول إدخال Inputs (نصوص وأحداث)** بخامات حديثة وتصميمات محترفة، تصلح لأي واجهة موقع جميلة وعصرية 📥 3
 
 ---
 
