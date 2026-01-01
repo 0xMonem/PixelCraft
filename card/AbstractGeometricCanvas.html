@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract Geometric Canvas</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .card {
+            width: 300px;
+            height: 400px;
+            background: white;
+            border: 1px solid #ddd;
+        }
+        .art-svg {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <svg class="art-svg" id="artSvg"></svg>
+    </div>
+    <script>
+        const svg = document.getElementById('artSvg');
+        const width = 300;
+        const height = 400;
+        const colors = ['#e63946', '#f1faee', '#a8dadc', '#457b9d', '#1d3557'];
+
+        for (let i = 0; i < 20; i++) {
+            const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            rect.setAttribute('x', Math.random() * width);
+            rect.setAttribute('y', Math.random() * height);
+            rect.setAttribute('width', Math.random() * 100 + 20);
+            rect.setAttribute('height', Math.random() * 100 + 20);
+            rect.setAttribute('fill', colors[Math.floor(Math.random() * colors.length)]);
+            rect.setAttribute('opacity', 0.5);
+            rect.style.transform = `rotate(${Math.random() * 90}deg)`;
+            rect.style.transformOrigin = 'center';
+            svg.appendChild(rect);
+        }
+    </script>
+</body>
+</html>
