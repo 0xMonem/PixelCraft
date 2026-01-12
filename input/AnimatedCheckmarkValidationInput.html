@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Checkmark Validation Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #fdfdfd; font-family: sans-serif; margin: 0; }
+    .valid-group { position: relative; width: 90%; max-width: 350px; }
+    .val-input { width: 100%; padding: 15px; padding-right: 40px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; outline: none; box-sizing: border-box; transition: 0.3s; }
+    .val-input:focus { border-color: #007bff; }
+    .check-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%) scale(0); width: 20px; height: 20px; fill: #28a745; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .val-input:valid { border-color: #28a745; }
+    .val-input:valid + .check-icon { transform: translateY(-50%) scale(1); }
+</style>
+</head>
+<body>
+    <div class="valid-group">
+        <input type="text" class="val-input" required placeholder="Type something..." pattern=".{3,}">
+        <svg class="check-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+    </div>
+</body>
+</html>
