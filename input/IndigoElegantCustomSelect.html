@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indigo Elegant Custom Select</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #e8eaf6; font-family: sans-serif; margin: 0; }
+    .select-wrapper { position: relative; width: 90%; max-width: 300px; }
+    .custom-select { width: 100%; padding: 12px 15px; font-size: 16px; border: 1px solid #c5cae9; border-radius: 8px; background-color: #fff; appearance: none; -webkit-appearance: none; -moz-appearance: none; outline: none; cursor: pointer; color: #333; }
+    .select-arrow { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); width: 12px; height: 12px; fill: #3f51b5; pointer-events: none; }
+    .custom-select:focus { border-color: #3f51b5; box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.2); }
+</style>
+</head>
+<body>
+    <div class="select-wrapper">
+        <select class="custom-select">
+            <option>Choose an option...</option>
+            <option>Design</option>
+            <option>Development</option>
+            <option>Marketing</option>
+        </select>
+        <svg class="select-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+    </div>
+</body>
+</html>

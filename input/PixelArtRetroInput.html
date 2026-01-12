@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Art Retro Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #5c94fc; font-family: 'Courier New', monospace; margin: 0; }
+    .pixel-container { width: 90%; max-width: 350px; }
+    .pixel-input { width: 100%; padding: 15px; border: none; font-size: 16px; outline: none; background: #fff; box-sizing: border-box; box-shadow: 
+        -4px 0 0 0 black, 
+        4px 0 0 0 black, 
+        0 -4px 0 0 black, 
+        0 4px 0 0 black; margin: 4px; }
+    .pixel-input:focus { background: #ffd700; color: #000; }
+    .pixel-input::placeholder { text-transform: uppercase; font-size: 12px; }
+</style>
+</head>
+<body>
+    <div class="pixel-container">
+        <input type="text" class="pixel-input" placeholder="PLAYER 1 NAME">
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floating Lift Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #eee; font-family: sans-serif; margin: 0; }
+    .float-container { width: 90%; max-width: 350px; perspective: 1000px; }
+    .float-input { width: 100%; padding: 20px; border: none; border-radius: 15px; background: #fff; color: #333; font-size: 16px; outline: none; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); box-sizing: border-box; }
+    .float-input:focus { transform: translateY(-5px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+    .float-input::placeholder { color: #aaa; font-weight: 300; }
+</style>
+</head>
+<body>
+    <div class="float-container">
+        <input type="text" class="float-input" placeholder="Floating High">
+    </div>
+</body>
+</html>

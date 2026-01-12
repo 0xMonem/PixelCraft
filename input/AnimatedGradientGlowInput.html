@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Gradient Glow Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #222; font-family: sans-serif; margin: 0; }
+    .gradient-box { position: relative; width: 90%; max-width: 400px; padding: 2px; border-radius: 8px; background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000); background-size: 400%; animation: glowing 20s linear infinite; }
+    @keyframes glowing { 0% { background-position: 0 0; } 50% { background-position: 100% 0; } 100% { background-position: 0 0; } }
+    .input-inner { width: 100%; border: none; padding: 15px; border-radius: 6px; background: #1a1a1a; color: #fff; font-size: 16px; outline: none; box-sizing: border-box; }
+</style>
+</head>
+<body>
+    <div class="gradient-box">
+        <input type="text" class="input-inner" placeholder="Gradient Magic...">
+    </div>
+</body>
+</html>

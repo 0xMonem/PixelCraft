@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frozen Glacier Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #263238; font-family: sans-serif; margin: 0; }
+    .ice-container { width: 90%; max-width: 350px; padding: 20px; background: url('https://www.transparenttextures.com/patterns/cubes.png'), linear-gradient(45deg, #2193b0, #6dd5ed); border-radius: 15px; }
+    .ice-input { width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px); border-radius: 8px; color: #fff; font-size: 16px; outline: none; box-sizing: border-box; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+    .ice-input::placeholder { color: #e0f7fa; }
+    .ice-input:focus { background: rgba(255, 255, 255, 0.3); border-color: #fff; box-shadow: 0 0 15px rgba(255,255,255,0.4); }
+</style>
+</head>
+<body>
+    <div class="ice-container">
+        <input type="text" class="ice-input" placeholder="Frozen Data">
+    </div>
+</body>
+</html>

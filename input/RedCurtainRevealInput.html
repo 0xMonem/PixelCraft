@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red Curtain Reveal Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #2c3e50; font-family: sans-serif; margin: 0; }
+    .curtain-wrapper { position: relative; width: 90%; max-width: 350px; overflow: hidden; }
+    .curtain-input { width: 100%; padding: 15px; border: none; background: #ecf0f1; color: #2c3e50; font-size: 16px; outline: none; position: relative; z-index: 1; box-sizing: border-box; }
+    .curtain-panel { position: absolute; top: 0; width: 50%; height: 100%; background: #e74c3c; z-index: 2; transition: transform 0.4s ease-in-out; pointer-events: none; }
+    .left-panel { left: 0; transform-origin: left; }
+    .right-panel { right: 0; transform-origin: right; }
+    .curtain-input:focus ~ .left-panel { transform: scaleX(0); }
+    .curtain-input:focus ~ .right-panel { transform: scaleX(0); }
+    .curtain-input::placeholder { opacity: 0; transition: 0.3s; }
+    .curtain-input:focus::placeholder { opacity: 1; transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+    <div class="curtain-wrapper">
+        <input type="text" class="curtain-input" placeholder="Welcome Back">
+        <div class="curtain-panel left-panel"></div>
+        <div class="curtain-panel right-panel"></div>
+    </div>
+</body>
+</html>

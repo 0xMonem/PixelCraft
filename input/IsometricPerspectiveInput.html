@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Isometric Perspective Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f0f0f0; font-family: sans-serif; margin: 0; }
+    .iso-container { transform: rotate(-30deg) skewX(30deg); width: 90%; max-width: 300px; }
+    .iso-input { width: 100%; padding: 15px; background: #fff; border: none; font-size: 18px; outline: none; box-shadow: -5px 5px 0 #ccc; transition: 0.2s; box-sizing: border-box; }
+    .iso-input:focus { transform: translate(5px, -5px); box-shadow: -10px 10px 0 #999; background: #ffeb3b; }
+    .iso-input::placeholder { color: #aaa; font-style: italic; }
+</style>
+</head>
+<body>
+    <div class="iso-container">
+        <input type="text" class="iso-input" placeholder="Isometric View">
+    </div>
+</body>
+</html>

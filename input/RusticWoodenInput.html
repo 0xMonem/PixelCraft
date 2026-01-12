@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rustic Wooden Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #d7ccc8; margin: 0; }
+    .wood-wrapper { width: 90%; max-width: 350px; padding: 10px; background: #5d4037; border-radius: 8px; box-shadow: 5px 5px 15px rgba(0,0,0,0.3); }
+    .wood-input { width: 100%; padding: 12px; border: 2px solid #3e2723; border-radius: 4px; background: repeating-linear-gradient(45deg, #d7ccc8, #d7ccc8 10px, #bcaaa4 10px, #bcaaa4 20px); color: #3e2723; font-weight: bold; font-size: 16px; outline: none; box-sizing: border-box; box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2); }
+    .wood-input:focus { background: #efebe9; }
+    .wood-input::placeholder { color: #5d4037; opacity: 0.7; }
+</style>
+</head>
+<body>
+    <div class="wood-wrapper">
+        <input type="text" class="wood-input" placeholder="Carved Name...">
+    </div>
+</body>
+</html>

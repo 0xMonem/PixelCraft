@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Neon Hex Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #222; font-family: sans-serif; margin: 0; }
+    .hex-wrapper { width: 90%; max-width: 320px; filter: drop-shadow(0 0 10px rgba(0,255,0,0.2)); }
+    .hex-input { width: 100%; padding: 15px 30px; background: #111; color: #0f0; border: none; font-size: 16px; outline: none; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); transition: 0.3s; box-sizing: border-box; text-align: center; }
+    .hex-input::placeholder { color: #005500; }
+    .hex-input:focus { background: #000; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); padding: 15px 15px; border-bottom: 2px solid #0f0; }
+</style>
+</head>
+<body>
+    <div class="hex-wrapper">
+        <input type="text" class="hex-input" placeholder="HEX DATA">
+    </div>
+</body>
+</html>

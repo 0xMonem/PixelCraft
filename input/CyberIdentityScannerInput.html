@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Identity Scanner Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #111; font-family: sans-serif; margin: 0; }
+    .scan-wrapper { position: relative; width: 90%; max-width: 350px; overflow: hidden; border: 1px solid #444; border-radius: 4px; }
+    .scan-input { width: 100%; padding: 15px; background: #000; border: none; color: #00ff00; font-size: 16px; outline: none; box-sizing: border-box; }
+    .scanner-line { position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: #ff0000; box-shadow: 0 0 10px #ff0000; opacity: 0; pointer-events: none; }
+    .scan-input:focus ~ .scanner-line { opacity: 1; animation: scan 1.5s linear infinite alternate; }
+    @keyframes scan { 0% { left: 0; } 100% { left: 100%; } }
+</style>
+</head>
+<body>
+    <div class="scan-wrapper">
+        <input type="password" class="scan-input" placeholder="Scanning Identity...">
+        <div class="scanner-line"></div>
+    </div>
+</body>
+</html>

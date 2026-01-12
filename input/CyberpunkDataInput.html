@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyberpunk Data Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #111; font-family: 'Courier New', monospace; margin: 0; }
+    .cyber-group { position: relative; width: 90%; max-width: 380px; }
+    .cyber-input { width: 100%; padding: 15px; background: #000; border: 2px solid #0ff; color: #0ff; font-size: 18px; outline: none; box-sizing: border-box; clip-path: polygon(0 0, 100% 0, 100% 75%, 95% 100%, 0 100%); transition: 0.3s; }
+    .cyber-input:focus { background: #001a1a; box-shadow: 0 0 15px #0ff; }
+    .cyber-input::placeholder { color: rgba(0, 255, 255, 0.3); }
+    .tag { position: absolute; right: 10px; bottom: 5px; font-size: 10px; color: #0ff; opacity: 0.7; }
+</style>
+</head>
+<body>
+    <div class="cyber-group">
+        <input type="text" class="cyber-input" placeholder="ENTER_DATA">
+        <span class="tag">SYS.RDY</span>
+    </div>
+</body>
+</html>

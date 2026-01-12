@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Triangle Corner Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #eee; font-family: sans-serif; margin: 0; }
+    .corner-wrapper { position: relative; width: 90%; max-width: 350px; padding: 10px; }
+    .corner-input { width: 100%; padding: 15px; border: 1px solid #ccc; background: #fff; outline: none; font-size: 16px; box-sizing: border-box; }
+    .tri { position: absolute; width: 0; height: 0; border-style: solid; transition: 0.3s; }
+    /* Corners */
+    .t-tl { top: 0; left: 0; border-width: 15px 15px 0 0; border-color: #333 transparent transparent transparent; }
+    .t-tr { top: 0; right: 0; border-width: 0 15px 15px 0; border-color: transparent #333 transparent transparent; }
+    .t-br { bottom: 0; right: 0; border-width: 0 0 15px 15px; border-color: transparent transparent #333 transparent; }
+    .t-bl { bottom: 0; left: 0; border-width: 15px 0 0 15px; border-color: transparent transparent transparent #333; }
+    
+    .corner-input:focus ~ .t-tl { border-top-color: #e91e63; top: 5px; left: 5px; }
+    .corner-input:focus ~ .t-tr { border-right-color: #e91e63; top: 5px; right: 5px; }
+    .corner-input:focus ~ .t-br { border-bottom-color: #e91e63; bottom: 5px; right: 5px; }
+    .corner-input:focus ~ .t-bl { border-left-color: #e91e63; bottom: 5px; left: 5px; }
+</style>
+</head>
+<body>
+    <div class="corner-wrapper">
+        <input type="text" class="corner-input" placeholder="Corner Effect">
+        <div class="tri t-tl"></div><div class="tri t-tr"></div>
+        <div class="tri t-br"></div><div class="tri t-bl"></div>
+    </div>
+</body>
+</html>

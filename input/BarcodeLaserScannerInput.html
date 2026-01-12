@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barcode Laser Scanner Input</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap');
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #fff; margin: 0; }
+    .barcode-wrapper { width: 90%; max-width: 350px; position: relative; border: 2px solid #000; padding: 10px; }
+    .barcode-input { width: 100%; padding: 10px; border: none; font-family: 'Libre Barcode 39 Text', cursive; font-size: 40px; outline: none; text-align: center; letter-spacing: 2px; color: #000; box-sizing: border-box; }
+    .laser-line { position: absolute; top: 10px; left: 10px; width: calc(100% - 20px); height: 2px; background: #f00; opacity: 0; pointer-events: none; box-shadow: 0 0 10px #f00; }
+    .barcode-input:focus ~ .laser-line { opacity: 1; animation: scan-v 1s ease-in-out infinite alternate; }
+    @keyframes scan-v { 0% { top: 10px; } 100% { top: calc(100% - 10px); } }
+    .barcode-input::placeholder { font-family: sans-serif; font-size: 16px; letter-spacing: normal; padding-top: 15px; display: block; }
+</style>
+</head>
+<body>
+    <div class="barcode-wrapper">
+        <input type="text" class="barcode-input" placeholder="SCAN CODE">
+        <div class="laser-line"></div>
+    </div>
+</body>
+</html>

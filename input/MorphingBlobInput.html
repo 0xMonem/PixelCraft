@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morphing Blob Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #fff; font-family: sans-serif; margin: 0; }
+    .morph-wrapper { width: 90%; max-width: 350px; padding: 10px; }
+    .morph-input { width: 100%; padding: 15px 20px; border: 2px solid #6c5ce7; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; background: #fff; outline: none; font-size: 16px; transition: 0.5s ease-in-out; box-sizing: border-box; }
+    .morph-input:focus { border-radius: 50px; border-color: #a29bfe; background: #f8f8ff; box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2); }
+</style>
+</head>
+<body>
+    <div class="morph-wrapper">
+        <input type="text" class="morph-input" placeholder="Morphing shape...">
+    </div>
+</body>
+</html>

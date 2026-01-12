@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minimalist Stealth Name Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #fff; font-family: serif; margin: 0; }
+    .stealth-wrapper { width: 90%; max-width: 400px; text-align: center; }
+    .stealth-input { width: 100%; border: none; border-bottom: 1px dashed transparent; text-align: center; font-size: 24px; color: #333; outline: none; background: transparent; transition: 0.3s; padding: 5px; }
+    .stealth-input:hover { border-bottom-color: #aaa; }
+    .stealth-input:focus { border-bottom: 2px solid #000; font-style: italic; }
+    .stealth-input::placeholder { color: #333; font-weight: bold; opacity: 1; }
+</style>
+</head>
+<body>
+    <div class="stealth-wrapper">
+        <h1>I am <input type="text" class="stealth-input" placeholder="Your Name"></h1>
+    </div>
+</body>
+</html>

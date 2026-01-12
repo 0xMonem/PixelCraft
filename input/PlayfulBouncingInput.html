@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playful Bouncing Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #ffe082; font-family: 'Comic Sans MS', sans-serif; margin: 0; }
+    .bounce-group { position: relative; width: 90%; max-width: 350px; }
+    .bounce-input { width: 100%; padding: 15px; border: 3px solid #ff6f00; border-radius: 15px; background: #fff; font-size: 18px; outline: none; transition: 0.3s; box-sizing: border-box; }
+    .bounce-label { position: absolute; left: 15px; top: 15px; color: #ff6f00; font-weight: bold; pointer-events: none; transition: 0.3s; }
+    .bounce-input:focus { border-color: #e65100; box-shadow: 0 5px 0 #e65100; transform: translateY(-5px); }
+    .bounce-input:focus ~ .bounce-label, .bounce-input:valid ~ .bounce-label { animation: bounce 0.5s ease forwards; top: -25px; left: 10px; color: #e65100; }
+    @keyframes bounce { 
+        0% { transform: translateY(0); } 
+        50% { transform: translateY(-10px); } 
+        100% { transform: translateY(0); } 
+    }
+</style>
+</head>
+<body>
+    <div class="bounce-group">
+        <input type="text" class="bounce-input" required>
+        <label class="bounce-label">Play!</label>
+    </div>
+</body>
+</html>

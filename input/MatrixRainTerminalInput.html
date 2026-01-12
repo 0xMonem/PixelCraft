@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrix Rain Terminal Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #000; font-family: monospace; margin: 0; }
+    .matrix-box { position: relative; width: 90%; max-width: 400px; padding: 2px; background: linear-gradient(180deg, #0f0, transparent); border-radius: 5px; }
+    .matrix-input { width: 100%; padding: 15px; background: #000; border: 1px solid #003300; color: #0f0; font-size: 18px; outline: none; font-family: 'Courier New', monospace; letter-spacing: 2px; box-sizing: border-box; background-image: linear-gradient(0deg, transparent 24%, rgba(0, 255, 0, .1) 25%, rgba(0, 255, 0, .1) 26%, transparent 27%, transparent 74%, rgba(0, 255, 0, .1) 75%, rgba(0, 255, 0, .1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 0, .1) 25%, rgba(0, 255, 0, .1) 26%, transparent 27%, transparent 74%, rgba(0, 255, 0, .1) 75%, rgba(0, 255, 0, .1) 76%, transparent 77%, transparent); background-size: 30px 30px; }
+    .matrix-input:focus { box-shadow: 0 0 15px #0f0; text-shadow: 0 0 5px #0f0; }
+</style>
+</head>
+<body>
+    <div class="matrix-box">
+        <input type="text" class="matrix-input" placeholder="WAKE UP NEO...">
+    </div>
+</body>
+</html>

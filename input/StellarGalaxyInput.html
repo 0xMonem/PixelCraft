@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stellar Galaxy Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #000; margin: 0; }
+    .galaxy-wrapper { width: 90%; max-width: 350px; padding: 2px; border-radius: 8px; background: linear-gradient(45deg, #673ab7, #e91e63, #3f51b5); animation: hue 10s infinite linear; }
+    .galaxy-input { width: 100%; padding: 15px; border-radius: 6px; border: none; background: url('https://www.transparenttextures.com/patterns/stardust.png'), linear-gradient(to right, #0f2027, #203a43, #2c5364); color: #fff; font-size: 16px; outline: none; box-sizing: border-box; background-size: 200px 200px, cover; animation: moveStars 60s linear infinite; }
+    .galaxy-input::placeholder { color: #81d4fa; }
+    
+    @keyframes moveStars { 0% { background-position: 0 0, 0 0; } 100% { background-position: 1000px 500px, 0 0; } }
+    @keyframes hue { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+</style>
+</head>
+<body>
+    <div class="galaxy-wrapper">
+        <input type="text" class="galaxy-input" placeholder="Stellar Input">
+    </div>
+</body>
+</html>

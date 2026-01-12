@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emoji Reactive Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #ffcc80; font-family: sans-serif; margin: 0; }
+    .emoji-group { display: flex; align-items: center; background: #fff; padding: 5px 15px; border-radius: 50px; width: 90%; max-width: 350px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .face { font-size: 30px; margin-right: 10px; transition: 0.3s; }
+    .emoji-input { flex: 1; border: none; padding: 10px; font-size: 16px; outline: none; }
+    
+    /* Default state is hidden via CSS logic, we simulate via placeholder-shown */
+    .face::before { content: '😴'; } 
+    .emoji-input:focus + .face::before { content: '😳'; } /* Focus but empty (trick depends on focus) */
+    .emoji-input:not(:placeholder-shown) + .face::before { content: '😎'; } /* Has text */
+    
+    /* Reordering for sibling selector */
+    .emoji-group { flex-direction: row-reverse; }
+    .face { margin-right: 0; margin-left: 10px; }
+</style>
+</head>
+<body>
+    <div class="emoji-group">
+        <div class="face"></div>
+        <input type="text" class="emoji-input" placeholder="Type here...">
+    </div>
+</body>
+</html>

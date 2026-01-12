@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Website Side Icon Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f5f6fa; font-family: sans-serif; margin: 0; }
+    .side-group { display: flex; width: 90%; max-width: 380px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    .icon-box { background: #ddd; padding: 10px 15px; border-radius: 6px 0 0 6px; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+    .s-icon { width: 20px; height: 20px; fill: #666; transition: 0.3s; }
+    .side-input { flex: 1; border: 2px solid #ddd; border-left: none; border-radius: 0 6px 6px 0; padding: 12px; font-size: 16px; outline: none; transition: 0.3s; width: 100%; box-sizing: border-box; }
+    .side-input:focus { border-color: #e84118; }
+    .side-input:focus + .icon-box, .side-group:focus-within .icon-box { background: #e84118; }
+    .side-input:focus ~ .icon-box .s-icon, .side-group:focus-within .s-icon { fill: #fff; }
+    /* Reordering for CSS sibling selector trick */
+    .side-group { flex-direction: row-reverse; }
+    .side-input { border-left: 2px solid #ddd; border-right: none; border-radius: 6px 0 0 6px; }
+    .icon-box { border-radius: 0 6px 6px 0; }
+</style>
+</head>
+<body>
+    <!-- Layout reversed via flex-direction for Focus trick -->
+    <div class="side-group">
+        <div class="icon-box"><svg class="s-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></div>
+        <input type="text" class="side-input" placeholder="Your Website">
+    </div>
+</body>
+</html>

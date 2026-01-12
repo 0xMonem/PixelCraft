@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shadow Pulse Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #fafafa; font-family: sans-serif; margin: 0; }
+    .pulse-wrapper { width: 90%; max-width: 350px; }
+    .pulse-input { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; outline: none; box-sizing: border-box; transition: 0.3s; }
+    .pulse-input:focus { border-color: #ff5722; animation: shadow-pulse 1s infinite; }
+    @keyframes shadow-pulse {
+        0% { box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.4); }
+        70% { box-shadow: 0 0 0 10px rgba(255, 87, 34, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(255, 87, 34, 0); }
+    }
+</style>
+</head>
+<body>
+    <div class="pulse-wrapper">
+        <input type="text" class="pulse-input" placeholder="Focus me!">
+    </div>
+</body>
+</html>

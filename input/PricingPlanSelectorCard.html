@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing Plan Selector Card</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f8f9fa; font-family: sans-serif; margin: 0; gap: 20px; }
+    .card-option { position: relative; }
+    .card-input { display: none; }
+    .card-box { width: 120px; padding: 20px; background: #fff; border: 2px solid #e0e0e0; border-radius: 10px; text-align: center; cursor: pointer; transition: 0.3s; display: block; }
+    .card-icon { width: 30px; height: 30px; fill: #555; margin-bottom: 10px; display: block; margin: 0 auto 10px; }
+    .card-input:checked + .card-box { border-color: #4CAF50; background: #f1f8e9; box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2); }
+    .card-input:checked + .card-box .card-icon { fill: #4CAF50; }
+</style>
+</head>
+<body>
+    <div class="card-option">
+        <input type="radio" name="plan" id="p1" class="card-input">
+        <label for="p1" class="card-box">
+            <svg class="card-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+            Basic
+        </label>
+    </div>
+    <div class="card-option">
+        <input type="radio" name="plan" id="p2" class="card-input" checked>
+        <label for="p2" class="card-box">
+            <svg class="card-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            Pro
+        </label>
+    </div>
+</body>
+</html>

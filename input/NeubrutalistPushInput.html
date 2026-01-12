@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neubrutalist Push Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #e0e5ec; font-family: sans-serif; margin: 0; }
+    .push-wrapper { width: 90%; max-width: 350px; }
+    .push-input { width: 100%; padding: 15px; border: 2px solid #000; border-radius: 10px; background: #fff; font-size: 16px; outline: none; box-shadow: 6px 6px 0px #000; transition: all 0.1s ease; box-sizing: border-box; color: #000; }
+    .push-input:focus { transform: translate(4px, 4px); box-shadow: 0px 0px 0px #000; background: #fdfdfd; }
+    .push-input::placeholder { color: #888; }
+</style>
+</head>
+<body>
+    <div class="push-wrapper">
+        <input type="text" class="push-input" placeholder="Press Me...">
+    </div>
+</body>
+</html>

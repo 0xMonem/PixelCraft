@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Glitch Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #1a1a1a; margin: 0; font-family: sans-serif; }
+    .glitch-wrapper { position: relative; width: 90%; max-width: 350px; }
+    .glitch-input { width: 100%; padding: 15px; background: #000; border: 2px solid #fff; color: #fff; font-size: 18px; outline: none; box-sizing: border-box; position: relative; z-index: 2; transition: 0.2s; }
+    .glitch-input:focus { border-color: #ff00ff; text-shadow: 2px 0 #00ffff; animation: shake 0.2s infinite; }
+    .glitch-box { position: absolute; top: 5px; left: 5px; width: 100%; height: 100%; background: #00ffff; z-index: 1; transition: 0.2s; opacity: 0; }
+    .glitch-input:focus + .glitch-box { opacity: 1; transform: translate(-10px, -10px); }
+    @keyframes shake { 0% { transform: translate(1px, 1px); } 50% { transform: translate(-1px, -1px); } 100% { transform: translate(1px, -1px); } }
+</style>
+</head>
+<body>
+    <div class="glitch-wrapper">
+        <input type="text" class="glitch-input" placeholder="SYSTEM_HACK">
+        <div class="glitch-box"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expanding Reveal Search Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #673ab7; font-family: sans-serif; margin: 0; }
+    .reveal-box { position: relative; }
+    .reveal-input { width: 40px; height: 40px; border-radius: 20px; border: 2px solid #fff; background: transparent; padding: 5px 40px 5px 15px; color: #fff; font-size: 16px; outline: none; transition: 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); cursor: pointer; box-sizing: border-box; opacity: 0.5; }
+    .reveal-input:focus { width: 300px; opacity: 1; cursor: text; background: rgba(255,255,255,0.1); }
+    .search-btn { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; fill: #fff; pointer-events: none; }
+</style>
+</head>
+<body>
+    <div class="reveal-box">
+        <input type="search" class="reveal-input">
+        <svg class="search-btn" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+    </div>
+</body>
+</html>

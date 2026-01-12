@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blooming Floral Radio Buttons</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #fff0f5; font-family: sans-serif; margin: 0; gap: 30px; }
+    .flower-label { position: relative; cursor: pointer; font-size: 16px; color: #880e4f; padding-left: 35px; user-select: none; }
+    .flower-input { position: absolute; opacity: 0; }
+    .flower-center { position: absolute; left: 0; top: 0; width: 20px; height: 20px; background: #f8bbd0; border-radius: 50%; transition: 0.3s; z-index: 2; }
+    .flower-petal { position: absolute; left: 0; top: 0; width: 20px; height: 20px; background: #ec407a; border-radius: 50%; transition: 0.4s; z-index: 1; transform: scale(0); opacity: 0; }
+    
+    .flower-input:checked ~ .flower-center { background: #ffeb3b; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    .flower-input:checked ~ .p1 { transform: translate(-8px, -8px) scale(0.6); opacity: 1; }
+    .flower-input:checked ~ .p2 { transform: translate(8px, -8px) scale(0.6); opacity: 1; }
+    .flower-input:checked ~ .p3 { transform: translate(-8px, 8px) scale(0.6); opacity: 1; }
+    .flower-input:checked ~ .p4 { transform: translate(8px, 8px) scale(0.6); opacity: 1; }
+</style>
+</head>
+<body>
+    <label class="flower-label">
+        <input type="radio" name="g" class="flower-input">
+        <span class="flower-center"></span>
+        <span class="flower-petal p1"></span><span class="flower-petal p2"></span>
+        <span class="flower-petal p3"></span><span class="flower-petal p4"></span>
+        Rose
+    </label>
+    <label class="flower-label">
+        <input type="radio" name="g" class="flower-input">
+        <span class="flower-center"></span>
+        <span class="flower-petal p1"></span><span class="flower-petal p2"></span>
+        <span class="flower-petal p3"></span><span class="flower-petal p4"></span>
+        Tulip
+    </label>
+</body>
+</html>

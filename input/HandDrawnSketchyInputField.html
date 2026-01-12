@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hand Drawn Sketchy Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #fff; font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif; margin: 0; }
+    .sketch-box { width: 90%; max-width: 350px; padding: 5px; }
+    .sketch-input { width: 100%; padding: 15px; border: 3px solid #333; border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; background: transparent; font-size: 18px; outline: none; box-shadow: 2px 5px 10px rgba(0,0,0,0.1); transition: 0.3s; box-sizing: border-box; }
+    .sketch-input:focus { border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px; border-color: #ff6b6b; box-shadow: 2px 5px 15px rgba(255, 107, 107, 0.3); }
+</style>
+</head>
+<body>
+    <div class="sketch-box">
+        <input type="text" class="sketch-input" placeholder="Sketchy Note...">
+    </div>
+</body>
+</html>

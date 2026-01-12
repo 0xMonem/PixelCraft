@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Gold Signature Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #121212; font-family: 'Georgia', serif; margin: 0; }
+    .lux-box { position: relative; width: 90%; max-width: 400px; }
+    .lux-input { width: 100%; padding: 10px 0; background: transparent; border: none; border-bottom: 1px solid #555; color: #cfb53b; font-size: 20px; font-family: inherit; outline: none; transition: 0.3s; }
+    .lux-input::placeholder { color: #666; font-style: italic; }
+    .gold-line { position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); transition: 0.5s ease; }
+    .lux-input:focus ~ .gold-line { width: 100%; }
+    .lux-input:focus { border-bottom-color: transparent; }
+</style>
+</head>
+<body>
+    <div class="lux-box">
+        <input type="text" class="lux-input" placeholder="Signature">
+        <div class="gold-line"></div>
+    </div>
+</body>
+</html>

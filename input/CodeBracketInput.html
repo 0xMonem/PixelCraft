@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Bracket Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #282c34; font-family: monospace; margin: 0; }
+    .bracket-group { position: relative; width: 90%; max-width: 350px; display: inline-block; }
+    .bracket-input { width: 100%; padding: 10px 15px; background: transparent; border: none; color: #abb2bf; font-size: 18px; outline: none; text-align: center; box-sizing: border-box; }
+    .bracket-shape { position: absolute; top: 0; bottom: 0; width: 10px; border: 2px solid #61afef; transition: 0.3s; opacity: 0; }
+    .b-left { left: 0; border-right: none; transform: translateX(10px); }
+    .b-right { right: 0; border-left: none; transform: translateX(-10px); }
+    .bracket-input:focus ~ .b-left { opacity: 1; transform: translateX(0); }
+    .bracket-input:focus ~ .b-right { opacity: 1; transform: translateX(0); }
+    .bracket-input::placeholder { color: #5c6370; }
+</style>
+</head>
+<body>
+    <div class="bracket-group">
+        <input type="text" class="bracket-input" placeholder="Array Value">
+        <span class="bracket-shape b-left"></span>
+        <span class="bracket-shape b-right"></span>
+    </div>
+</body>
+</html>

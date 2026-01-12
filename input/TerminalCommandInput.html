@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terminal Command Prompt Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #000; font-family: 'Courier New', monospace; margin: 0; }
+    .term-wrapper { width: 90%; max-width: 400px; display: flex; align-items: center; border-bottom: 2px solid #333; padding-bottom: 5px; }
+    .prompt { color: #0f0; margin-right: 10px; font-weight: bold; font-size: 18px; }
+    .term-input { flex: 1; background: transparent; border: none; color: #fff; font-size: 18px; outline: none; caret-color: transparent; }
+    .cursor-block { display: inline-block; width: 10px; height: 20px; background: #0f0; animation: blink 1s step-end infinite; margin-left: -5px; pointer-events: none; }
+    .term-input:focus + .cursor-block { display: inline-block; }
+    .term-input:not(:focus) + .cursor-block { display: none; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+</style>
+</head>
+<body>
+    <div class="term-wrapper">
+        <span class="prompt">root@server:~#</span>
+        <input type="text" class="term-input">
+        <span class="cursor-block"></span>
+    </div>
+</body>
+</html>

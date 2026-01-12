@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dew Drop Range Slider</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); margin: 0; }
+    .dew-wrapper { width: 90%; max-width: 350px; }
+    .dew-range { -webkit-appearance: none; width: 100%; background: transparent; outline: none; }
+    .dew-range::-webkit-slider-runnable-track { width: 100%; height: 4px; background: rgba(255,255,255,0.6); border-radius: 5px; }
+    .dew-range::-webkit-slider-thumb { -webkit-appearance: none; height: 25px; width: 25px; border-radius: 0 50% 50% 50%; background: rgba(255, 255, 255, 0.4); border: 1px solid rgba(255,255,255,0.8); box-shadow: 1px 1px 5px rgba(0,0,0,0.1), inset 2px 2px 5px rgba(255,255,255,0.9); transform: rotate(45deg); margin-top: -10px; cursor: pointer; backdrop-filter: blur(2px); }
+</style>
+</head>
+<body>
+    <div class="dew-wrapper">
+        <input type="range" class="dew-range" min="0" max="100">
+    </div>
+</body>
+</html>

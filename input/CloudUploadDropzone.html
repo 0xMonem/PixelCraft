@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Upload Dropzone</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #eef2f3; margin: 0; font-family: sans-serif; }
+    .file-drop-area { position: relative; display: flex; align-items: center; width: 90%; max-width: 400px; padding: 25px; border: 2px dashed #999; border-radius: 10px; background: #fff; transition: 0.3s; cursor: pointer; justify-content: center; flex-direction: column; }
+    .file-drop-area:hover { border-color: #4CAF50; background: #f0fff4; }
+    .fake-btn { flex-shrink: 0; background-color: #e5e5e5; border: 1px solid #999; border-radius: 3px; padding: 8px 15px; margin-top: 10px; font-size: 12px; text-transform: uppercase; }
+    .file-msg { font-size: 14px; font-weight: bold; color: #555; }
+    .file-input { position: absolute; left: 0; top: 0; height: 100%; width: 100%; opacity: 0; cursor: pointer; }
+    .cloud-icon { width: 40px; height: 40px; fill: #4CAF50; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+    <div class="file-drop-area">
+        <svg class="cloud-icon" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+        <span class="file-msg">Drag and Drop or Click</span>
+        <input class="file-input" type="file">
+    </div>
+</body>
+</html>

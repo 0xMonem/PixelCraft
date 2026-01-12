@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organic Leaf Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #e8f5e9; font-family: sans-serif; margin: 0; }
+    .leaf-box { width: 90%; max-width: 350px; filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1)); }
+    .leaf-input { width: 100%; padding: 15px 25px; border: none; background: #a5d6a7; border-radius: 0 40px 0 40px; color: #1b5e20; font-size: 16px; outline: none; transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); box-sizing: border-box; }
+    .leaf-input::placeholder { color: #2e7d32; opacity: 0.7; }
+    .leaf-input:focus { border-radius: 40px 0 40px 0; background: #66bb6a; color: #fff; transform: translateY(-3px); }
+    .leaf-input:focus::placeholder { color: #e8f5e9; }
+</style>
+</head>
+<body>
+    <div class="leaf-box">
+        <input type="text" class="leaf-input" placeholder="Natural Growth">
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chalkboard Text Input</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #5d4037; margin: 0; }
+    .chalk-box { width: 90%; max-width: 350px; padding: 10px; background: #3e2723; border: 5px solid #8d6e63; border-radius: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+    .chalk-input { width: 100%; padding: 10px; background: #212121; border: none; color: #fff; font-family: 'Fredericka the Great', cursive; font-size: 24px; outline: none; box-sizing: border-box; border-bottom: 2px dashed #aaa; }
+    .chalk-input::placeholder { color: #757575; font-family: sans-serif; font-size: 14px; letter-spacing: normal; }
+</style>
+</head>
+<body>
+    <div class="chalk-box">
+        <input type="text" class="chalk-input" placeholder="Write on board...">
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Material Design Filled Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #fff; font-family: sans-serif; margin: 0; }
+    .filled-group { position: relative; width: 90%; max-width: 350px; background: #f0f0f0; border-radius: 4px 4px 0 0; overflow: hidden; }
+    .filled-input { width: 100%; padding: 20px 16px 6px; border: none; border-bottom: 2px solid #999; background: transparent; font-size: 16px; outline: none; transition: 0.3s; box-sizing: border-box; }
+    .filled-label { position: absolute; left: 16px; top: 18px; font-size: 16px; color: #666; pointer-events: none; transition: 0.3s ease; }
+    .filled-input:focus { border-bottom-color: #6200ea; background: #e6e6e6; }
+    .filled-input:focus + .filled-label, .filled-input:not(:placeholder-shown) + .filled-label { top: 4px; font-size: 12px; color: #6200ea; }
+</style>
+</head>
+<body>
+    <div class="filled-group">
+        <input type="text" class="filled-input" placeholder=" ">
+        <label class="filled-label">Display Name</label>
+    </div>
+</body>
+</html>

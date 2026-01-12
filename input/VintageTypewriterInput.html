@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vintage Typewriter Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #8d6e63; font-family: 'Courier New', monospace; margin: 0; }
+    .type-wrapper { width: 90%; max-width: 350px; background: #fff8e1; padding: 20px; box-shadow: 0 0 5px rgba(0,0,0,0.2); border: 1px solid #d7ccc8; }
+    .type-label { display: block; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; color: #333; text-decoration: underline; }
+    .type-input { width: 100%; background: transparent; border: none; font-family: inherit; font-size: 20px; outline: none; color: #000; caret-color: transparent; }
+    .cursor { display: inline-block; width: 12px; height: 24px; background: #000; animation: blink-block 1s infinite; vertical-align: bottom; margin-left: -5px; pointer-events: none; }
+    .type-input:focus + .cursor { display: inline-block; }
+    .type-input:not(:focus) + .cursor { display: none; }
+    @keyframes blink-block { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+</style>
+</head>
+<body>
+    <div class="type-wrapper">
+        <label class="type-label">Subject:</label>
+        <div style="display:flex; align-items:center;">
+            <input type="text" class="type-input">
+            <span class="cursor"></span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Holographic Interface Access Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #001; font-family: sans-serif; margin: 0; }
+    .holo-group { position: relative; width: 90%; max-width: 380px; padding: 2px; background: linear-gradient(90deg, transparent, rgba(0,255,255,0.5), transparent); }
+    .holo-input { width: 100%; padding: 15px; border: 1px solid rgba(0,255,255,0.3); background: rgba(0,20,40,0.6); color: #0ff; font-family: 'Courier New', monospace; font-size: 18px; outline: none; box-shadow: 0 0 10px rgba(0,255,255,0.1), inset 0 0 20px rgba(0,255,255,0.05); box-sizing: border-box; letter-spacing: 3px; }
+    .holo-input::placeholder { color: rgba(0,255,255,0.3); letter-spacing: 1px; }
+    .holo-corner { position: absolute; width: 10px; height: 10px; border: 2px solid #0ff; transition: 0.3s; pointer-events: none; }
+    .tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+    .tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+    .bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+    .br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+    
+    .holo-input:focus { background: rgba(0,20,40,0.9); box-shadow: 0 0 20px rgba(0,255,255,0.3); border-color: #0ff; }
+    .holo-input:focus ~ .holo-corner { width: 20px; height: 20px; box-shadow: 0 0 10px #0ff; }
+</style>
+</head>
+<body>
+    <div class="holo-group">
+        <input type="password" class="holo-input" placeholder="ACCESS CODE">
+        <div class="holo-corner tl"></div><div class="holo-corner tr"></div>
+        <div class="holo-corner bl"></div><div class="holo-corner br"></div>
+    </div>
+</body>
+</html>

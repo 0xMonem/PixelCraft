@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Interactive Tag Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f4f6f8; font-family: sans-serif; margin: 0; }
+    .tag-container { width: 90%; max-width: 400px; background: #fff; border: 1px solid #ddd; border-radius: 6px; padding: 5px; display: flex; align-items: center; flex-wrap: wrap; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+    .fake-tag { background: #e0e7ff; color: #4338ca; padding: 5px 10px; border-radius: 4px; font-size: 14px; margin-right: 5px; display: flex; align-items: center; }
+    .fake-tag span { margin-left: 5px; cursor: pointer; font-weight: bold; }
+    .tag-input { flex: 1; border: none; outline: none; padding: 8px; font-size: 16px; min-width: 100px; }
+    .tag-container:focus-within { border-color: #4338ca; box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.1); }
+</style>
+</head>
+<body>
+    <div class="tag-container">
+        <div class="fake-tag">Design <span>&times;</span></div>
+        <div class="fake-tag">CSS <span>&times;</span></div>
+        <input type="text" class="tag-input" placeholder="Add tag...">
+    </div>
+</body>
+</html>

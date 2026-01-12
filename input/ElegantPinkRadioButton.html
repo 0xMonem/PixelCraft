@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elegant Pink Radio Button</title>
+<style>
+    body { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; background: #fff; font-family: sans-serif; margin: 0; gap: 20px; }
+    .radio-label { display: flex; align-items: center; cursor: pointer; font-size: 18px; color: #333; }
+    .real-radio { display: none; }
+    .fake-radio { width: 22px; height: 22px; border: 2px solid #888; border-radius: 50%; margin-right: 10px; position: relative; display: flex; justify-content: center; align-items: center; transition: 0.3s; }
+    .fake-radio::before { content: ''; width: 0; height: 0; background: #e91e63; border-radius: 50%; transition: 0.3s; }
+    .real-radio:checked + .fake-radio { border-color: #e91e63; }
+    .real-radio:checked + .fake-radio::before { width: 12px; height: 12px; }
+    .radio-label:hover .fake-radio { border-color: #e91e63; }
+</style>
+</head>
+<body>
+    <label class="radio-label"><input type="radio" name="opt" class="real-radio" checked><span class="fake-radio"></span> Option A</label>
+    <label class="radio-label"><input type="radio" name="opt" class="real-radio"><span class="fake-radio"></span> Option B</label>
+</body>
+</html>

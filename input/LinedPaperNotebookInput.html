@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lined Paper Notebook Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #fdf6e3; margin: 0; font-family: 'Times New Roman', serif; }
+    .paper-wrapper { width: 90%; max-width: 400px; }
+    .paper-input { width: 100%; padding: 8px 15px; background: repeating-linear-gradient(transparent, transparent 29px, #9fb1bc 30px); line-height: 30px; border: none; font-size: 20px; color: #333; outline: none; box-sizing: border-box; }
+    .paper-input:focus { background-color: rgba(255,255,255,0.4); }
+</style>
+</head>
+<body>
+    <div class="paper-wrapper">
+        <input type="text" class="paper-input" placeholder="Write your story here...">
+    </div>
+</body>
+</html>

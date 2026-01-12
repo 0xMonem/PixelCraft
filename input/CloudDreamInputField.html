@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Dream Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #29b6f6; font-family: sans-serif; margin: 0; }
+    .cloud-wrapper { width: 90%; max-width: 300px; filter: drop-shadow(0 10px 0 rgba(255,255,255,0.3)); }
+    .cloud-input { width: 100%; padding: 20px 30px; border: none; border-radius: 50px; background: #fff; color: #0288d1; font-size: 16px; outline: none; text-align: center; position: relative; box-sizing: border-box; }
+    .cloud-input::placeholder { color: #b3e5fc; }
+    /* Making it look like a cloud with pseudo elements requires complex stacking, simplified here with border-radius */
+    .cloud-input:focus { transform: scale(1.05); }
+</style>
+</head>
+<body>
+    <div class="cloud-wrapper">
+        <input type="text" class="cloud-input" placeholder="Dream Big...">
+    </div>
+</body>
+</html>

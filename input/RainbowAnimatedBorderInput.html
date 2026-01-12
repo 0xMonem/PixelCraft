@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rainbow Animated Border Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #222; margin: 0; font-family: sans-serif; }
+    .rainbow-box { position: relative; width: 90%; max-width: 350px; padding: 4px; border-radius: 10px; background: linear-gradient(90deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000); background-size: 400%; animation: rainbow 8s linear infinite; }
+    .inner-input { width: 100%; padding: 15px; border: none; border-radius: 8px; background: #111; color: #fff; font-size: 16px; outline: none; box-sizing: border-box; }
+    @keyframes rainbow { 0% { background-position: 0%; } 100% { background-position: 400%; } }
+</style>
+</head>
+<body>
+    <div class="rainbow-box">
+        <input type="text" class="inner-input" placeholder="Rainbow Border">
+    </div>
+</body>
+</html>

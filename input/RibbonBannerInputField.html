@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ribbon Banner Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #fdfdfd; font-family: sans-serif; margin: 0; }
+    .ribbon-wrapper { position: relative; width: 90%; max-width: 320px; margin-left: 20px; }
+    .ribbon-input { width: 100%; padding: 12px 20px; background: #fff; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: relative; z-index: 2; font-size: 16px; outline: none; box-sizing: border-box; }
+    .ribbon-tail { position: absolute; top: 10px; left: -20px; width: calc(100% + 40px); height: 100%; background: #ff4081; z-index: 1; transform: translateZ(-1px); clip-path: polygon(0 0, 100% 0, 95% 50%, 100% 100%, 0 100%, 5% 50%); }
+    .ribbon-input:focus { border-color: #ff4081; }
+</style>
+</head>
+<body>
+    <div class="ribbon-wrapper">
+        <input type="text" class="ribbon-input" placeholder="Gift Code">
+        <div class="ribbon-tail"></div>
+    </div>
+</body>
+</html>

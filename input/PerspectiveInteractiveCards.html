@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perspective 3D Interactive Cards</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #2c3e50; font-family: sans-serif; margin: 0; perspective: 800px; gap: 20px; }
+    .p-label { position: relative; width: 100px; height: 140px; cursor: pointer; transform-style: preserve-3d; transition: 0.5s; transform: rotateY(20deg) rotateX(10deg); }
+    .p-input { display: none; }
+    .p-card { width: 100%; height: 100%; background: #fff; border-radius: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: -5px 5px 15px rgba(0,0,0,0.3); transition: 0.5s; border: 4px solid transparent; }
+    .p-icon { font-size: 40px; margin-bottom: 10px; }
+    .p-text { font-weight: bold; color: #555; }
+    
+    .p-label:hover { transform: rotateY(0deg) rotateX(0deg) translateZ(20px); }
+    .p-input:checked + .p-card { border-color: #e67e22; background: #fff5e6; transform: translateZ(10px); }
+    .p-input:checked ~ .p-card .p-text { color: #e67e22; }
+</style>
+</head>
+<body>
+    <label class="p-label">
+        <input type="checkbox" class="p-input">
+        <div class="p-card">
+            <span class="p-icon">🚀</span>
+            <span class="p-text">Boost</span>
+        </div>
+    </label>
+    <label class="p-label">
+        <input type="checkbox" class="p-input">
+        <div class="p-card">
+            <span class="p-icon">🛡️</span>
+            <span class="p-text">Defend</span>
+        </div>
+    </label>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Deck Orange Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #0b0b0b; font-family: 'Arial', sans-serif; margin: 0; }
+    .deck-container { position: relative; width: 90%; max-width: 400px; padding: 2px; background: #ff9800; clip-path: polygon(0 0, 100% 0, 100% 80%, 95% 100%, 0 100%); }
+    .deck-inner { background: #111; padding: 10px; clip-path: polygon(0 0, 100% 0, 100% 80%, 95% 100%, 0 100%); display: flex; align-items: center; }
+    .deck-label { color: #ff9800; font-size: 10px; transform: rotate(-90deg); margin-right: 5px; white-space: nowrap; font-weight: bold; }
+    .deck-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid #333; color: #fff; font-size: 16px; padding: 10px; outline: none; font-family: monospace; }
+    .deck-input:focus { border-bottom-color: #ff9800; }
+    .tech-deco { position: absolute; bottom: 5px; right: 25px; width: 20px; height: 5px; background: repeating-linear-gradient(90deg, #ff9800, #ff9800 2px, transparent 2px, transparent 4px); opacity: 0.5; }
+</style>
+</head>
+<body>
+    <div class="deck-container">
+        <div class="deck-inner">
+            <span class="deck-label">INPUT-09</span>
+            <input type="text" class="deck-input" placeholder="COMMAND_LINE">
+            <div class="tech-deco"></div>
+        </div>
+    </div>
+</body>
+</html>

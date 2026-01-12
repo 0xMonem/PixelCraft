@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purple Referral Link Copy Box</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #673ab7; margin: 0; font-family: sans-serif; }
+    .invite-box { position: relative; width: 90%; max-width: 380px; background: #fff; padding: 5px; border-radius: 8px; display: flex; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+    .invite-input { flex: 1; border: none; padding: 10px 15px; font-size: 14px; outline: none; color: #555; }
+    .copy-btn { background: #673ab7; border: none; border-radius: 6px; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: 0.2s; }
+    .copy-btn:active { transform: scale(0.9); background: #512da8; }
+    .copy-icon { width: 20px; height: 20px; fill: #fff; }
+</style>
+</head>
+<body>
+    <div class="invite-box">
+        <input type="text" class="invite-input" value="https://mysite.com/ref/123" readonly>
+        <button class="copy-btn" title="Copy">
+            <svg class="copy-icon" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+        </button>
+    </div>
+</body>
+</html>

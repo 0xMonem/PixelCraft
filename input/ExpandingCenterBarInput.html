@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expanding Center Bar Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #fff; margin: 0; font-family: sans-serif; }
+    .center-group { position: relative; width: 90%; max-width: 350px; }
+    .center-input { width: 100%; padding: 10px 0; border: none; border-bottom: 1px solid #ccc; font-size: 16px; outline: none; background: transparent; text-align: center; }
+    .center-bar { position: absolute; bottom: 0; left: 50%; width: 0; height: 3px; background: #e91e63; transition: 0.4s ease-in-out; transform: translateX(-50%); }
+    .center-input:focus ~ .center-bar { width: 100%; }
+    .center-input::placeholder { transition: 0.3s; color: #bbb; }
+    .center-input:focus::placeholder { opacity: 0; }
+</style>
+</head>
+<body>
+    <div class="center-group">
+        <input type="text" class="center-input" placeholder="Center Animation">
+        <span class="center-bar"></span>
+    </div>
+</body>
+</html>

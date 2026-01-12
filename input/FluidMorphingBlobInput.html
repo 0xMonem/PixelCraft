@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluid Morphing Blob Input Field</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #fff; font-family: sans-serif; margin: 0; }
+    .fluid-wrapper { width: 300px; height: 60px; position: relative; display: flex; align-items: center; justify-content: center; }
+    .fluid-input { width: 90%; height: 90%; border: none; background: transparent; text-align: center; font-size: 18px; outline: none; color: #fff; z-index: 2; }
+    .fluid-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #ff4081; z-index: 1; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; animation: fluid 5s ease-in-out infinite; box-shadow: 0 10px 20px rgba(255, 64, 129, 0.4); }
+    .fluid-input::placeholder { color: rgba(255,255,255,0.8); }
+    
+    @keyframes fluid {
+        0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+        33% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+        66% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+    }
+</style>
+</head>
+<body>
+    <div class="fluid-wrapper">
+        <input type="text" class="fluid-input" placeholder="Liquid Shape">
+        <div class="fluid-bg"></div>
+    </div>
+</body>
+</html>

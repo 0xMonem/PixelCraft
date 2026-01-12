@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floating Label Icon Input</title>
+<style>
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #fff; font-family: sans-serif; margin: 0; }
+    .field-container { position: relative; width: 90%; max-width: 350px; display: flex; align-items: flex-end; }
+    .icon { width: 24px; height: 24px; fill: #555; margin-right: 10px; margin-bottom: 8px; transition: 0.3s; }
+    .custom-input { width: 100%; border: none; border-bottom: 2px solid #ccc; padding: 10px 5px; font-size: 16px; outline: none; background: transparent; transition: 0.3s; }
+    .label-text { position: absolute; left: 35px; top: 10px; color: #aaa; transition: 0.3s; pointer-events: none; }
+    .custom-input:focus { border-bottom-color: #e91e63; }
+    .custom-input:focus ~ .icon { fill: #e91e63; }
+    .custom-input:focus ~ .label-text, .custom-input:valid ~ .label-text { top: -15px; font-size: 12px; color: #e91e63; }
+</style>
+</head>
+<body>
+    <div class="field-container">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <input type="text" class="custom-input" required>
+        <label class="label-text">Full Name</label>
+    </div>
+</body>
+</html>
